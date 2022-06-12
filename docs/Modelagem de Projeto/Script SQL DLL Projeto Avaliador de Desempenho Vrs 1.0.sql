@@ -1,0 +1,87 @@
+begin;
+
+create table organizacao (
+    id serial primary key,
+    nome character varying(100) not null,
+    cnpj character varying(18) not null unique,
+    emaildecontato character varying(100) unique not null
+);
+
+
+create table organizacao_endereco (
+    id serial primary key,
+	organizacao_id integer not null references organizacao(id) on update cascade,
+	numero character varying(20) not null,
+	bairro character varying(20) not null,
+    apartamento character varying(100) not null,
+	cep character varying(9) not null
+);
+
+create table colaborador (
+    id serial primary key,
+    organizacao_id integer not null references organizacao(id) on update cascade,
+    tipo character varying(11) not null check (tipo in ('Avaliador', 'Funcionario')),
+    nome character varying(100) not null,
+    sexo character varying(100) not null,
+    datanasc date,
+    cpf character varying(14) not null,
+    telefone character (19) not null,
+    email character varying(100) not null,
+    senha character varying(100) not null
+);
+
+create table colaborador_foto (
+    id serial primary key,
+    colaborador_id integer not null references colaborador(id) on update cascade,
+    foto character varying(200) not null,
+    unique(colaborador_id, foto)
+);
+
+create table avaliador(
+    id serial primary key,
+    setor character varying (100)
+)inherits(colaborador);
+
+create table funcionario (
+    id serial primary key,
+    cargo character varying(100) not null
+)inherits(colaborador);
+
+create table avaliacao (
+    id serial primary key,
+    datahora timestamp without time zone not null,
+    datalimite timestamp without time zone,
+    titulo character varying(100) not null unique,
+	avaliador_id integer not null references avaliador(id) on update cascade
+);
+
+create table pergunta(
+    id serial primary key,
+    avaliacao_id integer not null references avaliacao(id) on update cascade,
+    descricao text not null,
+    tipo boolean not null
+);
+
+create table resposta(
+    id serial primary key,
+    solucao text,
+    funcionario_id integer not null references funcionario(id) on update cascade,
+    pergunta_id integer not null references pergunta(id) on update cascade
+);
+
+create table alternativa(
+	id serial primary key,
+	descricao text not null,
+	correta boolean not null,
+    resposta_id integer not null references resposta(id) on update cascade,
+	pergunta_id integer not null references pergunta(id) on update cascade 
+);
+
+create table feedback (
+    id serial primary key,
+    resposta_id integer not null references resposta(id) on update cascade,
+    descricao text
+);
+
+commit;
+
