@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+    <link href="resources/bootstrap-4.4.1-dist/css/bootstrap.min.css"rel="stylesheet">
+</head>
+
+<body>
+
+   <div class="login-container">
+       <h1>Login</h1>
+       <form action="">
+           <fiedlset >
+               <legend>Tipo de Usuário:</legend>
+               <div id="option-funcionario">
+                <input type="radio" id="funcionario-user" name="funcionario" value="funcionario">
+                <label class="legenda"for="funcionario-user">Funcionário</label>
+              </div>
+          
+              <div id="option-avaliador">
+                <input type="radio" id="avaliador-user" name="avaliador" value="avaliador">
+                <label class="legenda" for="avaliador-user">Avaliador</label>
+              </div>
+
+           </fiedlset>
+       
+            <label class="label-inputs">E-mail</label>
+            <input class="inputs" type="email" id ="email" placeholder="Digite seu e-mail" autocomplete="off">
+            <label class="label-inputs">Senha</label>
+            <input class="inputs" type="password" id="password" placeholder="Digite sua senha" autocomplete="off">
+            <a class ="a-inputs" href="#" id="recover-password">Recuperar senha</a>
+            <a href="#" class="a-inputs" role="button">
+                <button class="submit-btn" >Login</button></a> 
+
+            <div id="register-container">
+            <p class="register-legenda">Ainda não tem uma conta?</p>
+            <a class="a-inputs" href="#">Registrar</a>
+        </div>
+       </form>
+       
+   </div>
+   
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+    <link href="resources/bootstrap-4.4.1-dist/css/bootstrap.min.css"rel="stylesheet">
+</head>
+<body>
+    <div id="cadastrar-container">
+        <h1>Cadastro</h1>
+        <hr size="50" Align="center" noshade>
+        <h5>Dados do avaliador</h5>
+        <form action="">
+
+            <div class="row justify-content-md-center">
+                <div class="col-4"><label>Nome Completo:</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="nome" placeholder="Digite seu nome completo"></div>
+                <div class="w-100"></div>
+                <div class="col-4"> <label>Telefone:</label></div>
+                <div class="col"><input class="inputs-cadastrar" type="tel" id="telefone" placeholder="Digite seu telefone"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Data de nascimento:</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="data-nasc" type="date" placeholder="Digite a sua data de nascimento"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Cpf:</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="cpf" placeholder="Digite seu CPF"></div>
+                <div class="col-4"><label>Email:</label></div>
+                <div class="col"><input class="inputs-cadastrar" type ="email" id="email" placeholder="Digite seu e-mail"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Senha:</label></div>
+                <div class="col"><input class="inputs-cadastrar" type="password" id ="password" placeholder="Digite sua senha"></div>
+
+              </div>               
+
+            <hr size="50" Align="center" noshade>
+            <h5>Dados da organização</h5>
+            <div class="row justify-content-md-center">
+                <div class="col-4"><label>Nome da organização</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="nome-empresa" placeholder="Digite nome da organização"></div>
+                <div class="w-100"></div>
+                <div class="col-4"> <label>Cnpj:</label></div>
+                <div class="col"><input class="inputs-cadastrar" type="number" id="cnpj-empresa" placeholder="Digite o cnpj"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Cidade</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="cidade-empresa" type="text" placeholder="-"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Bairro:</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="bairro-empresa" placeholder="-"></div>
+                <div class="col-4"><label>Rua</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="rua-empresa" type="text" placeholder="-"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Número:</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="numero-empresa" placeholder="-"></div>
+                <div class="col-4"><label>Apto (opcional):</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="apto-empresa" type="text" placeholder="-"></div>
+                <div class="w-100"></div>
+                <div class="col-4"><label>Email de contanto:</label></div>
+                <div class="col"><input class="inputs-cadastrar" id="email-empresa" placeholder="-" type="email"></div>
+                <div class="w-100"></div>
+
+                <div class="row justify-content-md-center">
+                    <div class="col-4"><a href="#" class="a-inputs" role="button">
+                        <button class="submit-btn" id="btn-voltar" >Voltar</button></a> </div>
+                    <div class="col"><a href="#" class="a-inputs" role="button">
+                        <button class="submit-btn" id="cadastrar-btn">Cadastrar</button></a> </div>
+                </div>
+                
+                
+
+              </div>  
+
+        </form>
+       
+    </div>
+    
+</body>
+</html>
+<script src='resources/jquery/jquery-3.4.1.min.js'></script>
+<script src='resources/popper/popper.min.js'></script>
+<script src='resources/bootstrap-4.4.1-dist/js/bootstrap.min.js'></script>
