@@ -14,7 +14,7 @@ body{
 }   
 
 body.landingpage {
-    background-image: url(/resources/assets/img/background-img.jpg)
+    background-image: url("img/background-img.jpg")
 }
 
 .landingpage-header {
