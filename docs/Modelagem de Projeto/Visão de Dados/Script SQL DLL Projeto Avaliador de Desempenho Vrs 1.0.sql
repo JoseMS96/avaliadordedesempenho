@@ -62,6 +62,13 @@ create table pergunta(
     tipo boolean not null
 );
 
+create table pergunta_foto(
+    id serial primary key,
+    pergunta_id integer not null references pergunta(id) on update cascade,
+    foto character varying(200) not null,
+    unique(pergunta_id, foto)
+);
+
 create table resposta(
     id serial primary key,
     solucao text,
