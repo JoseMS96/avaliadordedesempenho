@@ -1,0 +1,10 @@
+.idea/
+**/target/
+.vscode
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
