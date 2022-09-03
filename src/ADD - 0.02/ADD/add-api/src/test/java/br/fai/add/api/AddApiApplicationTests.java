@@ -1,13 +1,14 @@
-package br.fai.add.client;
+package br.fai.add.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class LdsClientApplicationTests {
+public class AddApiApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

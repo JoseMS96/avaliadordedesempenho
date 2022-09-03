@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LdsClientApplication {
+public class AddClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LdsClientApplication.class, args);
+        SpringApplication.run(AddClientApplication.class, args);
     }
 
 }
