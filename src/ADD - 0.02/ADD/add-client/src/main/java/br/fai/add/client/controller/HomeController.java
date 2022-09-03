@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHomePage() {
-        return "";
+        return "form/create-form";
     }
 }

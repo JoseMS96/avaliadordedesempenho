@@ -28,7 +28,53 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fa-light fa-book"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">ADD</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Atividades
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true"
+               aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Atividades</span>
+            </a>
+            <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Login Screens:</h6>
+                    <a class="collapse-item" th:href="@{/account/sign-in}">Criar Formulário</a>
+                    <a class="collapse-item" th:href="@{/account/sign-up}">Formulários Salvos</a>
+                    <a class="collapse-item" th:href="@{/account/password-recovery}">Cadastrar Funcionário</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -45,7 +91,6 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -55,7 +100,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-100 small">Nome de usuário</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-100 small">Nome de usuario</span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
@@ -87,59 +132,7 @@
             </nav>
             <!-- End of Topbar -->
 
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">ADD<sup></sup></div>
-                </a>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Pages
-                </div>
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
-                       aria-expanded="true"
-                       aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Login Screens:</h6>
-                            <a class="collapse-item" th:href="@{/account/sign-in}">Criar Avaliação</a>
-                            <a class="collapse-item" th:href="@{/account/sign-up}">Register</a>
-                            <a class="collapse-item" th:href="@{/account/password-recovery}">Forgot Password</a>
-                            <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Other Pages:</h6>
-                            <a class="collapse-item" th:href="@{/common/not-found}">404 Page</a>
-                            <a class="collapse-item" th:href="@{/common/acess-denied}">Acess Denied</a>
-                            <a class="collapse-item active" th:href="@{/}">Home</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-
-
-                <!-- Begin Page Content -->
+            <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <div layout:fragment="body"></div>
