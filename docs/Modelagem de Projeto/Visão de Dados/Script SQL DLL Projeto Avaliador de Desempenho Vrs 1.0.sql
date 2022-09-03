@@ -7,7 +7,6 @@ create table organizacao (
     emaildecontato character varying(100) unique not null
 );
 
-
 create table organizacao_endereco (
     id serial primary key,
 	organizacao_id integer not null references organizacao(id) on update cascade,
@@ -30,22 +29,17 @@ create table colaborador (
     senha character varying(100) not null
 );
 
-create table colaborador_foto (
-    id serial primary key,
-    colaborador_id integer not null references colaborador(id) on update cascade,
-    foto character varying(200) not null,
-    unique(colaborador_id, foto)
-);
-
 create table avaliador(
     id serial primary key,
-    setor character varying (100)
-)inherits(colaborador);
+    setor character varying (100),
+    colaborador_id integer not null references colaborador(id) on update cascade
+);
 
 create table funcionario (
     id serial primary key,
-    cargo character varying(100) not null
-)inherits(colaborador);
+    cargo character varying(100) not null,
+    colaborador_id integer not null references colaborador(id) on update cascade
+);
 
 create table avaliacao (
     id serial primary key,
@@ -59,36 +53,29 @@ create table pergunta(
     id serial primary key,
     avaliacao_id integer not null references avaliacao(id) on update cascade,
     descricao text not null,
-    tipo boolean not null
+    pergunta_fechada boolean not null
 );
 
-create table pergunta_foto(
+create table pergunta_img(
     id serial primary key,
     pergunta_id integer not null references pergunta(id) on update cascade,
     foto character varying(200) not null,
     unique(pergunta_id, foto)
 );
 
-create table resposta(
-    id serial primary key,
-    solucao text,
-    funcionario_id integer not null references funcionario(id) on update cascade,
-    pergunta_id integer not null references pergunta(id) on update cascade
-);
-
 create table alternativa(
 	id serial primary key,
 	descricao text not null,
 	correta boolean not null,
-    resposta_id integer not null references resposta(id) on update cascade,
 	pergunta_id integer not null references pergunta(id) on update cascade 
 );
 
-create table feedback (
+create table resposta(
     id serial primary key,
-    resposta_id integer not null references resposta(id) on update cascade,
-    descricao text
+    texto_resposta text,
+    funcionario_id integer not null references funcionario(id) on update cascade,
+    pergunta_id integer not null references pergunta(id) on update cascade,
+    alternativa_id integer not null references alternativa(id) on update cascade
 );
 
 commit;
-
