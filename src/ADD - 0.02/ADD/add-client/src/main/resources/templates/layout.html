@@ -14,12 +14,7 @@
     <title>LDS 2 - Home</title>
 
     <div th:replace="fragments/head-imports::scripts"></div>
-
-    <!-- Custom fonts for this template-->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    
 
 </head>
 
@@ -29,12 +24,12 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fa-light fa-book"></i>
+                <i class="fas fa-light fa-book"></i>
             </div>
             <div class="sidebar-brand-text mx-3">ADD</div>
         </a>
@@ -44,26 +39,34 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Atividades
+            Operações de Avaliador
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
+            <a class="nav-link collapse-item" th:href="@{/form/create-form}"
                aria-expanded="true"
                aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Atividades</span>
+                <i class="fas fa-light fa-book-open"></i>
+                <span>Criar Formulário</span>
             </a>
-            <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" th:href="@{/account/sign-in}">Criar Formulário</a>
-                    <a class="collapse-item" th:href="@{/account/sign-up}">Formulários Salvos</a>
-                    <a class="collapse-item" th:href="@{/account/password-recovery}">Cadastrar Funcionário</a>
-                </div>
-            </div>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link collapse-item" th:href="@{/form/view-form}"
+               aria-expanded="true"
+               aria-controls="collapsePages">
+                <i class="fas fa-light fa-bookmark"></i>
+                <span>Formulários Salvos</span>
+            </a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link collapse-item" th:href="@{/account/register-employee}"
+               aria-expanded="true"
+               aria-controls="collapsePages">
+                <i class="fas fa-light fa-user-plus"></i>
+                <span>Cadastrar Funcionário</span>
+            </a>
         </li>
 
         <!-- Divider -->
@@ -84,7 +87,7 @@
         <div id="content">
 
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -100,7 +103,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-100 small">Nome de usuario</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nome de usuario</span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
