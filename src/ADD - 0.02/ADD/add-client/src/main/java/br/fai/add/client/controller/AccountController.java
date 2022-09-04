@@ -31,6 +31,10 @@ public class AccountController {
         return "account/password-recovery";
     }
 
+    @GetMapping("/register-employee")
+    public String getEmployeeSignUpPage() {
+        return "account/register-employee";
+    }
 
     @PostMapping("/create")
     public String create(UserModel user) {
