@@ -12,7 +12,7 @@ create table organizacao_endereco (
 	organizacao_id integer not null references organizacao(id) on update cascade,
 	numero character varying(20) not null,
 	bairro character varying(20) not null,
-    apartamento character varying(100) not null,
+    apartamento character varying(100),
 	cep character varying(9) not null
 );
 
@@ -26,19 +26,9 @@ create table colaborador (
     cpf character varying(14) not null,
     telefone character (19) not null,
     email character varying(100) not null,
-    senha character varying(100) not null
-);
-
-create table avaliador(
-    id serial primary key,
+    cargo character varying(100),
     setor character varying (100),
-    colaborador_id integer not null references colaborador(id) on update cascade
-);
-
-create table funcionario (
-    id serial primary key,
-    cargo character varying(100) not null,
-    colaborador_id integer not null references colaborador(id) on update cascade
+    senha character varying(100) not null
 );
 
 create table avaliacao (
@@ -46,7 +36,7 @@ create table avaliacao (
     datahora timestamp without time zone not null,
     datalimite timestamp without time zone,
     titulo character varying(100) not null unique,
-	avaliador_id integer not null references avaliador(id) on update cascade
+	colaborador_id integer not null references colaborador(id) on update cascade
 );
 
 create table pergunta(
@@ -73,9 +63,9 @@ create table alternativa(
 create table resposta(
     id serial primary key,
     texto_resposta text,
-    funcionario_id integer not null references funcionario(id) on update cascade,
+    colaborador_id integer not null references colaborador(id) on update cascade,
     pergunta_id integer not null references pergunta(id) on update cascade,
-    alternativa_id integer not null references alternativa(id) on update cascade
+    alternativa_resposta_id integer references alternativa(id) on update cascade
 );
 
 commit;
