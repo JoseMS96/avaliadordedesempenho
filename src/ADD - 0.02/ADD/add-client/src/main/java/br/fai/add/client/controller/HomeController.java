@@ -6,9 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+    //MAPEAMENTO TEMPORÁRIO
     @GetMapping("/")
-    public String getHomePage() {
-        return "form/create-form";
+    public String getReviewerHomePage() {
+        return "/home/reviewer-home";
     }
-    //    HOME PLACEHOLDER
+
+
+    @GetMapping("/2")
+    public String getEmployeeHomePage() {
+        return "/home/employee-home";
+    }
+
+    //MAPEAMENTO TEMPORÁRIO
 }

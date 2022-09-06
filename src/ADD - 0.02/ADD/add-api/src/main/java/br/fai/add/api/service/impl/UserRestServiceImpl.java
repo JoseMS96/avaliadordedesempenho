@@ -1,6 +1,7 @@
 package br.fai.add.api.service.impl;
 
 import br.fai.add.api.service.UserRestService;
+import br.fai.add.db.dao.UserDao;
 import br.fai.add.model.entities.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
