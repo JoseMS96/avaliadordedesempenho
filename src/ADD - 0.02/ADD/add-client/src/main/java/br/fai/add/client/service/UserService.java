@@ -1,10 +1,10 @@
 package br.fai.add.client.service;
 
-import br.fai.add.model.entities.UserModel;
+import br.fai.add.model.entities.ColaboratorModel;
 
 public interface UserService<T> extends BaseService<T> {
 
 
-    UserModel validateUsernameAndPassword(String username, String password);
+    ColaboratorModel validateUsernameAndPassword(String username, String password);
 
 }

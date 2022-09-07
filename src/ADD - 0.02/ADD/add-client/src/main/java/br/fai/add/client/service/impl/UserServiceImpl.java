@@ -2,7 +2,7 @@ package br.fai.add.client.service.impl;
 
 import br.fai.add.client.service.RestService;
 import br.fai.add.client.service.UserService;
-import br.fai.add.model.entities.UserModel;
+import br.fai.add.model.entities.ColaboratorModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService<UserModel> {
+public class UserServiceImpl implements UserService<ColaboratorModel> {
 
     private static final String BASE_ENDPOINT = "http://localhost:8081/api/";
 
@@ -26,24 +26,24 @@ public class UserServiceImpl implements UserService<UserModel> {
     private RestService restService;
 
     @Override
-    public int create(UserModel entity) {
+    public int create(ColaboratorModel entity) {
         return 0;
     }
 
     @Override
-    public List<UserModel> find() {
+    public List<ColaboratorModel> find() {
 
         return null;
     }
 
     @Override
-    public UserModel findById(int id) {
+    public ColaboratorModel findById(int id) {
 
         return null;
     }
 
     @Override
-    public boolean update(UserModel entity) {
+    public boolean update(ColaboratorModel entity) {
         return false;
     }
 
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService<UserModel> {
     }
 
     @Override
-    public UserModel validateUsernameAndPassword(String username, String password) {
+    public ColaboratorModel validateUsernameAndPassword(String username, String password) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -62,13 +62,13 @@ public class UserServiceImpl implements UserService<UserModel> {
         String resource = "account/login?username=" + username + "&password=" + password;
 
 
-        ResponseEntity<UserModel> responseEntity = restTemplate.exchange(buildEndpoint(resource), HttpMethod.POST, httpEntity, UserModel.class);
+        ResponseEntity<ColaboratorModel> responseEntity = restTemplate.exchange(buildEndpoint(resource), HttpMethod.POST, httpEntity, ColaboratorModel.class);
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
             return null;
         }
 
-        UserModel user = responseEntity.getBody();
+        ColaboratorModel user = responseEntity.getBody();
 
         return user;
     }

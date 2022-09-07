@@ -2,7 +2,7 @@ package br.fai.add.api.controller;
 
 
 import br.fai.add.api.service.UserRestService;
-import br.fai.add.model.entities.UserModel;
+import br.fai.add.model.entities.ColaboratorModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +17,15 @@ public class AccountRestController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<UserModel> login(@RequestParam("username") final String username,
-                                           @RequestParam("password") final String password) {
-        UserModel userModel = userRestService.validateLogin(username, password);
+    public ResponseEntity<ColaboratorModel> login(@RequestParam("username") final String username,
+                                                  @RequestParam("password") final String password) {
+        ColaboratorModel colaboratorModel = userRestService.validateLogin(username, password);
 
-        if (userModel == null) {
+        if (colaboratorModel == null) {
             return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok(userModel);
+        return ResponseEntity.ok(colaboratorModel);
     }
 
 }

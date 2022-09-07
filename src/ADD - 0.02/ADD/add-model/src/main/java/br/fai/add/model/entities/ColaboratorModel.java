@@ -2,7 +2,7 @@ package br.fai.add.model.entities;
 
 import br.fai.add.model.enums.UserType;
 
-public class UserModel {
+public class ColaboratorModel {
 
     private int id;
     private UserType type;
