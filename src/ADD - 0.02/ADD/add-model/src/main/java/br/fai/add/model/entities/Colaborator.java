@@ -2,11 +2,11 @@ package br.fai.add.model.entities;
 
 import br.fai.add.model.enums.UserType;
 
-public class ColaboratorModel {
+public class Colaborator extends BaseEntity {
 
-    private int id;
     private UserType type;
-    private String nome;
+
+    private String fullName;
     private String gender;
     private String birthDate;
     private String cpf;
@@ -15,14 +15,7 @@ public class ColaboratorModel {
     private String jobTitle;
     private String companyBranch;
     private String password;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private Organization organization;
 
     public UserType getType() {
         return type;
@@ -32,12 +25,12 @@ public class ColaboratorModel {
         this.type = type;
     }
 
-    public String getNome() {
-        return nome;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getGender() {
@@ -104,5 +97,11 @@ public class ColaboratorModel {
         this.password = password;
     }
 
+    public Organization getOrganization() {
+        return organization;
+    }
 
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
 }

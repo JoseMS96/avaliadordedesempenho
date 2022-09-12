@@ -1,20 +1,10 @@
 package br.fai.add.model.entities;
 
-public class OptionModel {
-
-    private int id;
+public class Option extends BaseEntity {
 
     private String description;
-
     private boolean correctAnswer;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private Question question;
 
     public String getDescription() {
         return description;
@@ -30,5 +20,13 @@ public class OptionModel {
 
     public void setCorrectAnswer(boolean correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

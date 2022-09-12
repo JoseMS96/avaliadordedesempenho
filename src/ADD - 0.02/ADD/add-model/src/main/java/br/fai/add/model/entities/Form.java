@@ -1,26 +1,18 @@
 package br.fai.add.model.entities;
 
-public class FormModel {
+public class Form extends BaseEntity {
 
-    private int id;
     private String datetime;
     private String datelimit;
     private String title;
+    private Colaborator colaborator;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDatahora() {
+    public String getDatetime() {
         return datetime;
     }
 
-    public void setDatahora(String datahora) {
-        this.datetime = datahora;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
     public String getDatelimit() {
@@ -37,5 +29,13 @@ public class FormModel {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Colaborator getColaborator() {
+        return colaborator;
+    }
+
+    public void setColaborator(Colaborator colaborator) {
+        this.colaborator = colaborator;
     }
 }

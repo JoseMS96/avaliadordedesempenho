@@ -1,7 +1,7 @@
 package br.fai.add.client.controller;
 
 import br.fai.add.client.service.UserService;
-import br.fai.add.model.entities.ColaboratorModel;
+import br.fai.add.model.entities.Colaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +37,7 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public String create(ColaboratorModel user) {
+    public String create(Colaborator user) {
 
         userService.create(user);
         return "redirect:/account/sign-in";

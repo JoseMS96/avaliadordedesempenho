@@ -3,7 +3,7 @@ package br.fai.add.db.dao.impl;
 
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.UserDao;
-import br.fai.add.model.entities.ColaboratorModel;
+import br.fai.add.model.entities.Colaborator;
 import br.fai.add.model.enums.UserType;
 import org.springframework.stereotype.Repository;
 
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements UserDao<ColaboratorModel> {
+public class UserDaoImpl implements UserDao<Colaborator> {
 
     @Override
-    public List<ColaboratorModel> find() {
+    public List<Colaborator> find() {
 
-        List<ColaboratorModel> items = new ArrayList<>();
+        List<Colaborator> items = new ArrayList<>();
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
 
             while (resultSet.next()) {
 
-                ColaboratorModel user = new ColaboratorModel();
+                Colaborator user = new Colaborator();
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("nome_usuario"));
                 user.setFullName(resultSet.getString("nome_completo"));
@@ -62,9 +62,9 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
     }
 
     @Override
-    public ColaboratorModel findById(int id) {
+    public Colaborator findById(int id) {
 
-        ColaboratorModel item = null;
+        Colaborator item = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -86,7 +86,7 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
 
             if (resultSet.next()) {
 
-                item = new ColaboratorModel();
+                item = new Colaborator();
 
                 item.setId(resultSet.getInt("id"));
                 item.setUsername(resultSet.getString("nome_usuario"));
@@ -110,7 +110,7 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
     }
 
     @Override
-    public int create(ColaboratorModel entity) {
+    public int create(Colaborator entity) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -169,7 +169,7 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
     }
 
     @Override
-    public boolean update(ColaboratorModel entity) {
+    public boolean update(Colaborator entity) {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -219,9 +219,9 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
     }
 
     @Override
-    public ColaboratorModel validateUsernameAndPassword(String username, String password) {
+    public Colaborator validateUsernameAndPassword(String username, String password) {
 
-        ColaboratorModel user = null;
+        Colaborator user = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -246,13 +246,11 @@ public class UserDaoImpl implements UserDao<ColaboratorModel> {
                 return user;
             }
 
-            user = new ColaboratorModel();
+            user = new Colaborator();
             user.setId(resultSet.getInt("id"));
             user.setUsername(resultSet.getString("nome_usuario"));
             user.setFullName(resultSet.getString("nome_completo"));
             user.setEmail(resultSet.getString("email"));
-            user.setActive(resultSet.getBoolean("esta_ativo"));
-            user.setLastModified(resultSet.getTimestamp("ultima_modificacao"));
 
 
         } catch (SQLException e) {
