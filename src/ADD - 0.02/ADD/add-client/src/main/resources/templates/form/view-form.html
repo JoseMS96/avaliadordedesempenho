@@ -1,16 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" layout:decorate="~{reviewer-layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>View Form</title>
     <div th:replace="fragments/head-imports::scripts"></div>
-</head>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"></head>
 <body>
 
-Link placeholder de listar todos formulários
+    <div layout:fragment="body">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <p class="mb-4">Abaixo está listado os formulários respondidos pelos seus colaboradores</p>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <!--aqui tem que ter o th:text do formulario escolhido no titulo da pagina -->
+                    <h6 class="m-0 font-weight-bold text-primary" >*Titulo do formulario escolhido*</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ">
+                        <table class="table table-bordered  " id="dataTable" width="100%" cellspacing="0">
+
+                            <thead>
+                            <tr >
+                                <th >Data</th>
+                                <th > Nome do colaborador</th>
+                                <th >Opções</th>
+
+                            </tr>
+                            </thead>
+                            <div class="input-group input-group-sm mb-2">
+                                <input type="text" class="form-control" >
+                                <span class="input-group-append">
+                                <button type="button" class="btn btn-info btn-flat bg-primary">Pesquisar</button>
+                            </span>
+                            </div>
+
+                            <tbody>
+                                <tr th:each="form:${forms}">
+                                    <td th:text="${form.datelimit}">30/12/2022</td>
+                                    <td th:text="${colaborator.nome}">Zeca</td>
 
 
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item">
+                                                <!--falta th:action-->
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/12/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/05/2022</td>
+                                    <td >Zeca</td>
+                                    <td>
+                                        <ul class="nav nav-pills ml-auto">
+                                            <li class="nav-item ">
+                                                <a class="nav-link active" href="#" >Avaliar</a>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 <div th:replace="fragments/footer-imports::scripts"></div>
-
 </body>
 </html>
