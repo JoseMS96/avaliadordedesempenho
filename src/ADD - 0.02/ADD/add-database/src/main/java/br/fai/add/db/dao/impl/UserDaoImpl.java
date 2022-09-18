@@ -3,8 +3,7 @@ package br.fai.add.db.dao.impl;
 
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.UserDao;
-import br.fai.add.model.entities.Colaborator;
-import br.fai.add.model.enums.UserType;
+import br.fai.add.model.entities.Collaborator;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -12,19 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements UserDao<Colaborator> {
+public class UserDaoImpl implements UserDao<Collaborator> {
 
     @Override
-    public List<Colaborator> find() {
+    public List<Collaborator> find() {
 
-        List<Colaborator> items = new ArrayList<>();
+        List<Collaborator> items = new ArrayList<>();
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT * FROM usuario";
+        final String sql = "SELECT * FROM colaborador";
 
         //o nome usuario não precisar igual no dao e no bd
 
@@ -38,15 +37,16 @@ public class UserDaoImpl implements UserDao<Colaborator> {
 
             while (resultSet.next()) {
 
-                Colaborator user = new Colaborator();
-                user.setId(resultSet.getInt("id"));
-                user.setUsername(resultSet.getString("nome_usuario"));
-                user.setFullName(resultSet.getString("nome_completo"));
-                user.setEmail(resultSet.getString("email"));
-                user.setActive(resultSet.getBoolean("esta_ativo"));
-                user.setLastModified(resultSet.getTimestamp("ultima_modificacao"));
+                Collaborator collaborator = new Collaborator();
+                collaborator.setId(resultSet.getInt("id"));
+                //user.setType(UserType.valueOf(resultSet.getString("nome_usuario")));
+                collaborator.setFullName(resultSet.getString("nome"));
+                collaborator.setEmail(resultSet.getString("email"));
+                collaborator.setJobTitle(resultSet.getString("cargo"));
+                collaborator.setCpf(resultSet.getString("cpf"));
 
-                items.add(user);
+
+                items.add(collaborator);
             }
 
 
@@ -62,16 +62,16 @@ public class UserDaoImpl implements UserDao<Colaborator> {
     }
 
     @Override
-    public Colaborator findById(int id) {
+    public Collaborator findById(int id) {
 
-        Colaborator item = null;
+        Collaborator item = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT * FROM usuario WHERE id = ?;";
+        final String sql = "SELECT * FROM colaborador WHERE id = ?;";
 
         //o nome usuario não precisar igual no dao e no bd
 
@@ -86,14 +86,14 @@ public class UserDaoImpl implements UserDao<Colaborator> {
 
             if (resultSet.next()) {
 
-                item = new Colaborator();
+                item = new Collaborator();
 
                 item.setId(resultSet.getInt("id"));
-                item.setUsername(resultSet.getString("nome_usuario"));
-                item.setFullName(resultSet.getString("nome_completo"));
+                //user.setType(UserType.valueOf(resultSet.getString("nome_usuario")));
+                item.setFullName(resultSet.getString("nome"));
                 item.setEmail(resultSet.getString("email"));
-                item.setActive(resultSet.getBoolean("esta_ativo"));
-                item.setLastModified(resultSet.getTimestamp("ultima_modificacao"));
+                item.setJobTitle(resultSet.getString("cargo"));
+                item.setCpf(resultSet.getString("cpf"));
 
             }
 
@@ -110,14 +110,14 @@ public class UserDaoImpl implements UserDao<Colaborator> {
     }
 
     @Override
-    public int create(Colaborator entity) {
+    public int create(Collaborator entity) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         int id = -1;
 
-        String sql = "INSERT INTO usuario(nome,completo, ";
+        String sql = "INSERT INTO colaborador(nomecompleto, ";
         sql += " senha, nome_usuario, email, tipo, ";
         sql += " esta_ativo, criado_em, criado_por, ";
         sql += " ultima_modificacao ";
@@ -134,15 +134,15 @@ public class UserDaoImpl implements UserDao<Colaborator> {
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            preparedStatement.setString(1, entity.getFullName());
-            preparedStatement.setString(2, entity.getPassword());
-            preparedStatement.setString(3, entity.getUsername());
-            preparedStatement.setString(4, entity.getEmail());
-            preparedStatement.setString(5, UserType.CLIENT.toString());
-            preparedStatement.setBoolean(6, true);
-            preparedStatement.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
-            preparedStatement.setString(8, entity.getUsername());
-            preparedStatement.setTimestamp(9, new Timestamp(System.currentTimeMillis()));
+//            preparedStatement.setString(1, entity.getFullName());
+//            preparedStatement.setString(2, entity.getPassword());
+//            preparedStatement.setString(3, entity.getUsername());
+//            preparedStatement.setString(4, entity.getEmail());
+//            preparedStatement.setString(5, UserType.CLIENT.toString());
+//            preparedStatement.setBoolean(6, true);
+//            preparedStatement.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
+//            preparedStatement.setString(8, entity.getUsername());
+//            preparedStatement.setTimestamp(9, new Timestamp(System.currentTimeMillis()));
 
             preparedStatement.execute();
 
@@ -169,7 +169,7 @@ public class UserDaoImpl implements UserDao<Colaborator> {
     }
 
     @Override
-    public boolean update(Colaborator entity) {
+    public boolean update(Collaborator entity) {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -219,9 +219,9 @@ public class UserDaoImpl implements UserDao<Colaborator> {
     }
 
     @Override
-    public Colaborator validateUsernameAndPassword(String username, String password) {
+    public Collaborator validateUsernameAndPassword(String username, String password) {
 
-        Colaborator user = null;
+        Collaborator collaborator = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -243,14 +243,13 @@ public class UserDaoImpl implements UserDao<Colaborator> {
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.next()) {
-                return user;
+                return collaborator;
             }
 
-            user = new Colaborator();
-            user.setId(resultSet.getInt("id"));
-            user.setUsername(resultSet.getString("nome_usuario"));
-            user.setFullName(resultSet.getString("nome_completo"));
-            user.setEmail(resultSet.getString("email"));
+            collaborator = new Collaborator();
+            collaborator.setId(resultSet.getInt("id"));
+            collaborator.setFullName(resultSet.getString("nome"));
+            collaborator.setEmail(resultSet.getString("email"));
 
 
         } catch (SQLException e) {
@@ -260,6 +259,6 @@ public class UserDaoImpl implements UserDao<Colaborator> {
         }
 
 
-        return user;
+        return collaborator;
     }
 }

@@ -2,7 +2,7 @@ package br.fai.add.model.entities;
 
 import br.fai.add.model.enums.UserType;
 
-public class Colaborator extends BaseEntity {
+public class Collaborator extends BaseEntity {
 
     private UserType type;
 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>View Form</title>
     <div th:replace="fragments/head-imports::scripts"></div>
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"></head>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
 <body>
 
     <div layout:fragment="body">
@@ -42,7 +43,7 @@
                             <tbody>
                                 <tr th:each="form:${forms}">
                                     <td th:text="${form.datelimit}">30/12/2022</td>
-                                    <td th:text="${colaborator.nome}">Zeca</td>
+                                    <td th:text="${collaborator.nome}">Zeca</td>
 
 
                                     <td>

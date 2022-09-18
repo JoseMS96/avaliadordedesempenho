@@ -1,10 +1,11 @@
 package br.fai.add.db.dao;
 
-import br.fai.lds.model.entities.UserModel;
+import br.fai.add.model.entities.Collaborator;
+
 
 // DAO = DATA ACESS OBJECT
 public interface UserDao<T> extends BaseDao<T> {
 
-    UserModel validateUsernameAndPassword(String username, String password);
+    Collaborator validateUsernameAndPassword(String username, String password);
 
 }

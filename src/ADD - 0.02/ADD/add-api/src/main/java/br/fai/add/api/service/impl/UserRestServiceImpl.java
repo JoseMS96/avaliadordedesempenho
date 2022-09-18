@@ -2,7 +2,7 @@ package br.fai.add.api.service.impl;
 
 import br.fai.add.api.service.UserRestService;
 import br.fai.add.db.dao.UserDao;
-import br.fai.add.model.entities.Colaborator;
+import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +10,30 @@ import java.util.List;
 
 
 @Service
-public class UserRestServiceImpl implements UserRestService<Colaborator> {
+public class UserRestServiceImpl implements UserRestService<Collaborator> {
 
     @Autowired
     private UserDao userDao;
 
     @Override
-    public List<Colaborator> find() {
+    public List<Collaborator> find() {
         return userDao.find();
     }
 
     @Override
-    public Colaborator findById(int id) {
+    public Collaborator findById(int id) {
         if (id < 0) return null;
 
-        return (Colaborator) userDao.findById(id);
+        return (Collaborator) userDao.findById(id);
     }
 
     @Override
-    public int create(Colaborator entity) {
+    public int create(Collaborator entity) {
         return 0;
     }
 
     @Override
-    public boolean update(Colaborator entity) {
+    public boolean update(Collaborator entity) {
         return false;
     }
 
@@ -44,7 +44,7 @@ public class UserRestServiceImpl implements UserRestService<Colaborator> {
     }
 
     @Override
-    public Colaborator validateLogin(String username, String password) {
+    public Collaborator validateLogin(String username, String password) {
 
         if (username.isEmpty() || password.isEmpty()) {
             return null;

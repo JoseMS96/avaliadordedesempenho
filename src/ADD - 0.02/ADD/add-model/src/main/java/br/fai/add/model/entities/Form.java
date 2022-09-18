@@ -5,7 +5,7 @@ public class Form extends BaseEntity {
     private String datetime;
     private String datelimit;
     private String title;
-    private Colaborator colaborator;
+    private Collaborator collaborator;
 
     public String getDatetime() {
         return datetime;
@@ -31,11 +31,11 @@ public class Form extends BaseEntity {
         this.title = title;
     }
 
-    public Colaborator getColaborator() {
-        return colaborator;
+    public Collaborator getCollaborator() {
+        return collaborator;
     }
 
-    public void setColaborator(Colaborator colaborator) {
-        this.colaborator = colaborator;
+    public void setCollaborator(Collaborator collaborator) {
+        this.collaborator = collaborator;
     }
 }

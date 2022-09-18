@@ -4,7 +4,7 @@ public class Answer extends BaseEntity {
 
     private String answerText;
 
-    private Colaborator colaborator;
+    private Collaborator collaborator;
 
     private Question question;
 
@@ -18,12 +18,12 @@ public class Answer extends BaseEntity {
         this.answerText = answerText;
     }
 
-    public Colaborator getColaborator() {
-        return colaborator;
+    public Collaborator getCollaborator() {
+        return collaborator;
     }
 
-    public void setColaborator(Colaborator colaborator) {
-        this.colaborator = colaborator;
+    public void setCollaborator(Collaborator collaborator) {
+        this.collaborator = collaborator;
     }
 
     public Question getQuestion() {

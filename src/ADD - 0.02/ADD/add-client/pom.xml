@@ -60,6 +60,10 @@
             <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
 
         <!--        fim das dependencias de terceiro-->
 

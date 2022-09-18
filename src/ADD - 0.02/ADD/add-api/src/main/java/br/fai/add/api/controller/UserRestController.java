@@ -2,7 +2,7 @@ package br.fai.add.api.controller;
 
 
 import br.fai.add.api.service.UserRestService;
-import br.fai.add.model.entities.Colaborator;
+import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,32 +15,32 @@ import java.util.List;
 public class UserRestController {
 
     @Autowired
-    private UserRestService<Colaborator> userService;
+    private UserRestService<Collaborator> userService;
 
 
     //o find so esta aqui por didatica
     @GetMapping("/find")
-    public ResponseEntity<List<Colaborator>> find() {
-        List<Colaborator> users = userService.find();
+    public ResponseEntity<List<Collaborator>> find() {
+        List<Collaborator> collaborators = userService.find();
 
-        if (users == null) {
+        if (collaborators == null) {
             return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok(users);
+        return ResponseEntity.ok(collaborators);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Colaborator> findById(@PathVariable("id") final int id) {
+    public ResponseEntity<Collaborator> findById(@PathVariable("id") final int id) {
 
-        Colaborator user = userService.findById(id);
+        Collaborator collaborator = userService.findById(id);
 
-        if (user == null) {
+        if (collaborator == null) {
             return ResponseEntity.notFound().build();
         }
 
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(collaborator);
     }
 
 

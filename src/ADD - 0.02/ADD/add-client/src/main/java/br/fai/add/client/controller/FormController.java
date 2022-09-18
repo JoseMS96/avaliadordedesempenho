@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/form")
 public class FormController {
 
+
     @GetMapping("/answer-form")
     public String getAnswerFormPage() {
         return "form/answer-form";
@@ -27,4 +28,6 @@ public class FormController {
     public String getViewFormPage() {
         return "form/view-form";
     }
+
+    //para testes
 }
