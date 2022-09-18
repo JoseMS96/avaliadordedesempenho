@@ -7,7 +7,7 @@ public class ConnectionFactory {
 
     private static Connection connection = null;
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/db_fai_lds";
+    private static final String URL = "jdbc:postgresql://localhost:5432/avaliadordedesempenho";
 
     private static final String USER = "postgres";
     private static final String PASSWORD = "15995147";
@@ -78,5 +78,7 @@ public class ConnectionFactory {
         }
 
     }
-    
+
+    // estatico para poder acessar em outras classes sem fazer o connection connection = new connection
+    // garante que uma somente instancia seja acessada pela aplicação
 }

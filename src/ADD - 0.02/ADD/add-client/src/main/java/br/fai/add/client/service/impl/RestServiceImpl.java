@@ -1,6 +1,5 @@
 package br.fai.add.client.service.impl;
 
-
 import br.fai.add.client.service.RestService;
 import com.google.gson.Gson;
 import org.springframework.core.ParameterizedTypeReference;
