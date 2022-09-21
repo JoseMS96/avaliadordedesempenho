@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <div th:replace="fragments/head-imports::scripts"></div>
+</head>
+<body>
+
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="text-center mt-2 border-bottom border-primary">
+                <h1 class="h4 text-gray-900 mb-4">Crie sua conta!</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mt-2 ">
+                    <h3 class="d-flex justify-content-center">Avaliador</h3>
+                </div>
+                <div class="col-lg-6 mt-2">
+                    <h3 class="d-flex justify-content-center">Organização</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <form>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">Senha</label>
+                                <input type="password" class="form-control" id="Password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborator-name">Nome</label>
+                                <input type="text" class="form-control" id="collaborator-name" >
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborator-cpf">Cpf</label>
+                                <input type="text" class="form-control" id="collaborator-cpf" >
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborator-cpf">Sexo</label>
+                                <input type="text" class="form-control" id="collaborator-sexo" >
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborator-datanasc">Data de Nascimento</label>
+                                <input type="text" class="form-control" id="collaborator-datanasc" >
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborator-telefone">Telefone</label>
+                                <input type="text" class="form-control" id="collaborator-telefone" >
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="organization-nome">Nome da Organização</label>
+                            <input type="text" class="form-control" id="organization-nome" >
+                        </div>
+                        <div class="form-group">
+                            <label for="organization-cnpj">Cnpj</label>
+                            <input type="text" class="form-control" id="organization-cnpj" >
+                        </div>
+                        <div class="form-group">
+                            <label for="organization-email">Data de Nascimento</label>
+                            <input type="text" class="form-control" id="organization-email" >
+                        </div>
+                        <div class="form-group">
+                            <label for="organization-telefone">Telefone</label>
+                            <input type="text" class="form-control" id="organization-telefone" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+<div th:replace="fragments/footer-imports::scripts"></div>
+</body>
+
+
+
+</html>
