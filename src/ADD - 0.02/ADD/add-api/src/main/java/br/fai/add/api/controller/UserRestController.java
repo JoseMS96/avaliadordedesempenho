@@ -43,5 +43,23 @@ public class UserRestController {
         return ResponseEntity.ok(collaborator);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable("id") final int id) {
+        boolean result = userService.deleteById(id);
+
+        return result ? ResponseEntity.ok(result) : ResponseEntity.badRequest().build();
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Integer> create(@RequestBody final Collaborator collaborator) {
+
+        int collaboratorId = userService.create(collaborator);
+
+        if (collaboratorId == -1) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(collaboratorId);
+    }
+
 
 }

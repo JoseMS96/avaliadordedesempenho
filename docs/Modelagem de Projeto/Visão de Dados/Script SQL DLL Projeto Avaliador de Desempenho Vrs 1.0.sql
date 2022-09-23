@@ -28,7 +28,8 @@ create table colaborador (
     email character varying(100) not null,
     cargo character varying(100),
     setor character varying (100),
-    senha character varying(100) not null
+    senha character varying(100) not null,
+    nome_usuario character varying(100) not null
 );
 
 create table avaliacao (

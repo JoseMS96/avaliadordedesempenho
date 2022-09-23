@@ -45,10 +45,14 @@ public class AccountController {
 
     @PostMapping("/login")
     public String login(@RequestParam("username") final String username, @RequestParam("password") final String password) {
+        
+        Collaborator collaborator = userService.validateUsernameAndPassword(username, password);
 
-        userService.validateUsernameAndPassword(username, password);
+        if (collaborator == null) {
+            return "redirect:/account/sign-in";
+        }
 
-        return "redirect:/account/sign-up";
+        return "redirect:/";
     }
 
 }

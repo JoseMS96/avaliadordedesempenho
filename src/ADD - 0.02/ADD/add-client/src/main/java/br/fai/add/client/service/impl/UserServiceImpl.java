@@ -24,11 +24,12 @@ public class UserServiceImpl implements UserService<Collaborator> {
     }
 
     @Autowired
-    private RestService restService;
+    private RestService<Collaborator> restService;
 
     @Override
     public int create(Collaborator entity) {
-        return 0;
+
+        return restService.post("user/create", entity);
     }
 
     @Override
@@ -40,17 +41,13 @@ public class UserServiceImpl implements UserService<Collaborator> {
     @Override
     public Collaborator findById(int id) {
 
-        return null;
-    }
-
-    @Override
-    public boolean update(Collaborator entity) {
-        return false;
+        return restService.getById("user/find/" + id, Collaborator.class);
     }
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        
+        return restService.deleteById("user/delete/" + id);
     }
 
     @Override

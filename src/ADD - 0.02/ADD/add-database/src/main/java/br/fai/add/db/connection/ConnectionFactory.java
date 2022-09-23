@@ -18,9 +18,6 @@ public class ConnectionFactory {
 
     public static Connection getConnection() {
         try {
-//            if (connection != null) {
-//                return connection;
-//            }
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();

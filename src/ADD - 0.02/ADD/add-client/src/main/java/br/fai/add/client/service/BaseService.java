@@ -11,8 +11,6 @@ public interface BaseService<T> {
 
     T findById(int id);
 
-    boolean update(T entity);
-
     boolean deleteById(int id);
 
 }

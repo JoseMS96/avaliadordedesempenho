@@ -29,18 +29,13 @@ public class UserRestServiceImpl implements UserRestService<Collaborator> {
 
     @Override
     public int create(Collaborator entity) {
-        return 0;
-    }
-
-    @Override
-    public boolean update(Collaborator entity) {
-        return false;
+        return userDao.create(entity);
     }
 
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        return userDao.deleteById(id);
     }
 
     @Override

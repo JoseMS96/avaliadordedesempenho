@@ -88,6 +88,7 @@ public class UserDaoImpl implements UserDao<Collaborator> {
 
                 item = new Collaborator();
 
+
                 item.setId(resultSet.getInt("id"));
                 //user.setType(UserType.valueOf(resultSet.getString("nome_usuario")));
                 item.setFullName(resultSet.getString("nome"));
@@ -117,7 +118,7 @@ public class UserDaoImpl implements UserDao<Collaborator> {
 
         int id = -1;
 
-        String sql = "INSERT INTO colaborador(nomecompleto, ";
+        String sql = "INSERT INTO colaborador(nomecompleto, "; // ->organização id where max<-///////////////////////////////////////////////////////////////////////////
         sql += " senha, nome_usuario, email, tipo, ";
         sql += " esta_ativo, criado_em, criado_por, ";
         sql += " ultima_modificacao ";
@@ -166,51 +167,6 @@ public class UserDaoImpl implements UserDao<Collaborator> {
         } finally {
             ConnectionFactory.close(preparedStatement, connection, resultSet);
         }
-    }
-
-    @Override
-    public boolean update(Collaborator entity) {
-
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-
-        String sql = "UPDATE usuario SET nome_completo = ?, ";
-        sql += " ultimate_modificacao = ?, email = ? ";
-        sql += " WHERE ";
-        sql += " id = ? ;";
-
-
-        //o nome usuario não precisar igual no dao e no bd
-
-        try {
-
-            connection = ConnectionFactory.getConnection();
-
-            connection.setAutoCommit(false);
-
-            preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setString(1, entity.getFullName());
-            preparedStatement.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
-            preparedStatement.setString(3, entity.getEmail());
-            preparedStatement.setInt(4, entity.getId());
-
-            preparedStatement.execute();
-            connection.commit();
-            //grava informações permanentemente no bd qnd o commit acontece
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            return false;
-        } finally {
-            ConnectionFactory.close(preparedStatement, connection);
-        }
-
     }
 
     @Override

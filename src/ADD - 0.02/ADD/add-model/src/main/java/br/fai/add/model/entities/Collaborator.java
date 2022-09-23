@@ -5,7 +5,7 @@ import br.fai.add.model.enums.UserType;
 public class Collaborator extends BaseEntity {
 
     private UserType type;
-
+    private String username;
     private String fullName;
     private String gender;
     private String birthDate;
@@ -23,6 +23,14 @@ public class Collaborator extends BaseEntity {
 
     public void setType(UserType type) {
         this.type = type;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFullName() {
