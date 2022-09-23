@@ -1,6 +1,6 @@
 package br.fai.add.client.controller;
 
-import br.fai.add.client.service.UserService;
+import br.fai.add.client.service.CollaboratorService;
 import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AccountController {
 
     @Autowired
-    UserService userService;
+    CollaboratorService collaboratorService;
 
     @GetMapping("/sign-up")
     public String getSignUpPage() {
@@ -39,14 +39,14 @@ public class AccountController {
     @PostMapping("/create")
     public String create(Collaborator collaborator) {
 
-        userService.create(collaborator);
+        collaboratorService.create(collaborator);
         return "redirect:/account/sign-in";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam("username") final String username, @RequestParam("password") final String password) {
-        
-        Collaborator collaborator = userService.validateUsernameAndPassword(username, password);
+
+        Collaborator collaborator = collaboratorService.validateUsernameAndPassword(username, password);
 
         if (collaborator == null) {
             return "redirect:/account/sign-in";

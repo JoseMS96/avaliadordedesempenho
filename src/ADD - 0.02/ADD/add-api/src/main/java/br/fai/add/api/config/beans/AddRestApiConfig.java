@@ -1,7 +1,7 @@
 package br.fai.add.api.config.beans;
 
-import br.fai.add.db.dao.UserDao;
-import br.fai.add.db.dao.impl.UserDaoImpl;
+import br.fai.add.db.dao.CollaboratorDao;
+import br.fai.add.db.dao.impl.CollaboratorDaoImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class AddRestApiConfig {
 
     @Bean
-    public UserDao getUserDao() {
-        return new UserDaoImpl();
+    public CollaboratorDao getUserDao() {
+        return new CollaboratorDaoImpl();
     }
 
 }

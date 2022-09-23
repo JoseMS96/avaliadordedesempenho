@@ -2,7 +2,7 @@ package br.fai.add.db.dao.impl;
 
 
 import br.fai.add.db.connection.ConnectionFactory;
-import br.fai.add.db.dao.UserDao;
+import br.fai.add.db.dao.CollaboratorDao;
 import br.fai.add.model.entities.Collaborator;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserDaoImpl implements UserDao<Collaborator> {
+public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
     @Override
     public List<Collaborator> find() {

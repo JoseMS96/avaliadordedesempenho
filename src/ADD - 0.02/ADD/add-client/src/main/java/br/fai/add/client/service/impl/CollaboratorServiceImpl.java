@@ -1,7 +1,7 @@
 package br.fai.add.client.service.impl;
 
+import br.fai.add.client.service.CollaboratorService;
 import br.fai.add.client.service.RestService;
-import br.fai.add.client.service.UserService;
 import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService<Collaborator> {
+public class CollaboratorServiceImpl implements CollaboratorService<Collaborator> {
 
     private static final String BASE_ENDPOINT = "http://localhost:8081/api/";
 
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService<Collaborator> {
 
     @Override
     public boolean deleteById(int id) {
-        
+
         return restService.deleteById("user/delete/" + id);
     }
 

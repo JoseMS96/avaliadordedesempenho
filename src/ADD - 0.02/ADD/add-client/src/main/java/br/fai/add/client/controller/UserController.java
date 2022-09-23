@@ -1,6 +1,6 @@
 package br.fai.add.client.controller;
 
-import br.fai.add.client.service.UserService;
+import br.fai.add.client.service.CollaboratorService;
 import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +17,13 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private CollaboratorService collaboratorService;
 
 
     @GetMapping("/list")
     public String getUsers(final Model model) {
 
-        List<Collaborator> collaborators = userService.find();
+        List<Collaborator> collaborators = collaboratorService.find();
 
         if (collaborators == null || collaborators.isEmpty()) {
             model.addAttribute("collaborators", new ArrayList<Collaborator>());
@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") final int id, Model model) {
 
-        userService.deleteById(id);
+        collaboratorService.deleteById(id);
 
 
         return getUsers(model);

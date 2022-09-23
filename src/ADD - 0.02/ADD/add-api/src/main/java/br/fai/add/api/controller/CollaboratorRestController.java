@@ -1,7 +1,7 @@
 package br.fai.add.api.controller;
 
 
-import br.fai.add.api.service.UserRestService;
+import br.fai.add.api.service.CollaboratorRestService;
 import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +12,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/collaborator")
 @CrossOrigin(origins = "*")
-public class UserRestController {
+public class CollaboratorRestController {
 
     @Autowired
-    private UserRestService<Collaborator> userService;
+    private CollaboratorRestService<Collaborator> userService;
 
 
     //o find so esta aqui por didatica
