@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <div th:replace="fragments/head-imports::scripts"></div>
+</head>
+<body>
+<!--header-->
+<nav class="main-header bg-danger ">
+
+        <div class="row">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center ml-4" href="/">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-light fa-book"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3 font-weight-bolder text-light">ADD</div>
+            </a>
+
+            <div class="d-flex justify-content-end">
+
+                <div class="p-2">
+                    <!--adicionar o th ref-->
+                    <a class="btn btn-primary" th:href="/">Criar Conta</a>
+                </div>
+                <div class="p-2">
+                    <a class="btn btn-primary" th:href="/">Login</a>
+            </div>
+       </div>
+
+
+    </div>
+</nav>
+<!--Conteudo-->
+<div class="card">
+    <div class="card-header">
+        <h3>Sobre o projeto</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card-body">
+               <section class="ml-4 mt-4" >
+                   <p class="font-weight-normal"><span style="padding-left:40px"></span>Avaliação de desempenho é uma ferramenta utilizada pelos funcionários
+                   de recursos humanos, por meio dela, é possível fornecer feedbacks,
+                   avaliar nível de efetividade do trabalho, identificar talentos e até averiguar
+                   produtividade dos funcionários, sendo assim ela contribui para elaboração
+                   de medidas e programas de treinamento que eliminem os problemas
+                   identificados pelas avaliações para garantir o progresso da organização
+                   e dos seus colaboradores.</p>
+               </section>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card-body">
+                <div class="ml-4 mb-4">
+                    <h1 class="display-4">Avaliador</h1>
+                    <h1 class="display-4">de</h1>
+                    <h1 class="display-4">Desempenho</h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center">
+            <h4>Funcionalidades do sistema</h4>
+        </div>
+        <div class="ml-4 my-4">
+            <h5>1 - Cadastre seus funcionários no <Strong>sistema</Strong> e tenha a <Strong>facilidade</Strong> de acessar as informações contidas nos perfis deles.</h5>
+            <h5>2 - <Strong>Importe</Strong> os dados dos funcionários ao sistema, caso tenha <Strong>muitos</Strong> para cadastrar.</h5>
+            <h5>3 - Crie avaliações com perguntas abertas ou <Strong>fechadas.</Strong></h5>
+            <h5>4 - Sistema de <Strong>notificações</Strong> que avisa aos funcionários que ele tem avaliações pendentes.</h5>
+        </div>
+
+
+    </div>
+</div>
+
+<!--footer-->
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; ADD</span>
+        </div>
+    </div>
+</footer>
+
+
+
+<div th:replace="fragments/footer-imports::scripts"></div>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+</body>
+</html>
