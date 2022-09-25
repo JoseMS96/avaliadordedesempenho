@@ -29,7 +29,7 @@ public class CollaboratorServiceImpl implements CollaboratorService<Collaborator
     @Override
     public int create(Collaborator entity) {
 
-        return restService.post("user/create", entity);
+        return restService.post("collaborator/create", entity);
     }
 
     @Override
@@ -41,13 +41,13 @@ public class CollaboratorServiceImpl implements CollaboratorService<Collaborator
     @Override
     public Collaborator findById(int id) {
 
-        return restService.getById("user/find/" + id, Collaborator.class);
+        return restService.getById("collaborator/find/" + id, Collaborator.class);
     }
 
     @Override
     public boolean deleteById(int id) {
 
-        return restService.deleteById("user/delete/" + id);
+        return restService.deleteById("collaborator/delete/" + id);
     }
 
     @Override

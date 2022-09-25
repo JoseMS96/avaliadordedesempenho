@@ -7,10 +7,9 @@ public class ConnectionFactory {
 
     private static Connection connection = null;
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/avaliadordedesempenho";
-
+    private static final String URL = "jdbc:postgresql://localhost:5432/avaliador-de-desempenho";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "15995147";
+    private static final String PASSWORD = "123";
 
     private ConnectionFactory() {
 

@@ -15,13 +15,12 @@ import java.util.List;
 public class CollaboratorRestController {
 
     @Autowired
-    private CollaboratorRestService<Collaborator> userService;
+    private CollaboratorRestService<Collaborator> collaboratorService;
 
 
-    //o find so esta aqui por didatica
     @GetMapping("/find")
     public ResponseEntity<List<Collaborator>> find() {
-        List<Collaborator> collaborators = userService.find();
+        List<Collaborator> collaborators = collaboratorService.find();
 
         if (collaborators == null) {
             return ResponseEntity.badRequest().build();
@@ -33,7 +32,7 @@ public class CollaboratorRestController {
     @GetMapping("/find/{id}")
     public ResponseEntity<Collaborator> findById(@PathVariable("id") final int id) {
 
-        Collaborator collaborator = userService.findById(id);
+        Collaborator collaborator = collaboratorService.findById(id);
 
         if (collaborator == null) {
             return ResponseEntity.notFound().build();
@@ -45,7 +44,7 @@ public class CollaboratorRestController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") final int id) {
-        boolean result = userService.deleteById(id);
+        boolean result = collaboratorService.deleteById(id);
 
         return result ? ResponseEntity.ok(result) : ResponseEntity.badRequest().build();
     }
@@ -53,7 +52,7 @@ public class CollaboratorRestController {
     @PostMapping("/create")
     public ResponseEntity<Integer> create(@RequestBody final Collaborator collaborator) {
 
-        int collaboratorId = userService.create(collaborator);
+        int collaboratorId = collaboratorService.create(collaborator);
 
         if (collaboratorId == -1) {
             return ResponseEntity.badRequest().build();
