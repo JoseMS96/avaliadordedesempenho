@@ -9,7 +9,7 @@ public interface BaseRestService<T> {
     T findById(int id);
 
     int create(T entity);
-    
+
     boolean deleteById(int id);
 
 }
