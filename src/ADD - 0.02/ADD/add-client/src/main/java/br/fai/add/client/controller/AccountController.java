@@ -18,13 +18,14 @@ public class AccountController {
 
     @GetMapping("/sign-up")
     public String getSignUpPage() {
-        return "account/sign-up";
+        return "account/register";
     }
 
     @GetMapping("/sign-in")
     public String getSignInPage() {
         return "account/sign-in";
     }
+
 
     @GetMapping("/password-recovery")
     public String getPasswordRecoveryPage() {
@@ -52,7 +53,7 @@ public class AccountController {
             return "redirect:/account/sign-in";
         }
 
-        return "redirect:/";
+        return "redirect:/2";
     }
 
 }
