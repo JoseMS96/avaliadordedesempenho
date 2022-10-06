@@ -8,7 +8,6 @@ public class Collaborator extends BaseEntity {
     private String username;
     private String fullName;
     private String gender;
-    private String birthDate;
     private String cpf;
     private String phoneNumber;
     private String email;
@@ -47,14 +46,6 @@ public class Collaborator extends BaseEntity {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
     }
 
     public String getCpf() {
