@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     //MAPEAMENTO TEMPORÁRIO
-    @GetMapping("/")
+    @GetMapping("/3")
     public String getReviewerHomePage() {
-        return "/home/landing-page";
+        return "/home/reviewer-home";
     }
 
-
+    @GetMapping("/")
+    public String getLandingpage() {
+        return "/home/landing-page";
+    }
     @GetMapping("/2")
     public String getEmployeeHomePage() {
         return "/home/employee-home";

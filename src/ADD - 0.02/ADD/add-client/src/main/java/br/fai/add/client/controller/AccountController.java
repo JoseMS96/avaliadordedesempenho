@@ -1,7 +1,10 @@
 package br.fai.add.client.controller;
 
 import br.fai.add.client.service.CollaboratorService;
+import br.fai.add.client.service.OrganizationService;
+import br.fai.add.client.service.impl.OrganizationServiceImpl;
 import br.fai.add.model.entities.Collaborator;
+import br.fai.add.model.entities.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +19,16 @@ public class AccountController {
     @Autowired
     CollaboratorService collaboratorService;
 
+    @Autowired
+    OrganizationService organizationService;
+
     @GetMapping("/sign-up")
     public String getSignUpPage() {
         return "account/register";
     }
     @GetMapping("/sign-up-organization")
     public String getSignUpOrganizationPage() {
+
         return "account/register-organization";
     }
 
@@ -45,7 +52,15 @@ public class AccountController {
     public String create(Collaborator collaborator) {
 
         collaboratorService.create(collaborator);
-        return "redirect:/account/sign-in";
+        return "redirect:/3";
+    }
+
+    @PostMapping("/create-organization")
+    public String create(Organization organization){
+
+        organizationService.create(organization);
+
+        return "redirect:/account/register";
     }
 
     @PostMapping("/login")
