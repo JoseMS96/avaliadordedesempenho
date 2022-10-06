@@ -20,6 +20,10 @@ public class AccountController {
     public String getSignUpPage() {
         return "account/register";
     }
+    @GetMapping("/sign-up-organization")
+    public String getSignUpOrganizationPage() {
+        return "account/register-organization";
+    }
 
     @GetMapping("/sign-in")
     public String getSignInPage() {

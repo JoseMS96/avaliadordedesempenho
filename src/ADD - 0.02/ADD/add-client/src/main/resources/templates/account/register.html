@@ -22,49 +22,51 @@
             </div>
             <form method="POST" , th:action="@{/account/create}">
 
-                    <div class="col-lg-6">
-                        <div class="card-body">
+                <div class="col-lg-12">
+                    <div class="card-body">
 
-                            <div class="form-group">
-                                <label>Insira a organização que o funcionario pertence:</label>
-                                <select name="organization" id="organizations" th:each="organization:${organizations}">
-                                    <option th:text="${organization.name}">Organizações</option>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" class="form-control" id="Email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Senha</label>
+                            <input type="password" class="form-control" id="Password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="collaborator-name">Nome</label>
+                            <input type="text" class="form-control" id="collaborator-name" placeholder="Nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="collaborator-cpf">Cpf</label>
+                            <input type="text" class="form-control" id="collaborator-cpf" placeholder="Cpf">
+                        </div>
+                        <div class="form-group">
+                            <label for="collaborator-setor">Setor</label>
+                            <input type="text" class="form-control" id="collaborator-setor" placeholder="Sexo">
+                        </div>
+                        <div class="form-group">
+                            <label for="collaborator-sexo">Sexo</label>
+                            <input type="text" class="form-control" id="collaborator-sexo" placeholder="Sexo">
+                        </div>
+                        <div class="form-group">
+                            <label for="collaborator-telefone">Telefone</label>
+                            <input type="text" class="form-control" id="collaborator-telefone"
+                                   placeholder="(xx)-xxxxx-xxxx">
+                        </div>
+                        <div class="form-group">
+                            <label>Insira a organização que o funcionario pertence:</label>
+                            <div class="d-flex justify-content-center">
+                                <select name="organization" id="organizations" ><!-- th:each="organization:${organizations}-->
+                                    <option >Organizações</option> <!--th:text="${organization.name}-->
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="Email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="Password">Senha</label>
-                                <input type="password" class="form-control" id="Password" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for="collaborator-name">Nome</label>
-                                <input type="text" class="form-control" id="collaborator-name" placeholder="Nome">
-                            </div>
-                            <div class="form-group">
-                                <label for="collaborator-cpf">Cpf</label>
-                                <input type="text" class="form-control" id="collaborator-cpf" placeholder="Cpf">
-                            </div>
-                            <div class="form-group">
-                                <label for="collaborator-setor">Setor</label>
-                                <input type="text" class="form-control" id="collaborator-setor" placeholder="Sexo">
-                            </div>
-                            <div class="form-group">
-                                <label for="collaborator-sexo">Sexo</label>
-                                <input type="text" class="form-control" id="collaborator-sexo" placeholder="Sexo">
-                            </div>
-                            <div class="form-group">
-                                <label for="collaborator-telefone">Telefone</label>
-                                <input type="text" class="form-control" id="collaborator-telefone"
-                                       placeholder="(xx)-xxxxx-xxxx">
-                            </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-center p-4 bg-light">
-                    <a class="btn btn-primary" href="/">Voltar</a>
+                    <a class="btn btn-primary" th:href="@{/account/register-organization}">Voltar</a>
                     <div class="ml-4">
                         <button type="submit" class="btn btn-primary ">Submit</button>
                     </div>
