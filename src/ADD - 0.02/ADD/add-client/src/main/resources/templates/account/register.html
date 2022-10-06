@@ -14,40 +14,23 @@
                 <h1 class="h4 text-gray-900 mb-4 my-2">Crie sua conta!</h1>
             </div>
             <div class="row ">
-                <div class="col-lg-6 mt-2">
-                    <h3 class="d-flex justify-content-center">Organização</h3>
-                </div>
-                <div class="col-lg-6 mt-2 ">
+
+                <div class="col-lg-12 mt-2 ">
                     <h3 class="d-flex justify-content-center">Avaliador</h3>
                 </div>
 
             </div>
             <form method="POST" , th:action="@{/account/create}">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="organization-nome">Nome da Organização</label>
-                                <input type="text" class="form-control" id="organization-nome" placeholder="Nome">
-                            </div>
-                            <div class="form-group">
-                                <label for="organization-cnpj">Cnpj</label>
-                                <input type="text" class="form-control" id="organization-cnpj" placeholder="Cnpj">
-                            </div>
-                            <div class="form-group">
-                                <label for="organization-email">Data de Nascimento</label>
-                                <input type="text" class="form-control" id="organization-email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="organization-telefone">Telefone</label>
-                                <input type="text" class="form-control" id="organization-telefone"
-                                       placeholder="(xx)-xxxxx-xxxx">
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-lg-6">
                         <div class="card-body">
+
+                            <div class="form-group">
+                                <label>Insira a organização que o funcionario pertence:</label>
+                                <select name="organization" id="organizations" th:each="organization:${organizations}">
+                                    <option th:text="${organization.name}">Organizações</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="Email">Email</label>
                                 <input type="email" class="form-control" id="Email" placeholder="Email">
@@ -65,7 +48,11 @@
                                 <input type="text" class="form-control" id="collaborator-cpf" placeholder="Cpf">
                             </div>
                             <div class="form-group">
-                                <label for="collaborator-cpf">Sexo</label>
+                                <label for="collaborator-setor">Setor</label>
+                                <input type="text" class="form-control" id="collaborator-setor" placeholder="Sexo">
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborator-sexo">Sexo</label>
                                 <input type="text" class="form-control" id="collaborator-sexo" placeholder="Sexo">
                             </div>
                             <div class="form-group">
