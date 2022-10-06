@@ -23,7 +23,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT * FROM colaborador";
+        final String sql = "SELECT * FROM colaborador ;";
 
         //o nome usuario não precisar igual no dao e no bd
 
@@ -39,10 +39,8 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
                 Collaborator collaborator = new Collaborator();
                 collaborator.setId(resultSet.getInt("id"));
-                //user.setType(UserType.valueOf(resultSet.getString("nome_usuario")));
                 collaborator.setFullName(resultSet.getString("nome"));
                 collaborator.setEmail(resultSet.getString("email"));
-                collaborator.setJobTitle(resultSet.getString("cargo"));
                 collaborator.setCpf(resultSet.getString("cpf"));
 
 
@@ -118,32 +116,51 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
         int id = -1;
 
-        String sql = "INSERT INTO colaborador(nomecompleto, "; // ->organização id where max<-///////////////////////////////////////////////////////////////////////////
-        sql += " senha, nome_usuario, email, tipo, ";
-        sql += " esta_ativo, criado_em, criado_por, ";
-        sql += " ultima_modificacao ";
-        sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql;
+        if (entity.getJobTitle() != null) {
+            sql = "INSERT INTO colaborador(organizacao_id, ";
+            sql += " tipo, nome, sexo, ";
+            sql += " cpf, telefone, email, ";
+            sql += " cargo, senha, ";
+            sql += " nome_usuario) ";
+            sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;";
+        } else {
+            sql = "INSERT INTO colaborador(organizacao_id, ";
+            sql += " tipo, nome, sexo, ";
+            sql += " cpf, telefone, email, ";
+            sql += " setor, senha, ";
+            sql += " nome_usuario) ";
+            sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;";
+        }
 
 
         //o nome usuario não precisar igual no dao e no bd
 
         try {
 
+
             connection = ConnectionFactory.getConnection();
 
             connection.setAutoCommit(false);
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, entity.getOrganization().getId()); //setInt para mandar o id, o BD recebe diversos tipos de dados nos inserts, por ex datas, etc
+            preparedStatement.setString(2, entity.getType().toString());
+            preparedStatement.setString(3, entity.getFullName());
+            preparedStatement.setString(4, entity.getGender());
+            preparedStatement.setString(5, entity.getCpf());
+            preparedStatement.setString(6, entity.getPhoneNumber());
+            preparedStatement.setString(7, entity.getEmail());
 
-//            preparedStatement.setString(1, entity.getFullName());
-//            preparedStatement.setString(2, entity.getPassword());
-//            preparedStatement.setString(3, entity.getUsername());
-//            preparedStatement.setString(4, entity.getEmail());
-//            preparedStatement.setString(5, UserType.CLIENT.toString());
-//            preparedStatement.setBoolean(6, true);
-//            preparedStatement.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
-//            preparedStatement.setString(8, entity.getUsername());
-//            preparedStatement.setTimestamp(9, new Timestamp(System.currentTimeMillis()));
+            if (entity.getJobTitle() != null) {
+                preparedStatement.setString(8, entity.getJobTitle());
+            }
+            if (entity.getJobTitle() != null) {
+                preparedStatement.setString(9, entity.getCompanyBranch());
+            }
+
+            preparedStatement.setString(10, entity.getPassword());
+            preparedStatement.setString(11, entity.getUsername());
 
             preparedStatement.execute();
 
@@ -171,7 +188,33 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
     @Override
     public boolean deleteById(int id) {
-        return false;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "DELETE FROM colaborador WHERE id = ?; ";
+
+        try {
+            connection = ConnectionFactory.getConnection();
+
+            connection.setAutoCommit(false);
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+            connection.commit();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return false;
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection);
+
+        }
     }
 
     @Override
@@ -213,7 +256,6 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
         } finally {
             ConnectionFactory.close(preparedStatement, connection, resultSet);
         }
-
 
         return collaborator;
     }
