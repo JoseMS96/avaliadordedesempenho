@@ -211,10 +211,7 @@ let textAreaOpenQuestion = document.createElement("textarea");
 textAreaOpenQuestion.setAttribute("class","form-control");
 textAreaOpenQuestion.setAttribute("rows","3");
 
-let btnRemoveQuestion = document.createElement("button");
-let buttonText = document.createTextNode("Remover Pergunta");
-btnRemoveQuestion.setAttribute("class","btn btn-primary");
-btnRemoveQuestion.appendChild(buttonText);
+
 
 divOpenQuestionContent.appendChild(labelOpenQuestion);
 divOpenQuestionContent.appendChild(textAreaOpenQuestion);
@@ -287,7 +284,7 @@ divAlternativeBlockA.appendChild(divAlternativeBodyCheckA);
 divAlternativeBlockA.appendChild(divAlternativeBodyTextA);
 //AQUI ACABA ALTERNATIVA A
 
-et divAlternativeBlockB = document.createElement("div");
+let divAlternativeBlockB = document.createElement("div");
 divAlternativeBlockB.setAttribute("class","d-flex flex-row");
 
 let divAlternativeBodyLabelB = document.createElement("div");
@@ -328,7 +325,7 @@ divAlternativeBlockB.appendChild(divAlternativeBodyTextB);
 
 //AQUI ACABA ALTERNATIVA B
 
-et divAlternativeBlockC = document.createElement("div");
+let divAlternativeBlockC = document.createElement("div");
 divAlternativeBlockC.setAttribute("class","d-flex flex-row");
 
 let divAlternativeBodyLabelC = document.createElement("div");
@@ -368,7 +365,7 @@ divAlternativeBlockC.appendChild(divAlternativeBodyCheckC);
 divAlternativeBlockC.appendChild(divAlternativeBodyTextC);
 
 //AQUI ACABA ALTERNATIVA C
-et divAlternativeBlockD = document.createElement("div");
+let divAlternativeBlockD = document.createElement("div");
 divAlternativeBlockD.setAttribute("class","d-flex flex-row");
 
 let divAlternativeBodyLabelD = document.createElement("div");
@@ -391,7 +388,7 @@ let inputAlternativeCheckD= document.createElement("input");
 inputAlternativeCheckD.setAttribute("class","form-check-input")
 inputAlternativeCheckD.setAttribute("type","checkbox");
 
-divAlternativeBodyCheckD.appendChild(inputAlternativeCheckA);
+divAlternativeBodyCheckD.appendChild(inputAlternativeCheckD);
 
 //codigo acima representa div do check box e abaixo a div do inputtext
 
@@ -409,16 +406,57 @@ divAlternativeBlockD.appendChild(divAlternativeBodyTextD);
 
 //ALTERNATIVA D ACAABA AQUI
 
+let divAlternativeBlockE = document.createElement("div");
+divAlternativeBlockE.setAttribute("class","d-flex flex-row");
 
+let divAlternativeBodyLabelE = document.createElement("div");
+divAlternativeBodyLabelE.setAttribute("class","p-2");
+
+let labelAlternativeE = document.createElement("label");
+let labelclosedtextE = document.createTextNode("E");
+labelAlternativeE.appendChild(labelclosedtextE);
+
+// <div class="p-2">
+//        <label>A-</label>
+//    </div>
+divAlternativeBodyLabelE.appendChild(labelAlternativeE);
+// até aqui só criou a div acima
+
+let divAlternativeBodyCheckE = document.createElement("div");
+divAlternativeBodyCheckE.setAttribute("class","ml-2 p-2");
+
+let inputAlternativeCheckE= document.createElement("input");
+inputAlternativeCheckE.setAttribute("class","form-check-input")
+inputAlternativeCheckE.setAttribute("type","checkbox");
+
+divAlternativeBodyCheckE.appendChild(inputAlternativeCheckE);
+
+//codigo acima representa div do check box e abaixo a div do inputtext
+
+let divAlternativeBodyTextE = document.createElement("div");
+divAlternativeBodyTextE.setAttribute("class","ml-2 p-2");
+
+let inputAlternativeTextE =document.createElement("input");
+inputAlternativeTextE.setAttribute("class","form-check-input");
+inputAlternativeTextE.setAttribute("type","text");
+divAlternativeBodyTextE.appendChild(inputAlternativeTextE);
+
+divAlternativeBlockE.appendChild(divAlternativeBodyLabelE);
+divAlternativeBlockE.appendChild(divAlternativeBodyCheckE);
+divAlternativeBlockE.appendChild(divAlternativeBodyTextE);
+
+let btnRemoveQuestion = document.createElement("button");
+let buttonText = document.createTextNode("Remover Pergunta");
+btnRemoveQuestion.setAttribute("class","btn btn-primary");
+btnRemoveQuestion.appendChild(buttonText);
+
+divClosedQuestionContent.appendChild(labelClosedQuestion);
+divClosedQuestionContent.appendChild(textAreaClosedQuestion);
 divClosedQuestionContent.appendChild(divAlternativeBlockA);
 divClosedQuestionContent.appendChild(divAlternativeBlockB);
 divClosedQuestionContent.appendChild(divAlternativeBlockC);
 divClosedQuestionContent.appendChild(divAlternativeBlockD);
-
-
-
-divClosedQuestionContent.appendChild(labelClosedQuestion);
-divClosedQuestionContent.appendChild(textAreaClosedQuestion);
+divClosedQuestionContent.appendChild(divAlternativeBlockE);
 divClosedQuestionContent.appendChild(btnRemoveQuestion);
 divClosedQuestionBody.appendChild(divClosedQuestionContent);
 divQuestionC.appendChild(divClosedQuestionBody);
