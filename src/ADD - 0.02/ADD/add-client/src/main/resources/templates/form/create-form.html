@@ -2,173 +2,62 @@
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{reviewer-layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <div th:replace="fragments/head-imports::scripts"></div>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <div th:replace="fragments/head-imports::scripts"></div>
 </head>
 <body>
 
 
 <div layout:fragment="body">
-    <div class="container-fluid">
-        <h1 class="mt-4">Criar Fomulário</h1>
-        <form id="form">
-            <div class="card">
-                <div class="card-header">
-                    <input class="form-control" type="text" placeholder="Insira o título" id="title">
-                </div>
-                <div class="card-body" >
+  <div class="container-fluid">
+    <h2 class="mt-4">Criar Fomulário</h2>
 
-                    <h5 class="card-title">Insira as perguntas abaixo:</h5>
-                    <div class="card" id="question-content">
-
-                        <!--PERGUNTA ABERTA-->
-                        <div class="card-body" >
-                            <div class="form-group" id="open-question-content ">
-                                <label id="label-open-question">Pergunta Aberta</label>
-                                <textarea class="form-control" rows="3" id="text-open-question" ></textarea>
-                            </div>
-                            <a href="#" class="btn btn-primary">Remover Pergunta</a>
-                        </div>
-
-                        <!--PERGUNTA FECHADA-->
-                        <div class="card-body" >
-                            <div class="form-group" id="closed-question-content" >
-                                <label>Pergunta Fechada</label>
-                                <textarea class="form-control" rows="3" ></textarea>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="p-2">
-                                    <label>A-</label>
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" size ="50" type="text">
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="p-2">
-                                    <label>B-</label>
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" size ="50" type="text">
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="p-2">
-                                    <label>C-</label>
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" size ="50" type="text">
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="p-2">
-                                    <label>D-</label>
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" size ="50" type="text">
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row">
-                                <div class="p-2">
-                                    <label>E-</label>
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                                <div class="ml-2 p-2">
-                                    <input class="form-check-input" size ="50"type="text">
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary">Remover Pergunta</a>
-                        </div>
-
-
-
-
-                    </div>
-                    <!--table de seleção dos colaboradores tem que adicionar os th each-->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Adicione os colaboradores que vão responder ao formulário</h3>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 300px;">
-                                    <input type="text"  class="form-control float-right" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body table-responsive p-0" style="height: 200px;">
-                            <table class="table table-head-fixed text-nowrap">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Colaborador</th>
-                                    <th>Opção</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <!--se estiver selecionado o colaborador será vinculado a avaliação-->
-                                    <td><div class="form-check">
-                                        <input class="form-check-input" type="checkbox">
-                                        <label class="form-check-label">Selecionar</label>
-                                    </div></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="card">
-            <div class="d-flex flex-row">
-                <div class="p-2">
-                    <!--th:action ou th:ref se action tem que ser button-->
-                    <button  onclick="addQuestion()" class="btn btn-primary" id="btn_add_openquestion">Adicionar pergunta aberta</button>
-                </div>
-
-                <div class="p-2 ml-2">
-                    <!--th:action ou th:ref se action tem que ser button-->
-                    <button onclick="addClosedQuestion()" class="btn btn-primary">Adicionar pergunta fechada</button>
-                </div>
-
-                <div class="p-2 ml-2">
-                    <!--th:action ou th:ref se action tem que ser button-->
-                    <a href="#" class="btn btn-primary" type ="submit">Enviar</a>
-                </div>
-            </div>
+    <form th:action="@{/form/create-form}" method="post" th:object ="${form}">
+      <div class="form-row">
+        <div class="col">
+          <label>Entre com o título:</label>
+          <input type="text" class="form-control" id="titulo">
+        </div>
+        <div class="col">
+          <label>Data limite para resposta:</label>
+          <input type="date" class="form-control" id="date" >
+          <br/>
         </div>
 
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
+
+      </div>
+    </form>
+
+
+    </br>
+    </br>
+
+
+    <h3 class="mt-4">Formulários:</h3>
+    <div class="list-group">
+      <a th:href="@{/form/details-form}" class="list-group-item list-group-item-action list-group-item-light">Formulário Risco e Compliance</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
+      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
+
     </div>
+  </div>
 </div>
+
 
 <div th:replace="fragments/footer-imports::scripts"></div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Date Label-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -187,282 +76,5 @@
 
 
 <script>
-
-
-
-function addQuestion(){
-
-console.log("click selecionado");
-
-let divQuestionC = document.getElementById("question-content");
-
-let divOpenQuestionBody = document.createElement("div");
-divOpenQuestionBody.setAttribute("class","card-body");
-
-let divOpenQuestionContent = document.createElement("div");
-
-divOpenQuestionContent.setAttribute("class","form-group");
-
-let labelOpenQuestion = document.createElement("label");
-let labeltext = document.createTextNode("Pergunta Aberta");
-labelOpenQuestion.appendChild(labeltext);
-
-let textAreaOpenQuestion = document.createElement("textarea");
-textAreaOpenQuestion.setAttribute("class","form-control");
-textAreaOpenQuestion.setAttribute("rows","3");
-
-
-
-divOpenQuestionContent.appendChild(labelOpenQuestion);
-divOpenQuestionContent.appendChild(textAreaOpenQuestion);
-divOpenQuestionContent.appendChild(btnRemoveQuestion);
-divOpenQuestionBody.appendChild(divOpenQuestionContent);
-divQuestionC.appendChild(divOpenQuestionBody);
-
-}
-
-
-function addClosedQuestion(){
-
-console.log("click selecionado");
-
-let divQuestionC = document.getElementById("question-content");
-
-let divClosedQuestionBody = document.createElement("div");
-divClosedQuestionBody.setAttribute("class","card-body");
-
-let divClosedQuestionContent = document.createElement("div");
-divClosedQuestionContent.setAttribute("class","form-group");
-
-let labelClosedQuestion = document.createElement("label");
-let labeltext = document.createTextNode("Pergunta Fechada");
-labelClosedQuestion.appendChild(labeltext);
-
-let textAreaClosedQuestion = document.createElement("textarea");
-textAreaClosedQuestion.setAttribute("class","form-control");
-textAreaClosedQuestion.setAttribute("rows","3");
-
-//daqui pra baixo começa as div de alternativa
-//div abaixo é o bloco maior que contem as outras divs de alternativa para baixo
-let divAlternativeBlockA = document.createElement("div");
-divAlternativeBlockA.setAttribute("class","d-flex flex-row");
-
-let divAlternativeBodyLabelA = document.createElement("div");
-divAlternativeBodyLabelA.setAttribute("class","p-2");
-
-let labelAlternativeA = document.createElement("label");
-let labelclosedtextA = document.createTextNode("A");
-labelAlternativeA.appendChild(labelclosedtextA);
-
-// <div class="p-2">
-//        <label>A-</label>
-//    </div>
-divAlternativeBodyLabelA.appendChild(labelAlternativeA);
-// até aqui só criou a div acima
-
-let divAlternativeBodyCheckA = document.createElement("div");
-divAlternativeBodyCheckA.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeCheckA= document.createElement("input");
-inputAlternativeCheckA.setAttribute("class","form-check-input")
-inputAlternativeCheckA.setAttribute("type","checkbox");
-
-divAlternativeBodyCheckA.appendChild(inputAlternativeCheckA);
-
-//codigo acima representa div do check box e abaixo a div do inputtext
-
-let divAlternativeBodyTextA = document.createElement("div");
-divAlternativeBodyTextA.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeTextA =document.createElement("input");
-inputAlternativeTextA.setAttribute("class","form-check-input");
-inputAlternativeTextA.setAttribute("type","text");
-divAlternativeBodyTextA.appendChild(inputAlternativeTextA);
-
-divAlternativeBlockA.appendChild(divAlternativeBodyLabelA);
-divAlternativeBlockA.appendChild(divAlternativeBodyCheckA);
-divAlternativeBlockA.appendChild(divAlternativeBodyTextA);
-//AQUI ACABA ALTERNATIVA A
-
-let divAlternativeBlockB = document.createElement("div");
-divAlternativeBlockB.setAttribute("class","d-flex flex-row");
-
-let divAlternativeBodyLabelB = document.createElement("div");
-divAlternativeBodyLabelB.setAttribute("class","p-2");
-
-let labelAlternativeB = document.createElement("label");
-let labelclosedtextB = document.createTextNode("B");
-labelAlternativeB.appendChild(labelclosedtextB);
-
-// <div class="p-2">
-//        <label>A-</label>
-//    </div>
-divAlternativeBodyLabelB.appendChild(labelAlternativeB);
-// até aqui só criou a div acima
-
-let divAlternativeBodyCheckB = document.createElement("div");
-divAlternativeBodyCheckB.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeCheckB= document.createElement("input");
-inputAlternativeCheckB.setAttribute("class","form-check-input")
-inputAlternativeCheckB.setAttribute("type","checkbox");
-
-divAlternativeBodyCheckB.appendChild(inputAlternativeCheckB);
-
-//codigo acima representa div do check box e abaixo a div do inputtext
-
-let divAlternativeBodyTextB = document.createElement("div");
-divAlternativeBodyTextB.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeTextB =document.createElement("input");
-inputAlternativeTextB.setAttribute("class","form-check-input");
-inputAlternativeTextB.setAttribute("type","text");
-divAlternativeBodyTextB.appendChild(inputAlternativeTextB);
-
-divAlternativeBlockB.appendChild(divAlternativeBodyLabelB);
-divAlternativeBlockB.appendChild(divAlternativeBodyCheckB);
-divAlternativeBlockB.appendChild(divAlternativeBodyTextB);
-
-//AQUI ACABA ALTERNATIVA B
-
-let divAlternativeBlockC = document.createElement("div");
-divAlternativeBlockC.setAttribute("class","d-flex flex-row");
-
-let divAlternativeBodyLabelC = document.createElement("div");
-divAlternativeBodyLabelC.setAttribute("class","p-2");
-
-let labelAlternativeC = document.createElement("label");
-let labelclosedtextC = document.createTextNode("C");
-labelAlternativeC.appendChild(labelclosedtextC);
-
-// <div class="p-2">
-//        <label>A-</label>
-//    </div>
-divAlternativeBodyLabelC.appendChild(labelAlternativeC);
-// até aqui só criou a div acima
-
-let divAlternativeBodyCheckC = document.createElement("div");
-divAlternativeBodyCheckC.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeCheckC= document.createElement("input");
-inputAlternativeCheckC.setAttribute("class","form-check-input")
-inputAlternativeCheckC.setAttribute("type","checkbox");
-
-divAlternativeBodyCheckC.appendChild(inputAlternativeCheckC);
-
-//codigo acima representa div do check box e abaixo a div do inputtext
-
-let divAlternativeBodyTextC = document.createElement("div");
-divAlternativeBodyTextC.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeTextC =document.createElement("input");
-inputAlternativeTextC.setAttribute("class","form-check-input");
-inputAlternativeTextC.setAttribute("type","text");
-divAlternativeBodyTextC.appendChild(inputAlternativeTextC);
-
-divAlternativeBlockC.appendChild(divAlternativeBodyLabelC);
-divAlternativeBlockC.appendChild(divAlternativeBodyCheckC);
-divAlternativeBlockC.appendChild(divAlternativeBodyTextC);
-
-//AQUI ACABA ALTERNATIVA C
-let divAlternativeBlockD = document.createElement("div");
-divAlternativeBlockD.setAttribute("class","d-flex flex-row");
-
-let divAlternativeBodyLabelD = document.createElement("div");
-divAlternativeBodyLabelD.setAttribute("class","p-2");
-
-let labelAlternativeD = document.createElement("label");
-let labelclosedtextD = document.createTextNode("D");
-labelAlternativeD.appendChild(labelclosedtextD);
-
-// <div class="p-2">
-//        <label>A-</label>
-//    </div>
-divAlternativeBodyLabelD.appendChild(labelAlternativeD);
-// até aqui só criou a div acima
-
-let divAlternativeBodyCheckD = document.createElement("div");
-divAlternativeBodyCheckD.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeCheckD= document.createElement("input");
-inputAlternativeCheckD.setAttribute("class","form-check-input")
-inputAlternativeCheckD.setAttribute("type","checkbox");
-
-divAlternativeBodyCheckD.appendChild(inputAlternativeCheckD);
-
-//codigo acima representa div do check box e abaixo a div do inputtext
-
-let divAlternativeBodyTextD = document.createElement("div");
-divAlternativeBodyTextD.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeTextD =document.createElement("input");
-inputAlternativeTextD.setAttribute("class","form-check-input");
-inputAlternativeTextD.setAttribute("type","text");
-divAlternativeBodyTextD.appendChild(inputAlternativeTextD);
-
-divAlternativeBlockD.appendChild(divAlternativeBodyLabelD);
-divAlternativeBlockD.appendChild(divAlternativeBodyCheckD);
-divAlternativeBlockD.appendChild(divAlternativeBodyTextD);
-
-//ALTERNATIVA D ACAABA AQUI
-
-let divAlternativeBlockE = document.createElement("div");
-divAlternativeBlockE.setAttribute("class","d-flex flex-row");
-
-let divAlternativeBodyLabelE = document.createElement("div");
-divAlternativeBodyLabelE.setAttribute("class","p-2");
-
-let labelAlternativeE = document.createElement("label");
-let labelclosedtextE = document.createTextNode("E");
-labelAlternativeE.appendChild(labelclosedtextE);
-
-// <div class="p-2">
-//        <label>A-</label>
-//    </div>
-divAlternativeBodyLabelE.appendChild(labelAlternativeE);
-// até aqui só criou a div acima
-
-let divAlternativeBodyCheckE = document.createElement("div");
-divAlternativeBodyCheckE.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeCheckE= document.createElement("input");
-inputAlternativeCheckE.setAttribute("class","form-check-input")
-inputAlternativeCheckE.setAttribute("type","checkbox");
-
-divAlternativeBodyCheckE.appendChild(inputAlternativeCheckE);
-
-//codigo acima representa div do check box e abaixo a div do inputtext
-
-let divAlternativeBodyTextE = document.createElement("div");
-divAlternativeBodyTextE.setAttribute("class","ml-2 p-2");
-
-let inputAlternativeTextE =document.createElement("input");
-inputAlternativeTextE.setAttribute("class","form-check-input");
-inputAlternativeTextE.setAttribute("type","text");
-divAlternativeBodyTextE.appendChild(inputAlternativeTextE);
-
-divAlternativeBlockE.appendChild(divAlternativeBodyLabelE);
-divAlternativeBlockE.appendChild(divAlternativeBodyCheckE);
-divAlternativeBlockE.appendChild(divAlternativeBodyTextE);
-
-let btnRemoveQuestion = document.createElement("button");
-let buttonText = document.createTextNode("Remover Pergunta");
-btnRemoveQuestion.setAttribute("class","btn btn-primary");
-btnRemoveQuestion.appendChild(buttonText);
-
-divClosedQuestionContent.appendChild(labelClosedQuestion);
-divClosedQuestionContent.appendChild(textAreaClosedQuestion);
-divClosedQuestionContent.appendChild(divAlternativeBlockA);
-divClosedQuestionContent.appendChild(divAlternativeBlockB);
-divClosedQuestionContent.appendChild(divAlternativeBlockC);
-divClosedQuestionContent.appendChild(divAlternativeBlockD);
-divClosedQuestionContent.appendChild(divAlternativeBlockE);
-divClosedQuestionContent.appendChild(btnRemoveQuestion);
-divClosedQuestionBody.appendChild(divClosedQuestionContent);
-divQuestionC.appendChild(divClosedQuestionBody);
-
-}
-
-</script>
 
 
