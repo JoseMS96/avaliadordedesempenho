@@ -4,6 +4,7 @@ import br.fai.add.model.enums.UserType;
 
 public class Collaborator extends BaseEntity {
 
+
     private UserType type;
     private String username;
     private String fullName;
