@@ -31,7 +31,7 @@ public class CollaboratorController {
             model.addAttribute("collaborators", collaborators);
         }
 
-        return ""; //retornar pagina atual para adicionar colaborador ao form?
+        return "form/details-form"; //retornar pagina atual para adicionar colaborador ao form?
     }
 
     @GetMapping("/delete/{id}")
