@@ -20,10 +20,10 @@ public class FormController {
     @Autowired
     private FormService formService;
 
-//    @GetMapping("/answer-form")
-//    public String getAnswerFormPage() {
-//        return "form/answer-form";
-//    }
+    @GetMapping("/answer-form")
+    public String getAnswerFormPage() {
+        return "form/answer-form";
+    }
 
 
     @GetMapping("/list")
@@ -38,7 +38,7 @@ public class FormController {
             model.addAttribute("forms", forms);
         }
 
-        return ""; //pagina para adicao de perguntas com os forms listados
+        return "form/question-form"; //pagina para adicao de perguntas com os forms listados
     }
 
     @GetMapping("/detail/{id}")
@@ -47,19 +47,19 @@ public class FormController {
         Form form = (Form) formService.findById(id);
 
         if (form == null) {
-            return ""; //pagina de vizualizar formulário com respostas dentro de perguntas
+            return "form/view-form"; //pagina de vizualizar formulário com respostas dentro de perguntas
         }
 
         model.addAttribute("form", form);
 
-        return ""; //pagina de vizualizar formulário com respostas dentro de perguntas
+        return "form/view-form"; //pagina de vizualizar formulário com respostas dentro de perguntas
     }
 
     @GetMapping("/create-form")
     public String create(Form form) {
 
         formService.create(form);
-        return ""; //pagina para criar formulários até voltar?
+        return "create-form"; //pagina para criar formulários até voltar?
     }
 
     @GetMapping("/delete/{id}")
