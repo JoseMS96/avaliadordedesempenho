@@ -14,14 +14,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/collaborator")
-public class UserController {
+public class CollaboratorController {
 
     @Autowired
     private CollaboratorService collaboratorService;
 
 
     @GetMapping("/list")
-    public String getUsers(final Model model) {
+    public String getCollaborators(final Model model) {
 
         List<Collaborator> collaborators = collaboratorService.find();
 
@@ -31,7 +31,7 @@ public class UserController {
             model.addAttribute("collaborators", collaborators);
         }
 
-        return "user/list-collaborators";
+        return ""; //retornar pagina atual para adicionar colaborador ao form?
     }
 
     @GetMapping("/delete/{id}")
@@ -40,7 +40,7 @@ public class UserController {
         collaboratorService.deleteById(id);
 
 
-        return getUsers(model);
+        return getCollaborators(model);
     }
 
 }
