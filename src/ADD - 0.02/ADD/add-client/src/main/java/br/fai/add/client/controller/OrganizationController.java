@@ -1,7 +1,7 @@
 package br.fai.add.client.controller;
 
-import br.fai.add.client.service.OrganizationService;
-import br.fai.add.model.entities.Organization;
+import br.fai.add.client.service.CollaboratorService;
+import br.fai.add.model.entities.Collaborator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,48 +17,32 @@ import java.util.List;
 public class OrganizationController {
 
     @Autowired
-    private OrganizationService organizationService;
+    private CollaboratorService collaboratorService;
+
 
     @GetMapping("/list")
-    public String getOrganizations(final Model model) {
+    public String getUsers(final Model model) {
 
-        List<Organization> organizations = organizationService.find();
+        List<Collaborator> collaborators = collaboratorService.find();
 
-        if (organizations == null || organizations.isEmpty()) {
-            model.addAttribute("organizations", new ArrayList<Organization>());
+        if (collaborators == null || collaborators.isEmpty()) {
+            model.addAttribute("organizations", new ArrayList<Collaborator>());
         } else {
-
-            model.addAttribute("organizations", organizations);
+            model.addAttribute("organizations", collaborators);
         }
 
-
-        return ""; //para a pagina dos dropdowns DOS REVIEWERS
+        return "user/list-collaborators";
     }
-
-    @GetMapping("/list2")
-    public String getOrganizations2(final Model model) {
-
-        List<Organization> organizations = organizationService.find();
-
-        if (organizations == null || organizations.isEmpty()) {
-            model.addAttribute("organizations", new ArrayList<Organization>());
-        } else {
-
-            model.addAttribute("organizations", organizations);
-        }
-
-        return ""; //para a pagina dos dropdowns DOS FUNCIONÁRIOS
-    }
-
-    //metodo create esta no accountcontroller
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") final int id, Model model) {
 
-        organizationService.deleteById(id);
+        collaboratorService.deleteById(id);
 
 
-        return getOrganizations(model);
+        return getUsers(model);
     }
 
 }
+
+

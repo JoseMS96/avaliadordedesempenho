@@ -26,6 +26,7 @@ public class AccountController {
     public String getSignUpPage() {
         return "account/register";
     }
+
     @GetMapping("/sign-up-organization")
     public String getSignUpOrganizationPage() {
 
@@ -48,7 +49,8 @@ public class AccountController {
         return "account/register-employee";
     }
 
-
+    @GetMapping("/employee-form")
+    public String getEmployeeForm(){return "form/employee-form";}
 
 
     @PostMapping("/create-collaborator")
@@ -63,7 +65,7 @@ public class AccountController {
 
         organizationService.create(organization);
 
-        return "redirect:/account/register";
+        return "redirect:/account/sign-up";
     }
 
     @PostMapping("/login")

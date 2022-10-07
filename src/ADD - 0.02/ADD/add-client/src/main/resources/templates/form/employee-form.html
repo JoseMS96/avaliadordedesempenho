@@ -15,7 +15,9 @@
         </div>
         <div class="card-body p-0 ">
             <div class="container-fluid">
-                <form id="form">
+
+                <!--ver qual método chamar para esse th-->
+                <form id="form" >
                     <div class="card">
 
                         <div class="card-body" >
@@ -46,9 +48,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>183</td>
-                                            <td>John Doe</td>
+                                        <tr th:each = "collaborator:${collaborators}">
+                                            <td th:text="${collaborator.id}">183</td>
+                                            <td th:text="${collaborator.fullName}">John Doe</td>
                                             <!--se estiver selecionado o colaborador será vinculado a avaliação-->
                                             <td><div class="form-check">
                                                 <input class="form-check-input" type="checkbox">
