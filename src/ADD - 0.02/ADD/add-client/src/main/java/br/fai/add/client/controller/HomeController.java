@@ -13,12 +13,12 @@ public class HomeController {
         return "/home/landing-page";
     }
 
-    @GetMapping("/2")
+    @GetMapping("/employee-home")
     public String getEmployeeHomePage() {
         return "/home/employee-home";
     }
 
-    @GetMapping("/3")
+    @GetMapping("/reviewer-home")
     public String getReviewerHomePage() {
         return "/home/reviewer-home";
     }
