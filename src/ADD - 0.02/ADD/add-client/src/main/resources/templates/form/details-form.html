@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{reviewer-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>View Form</title>
+    <div th:replace="fragments/head-imports::scripts"></div>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div layout:fragment="body">
+
+    <div class="container-fluid">
+        <h3 class="mt-4">Formulário Risco e Compliance</h3>
+        <h6 class="mt-4">Data de criação: 29/09/2022</h6>
+        <h6 class="mt-4">Data limite para resposta: 15/12/2022</h6>
+        <br/>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Perguntas:</h5>
+
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1">Qual..............?</p>
+                                <button class="btn-success">EDIT</button>  <button class="btn-danger">DELETE</button>
+                            </li>
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1">Qual...............?</p>
+                                <button class="btn-success">EDIT</button>  <button class="btn-danger">DELETE</button>
+                            </li>
+                        </ul>
+                        <br/>
+                        <a th:href="@{/form/question-form}" class="btn btn-primary btn-lg btn-block">Adicionar Perguntas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Colaboradores:</h5>
+                        <ul class="list-group ">
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1">Maria Maria</p>
+                                <button class="btn-success">EDIT</button>  <button class="btn-danger">DELETE</button>
+                            </li>
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1">José José</p>
+                                <button class="btn-success">EDIT</button>  <button class="btn-danger">DELETE</button>
+                            </li>
+                        </ul>
+                        <br/>
+
+                        <a th:href="@{/form/employee-form}" class="btn btn-primary btn-lg btn-block">Adicionar Colaboradoes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+<div th:replace="fragments/footer-imports::scripts"></div>
+
+<!-- List Itens -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+

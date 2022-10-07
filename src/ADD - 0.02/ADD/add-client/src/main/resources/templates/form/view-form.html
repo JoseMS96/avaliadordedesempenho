@@ -8,100 +8,19 @@
 </head>
 <body>
 
-    <div layout:fragment="body">
+<div layout:fragment="body">
 
-        <div class="container-fluid">
-            <h1 class="mt-4">Criar Fomulário</h1>
-            <form id="form">
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class = "m-0 font-weight-bold text-primary"th:text="${form.title}">Avaliação de Satisfação</h6>
-                    </div>
-                    <div class="card-body" >
-
-                        <h5 class="card-title" th:text="${Collaborator.name}">Lucas Anderi</h5>
-                        <div class="card" id="question-content">
-
-                            <!--PERGUNTA ABERTA descobrir como iterar para imprimir cada pergunta da lista de perugntas de cada form nessa estrutura acho que th:each -->
-                            <div class="card-body" >
-                                <div class="form-group" id="open-question-content ">
-                                    <p th:text="${question.description}">ipsum lorem</p>
-                                </div>
-                                <p th:text="${answer.answerText}">ipsum lorem</p>
-                            </div>
-
-                            <!--PERGUNTA FECHADA aqui tem que ver como poe o th pra exibir a alternativa escolhida e deixar o botao checked -->
-                            <div class="card-body" >
-                                <div class="form-group" id="closed-question-content" >
-                                    <label>Pergunta Fechada</label>
-                                    <textarea class="form-control" rows="3" ></textarea>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="p-2">
-                                        <label>A-</label>
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <!--th : ?verificar como deixar marcado a opçao que o funcionario marcou e qual a correta-->
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <p th:text="${option.description}">ipsum lorem</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="p-2">
-                                        <label>B-</label>
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <p th:text="${option.description}">ipsum lorem</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="p-2">
-                                        <label>C-</label>
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <p th:text="${option.description}">ipsum lorem</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="p-2">
-                                        <label>D-</label>
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <p th:text="${option.description}">ipsum lorem</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div class="p-2">
-                                        <label>E-</label>
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                    <div class="ml-2 p-2">
-                                        <p th:text="${option.description}">ipsum lorem</p>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary">Remover Pergunta</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </form>
+    <div class="container-fluid">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <!--aqui tem que ter o th:text do formulario escolhido no titulo da pagina -->
+                <h6 class="m-0 font-weight-bold text-primary" >*Titulo do formulario escolhido*</h6>
+            </div>
+            <!--daqui pra baixo tem que organizar e listar as perguntas e repostas -->
         </div>
-
     </div>
+</div>
 </body>
 
 <!-- Bootstrap core JavaScript-->

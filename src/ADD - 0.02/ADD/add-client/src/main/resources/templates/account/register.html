@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="collaborator-setor">Setor</label>
-                            <input type="text" class="form-control" id="collaborator-setor" placeholder="Sexo">
+                            <input type="text" class="form-control" id="collaborator-setor" placeholder="Setor">
                         </div>
                         <div class="form-group">
                             <label for="collaborator-sexo">Sexo</label>
@@ -57,8 +57,8 @@
                         <div class="form-group">
                             <label>Insira a organização que o funcionario pertence:</label>
                             <div class="d-flex justify-content-center">
-                                <select name="organization" id="organizations" ><!-- th:each="organization:${organizations}-->
-                                    <option >Organizações</option> <!--th:text="${organization.name}-->
+                                <select name="organization" id="organizations"  ><!-- -->
+                                    <option th:each="organization:${organizations}" th:text="${organization.name}" >ORGANIZAÇÃO</option> <!---->
                                 </select>
                             </div>
                         </div>
