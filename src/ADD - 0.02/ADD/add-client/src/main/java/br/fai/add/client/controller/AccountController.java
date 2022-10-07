@@ -48,7 +48,10 @@ public class AccountController {
         return "account/register-employee";
     }
 
-    @PostMapping("/create")
+
+
+
+    @PostMapping("/create-collaborator")
     public String create(Collaborator collaborator) {
 
         collaboratorService.create(collaborator);
