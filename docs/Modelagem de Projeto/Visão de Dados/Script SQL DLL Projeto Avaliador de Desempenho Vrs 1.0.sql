@@ -19,7 +19,7 @@ create table organizacao_endereco (
 create table colaborador (
     id serial primary key,
     organizacao_id integer not null references organizacao(id) on update cascade,
-    tipo character varying(11) not null check (tipo in ('Avaliador', 'Funcionario')),
+    tipo character varying(11) not null check (tipo in ('REVIEWER', 'EMPLOYEE')),
     nome character varying(100) not null,
     sexo character varying(100) not null,
     cpf character varying(14) not null,

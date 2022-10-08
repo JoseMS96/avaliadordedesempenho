@@ -2,7 +2,6 @@ package br.fai.add.client.controller;
 
 import br.fai.add.client.service.CollaboratorService;
 import br.fai.add.client.service.OrganizationService;
-import br.fai.add.client.service.impl.OrganizationServiceImpl;
 import br.fai.add.model.entities.Collaborator;
 import br.fai.add.model.entities.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/account")
@@ -26,6 +24,7 @@ public class AccountController {
     public String getSignUpPage() {
         return "account/register";
     }
+
     @GetMapping("/sign-up-organization")
     public String getSignUpOrganizationPage() {
 
@@ -34,9 +33,8 @@ public class AccountController {
 
     @GetMapping("/sign-in")
     public String getSignInPage() {
-        return "account/sign-in";
+        return "account/sign-in-page";
     }
-
 
     @GetMapping("/password-recovery")
     public String getPasswordRecoveryPage() {
@@ -49,8 +47,6 @@ public class AccountController {
     }
 
 
-
-
     @PostMapping("/create-collaborator")
     public String create(Collaborator collaborator) {
 
@@ -59,23 +55,23 @@ public class AccountController {
     }
 
     @PostMapping("/create-organization")
-    public String create(Organization organization){
+    public String create(Organization organization) {
 
         organizationService.create(organization);
 
         return "redirect:/account/register";
     }
-
-    @PostMapping("/login")
-    public String login(@RequestParam("username") final String username, @RequestParam("password") final String password) {
-
-        Collaborator collaborator = collaboratorService.validateUsernameAndPassword(username, password);
-
-        if (collaborator == null) {
-            return "redirect:/account/sign-in";
-        }
-
-        return "redirect:/2";
-    }
-
 }
+//    @PostMapping("/login")
+//    public String login(@RequestParam("username") final String username, @RequestParam("password") final String password) {
+//
+//        Collaborator collaborator = collaboratorService.validateUsernameAndPassword(username, password);
+//
+//        if (collaborator == null) {
+//            return "redirect:/account/sign-in";
+//        }
+//
+//        return "redirect:/2";
+
+
+

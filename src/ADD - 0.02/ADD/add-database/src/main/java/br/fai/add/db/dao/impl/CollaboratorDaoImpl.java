@@ -4,6 +4,7 @@ package br.fai.add.db.dao.impl;
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.CollaboratorDao;
 import br.fai.add.model.entities.Collaborator;
+import br.fai.add.model.enums.UserType;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -145,7 +146,6 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, entity.getOrganization().getId()); //setInt para mandar o id, o BD recebe diversos tipos de dados nos inserts, por ex datas, etc
-            preparedStatement.setString(2, entity.getType().toString());
             preparedStatement.setString(3, entity.getFullName());
             preparedStatement.setString(4, entity.getGender());
             preparedStatement.setString(5, entity.getCpf());
@@ -154,9 +154,12 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
             if (entity.getJobTitle() != null) {
                 preparedStatement.setString(8, entity.getJobTitle());
+                preparedStatement.setString(2, UserType.EMPLOYEE.toString());
+
             }
-            if (entity.getJobTitle() != null) {
+            if (entity.getCompanyBranch() != null) {
                 preparedStatement.setString(9, entity.getCompanyBranch());
+                preparedStatement.setString(2, UserType.REVIEWER.toString());
             }
 
             preparedStatement.setString(10, entity.getPassword());
@@ -227,7 +230,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT * FROM usuario WHERE nome_usuario = ? AND senha = ?;";
+        final String sql = "SELECT * FROM colaborador WHERE nome_usuario = ? AND senha = ?;";
 
         //o nome usuario não precisar igual no dao e no bd
 
