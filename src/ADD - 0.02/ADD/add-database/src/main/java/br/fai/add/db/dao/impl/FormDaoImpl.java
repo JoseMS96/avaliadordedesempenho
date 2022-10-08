@@ -82,7 +82,7 @@ public class FormDaoImpl implements FormDao<Form> {
                 item.setId(resultSet.getInt("id"));
                 item.setDatetime(resultSet.getTimestamp("data_hora"));
                 item.setDatelimit(resultSet.getTimestamp("data_limite"));
-                item.setTitle(resultSet.getString("title"));
+                item.setTitle(resultSet.getString("titulo"));
 
             }
 
