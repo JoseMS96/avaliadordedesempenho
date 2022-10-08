@@ -32,7 +32,7 @@ public class AnswerController {
             model.addAttribute("answers", answers);
         }
 
-        return ""; //talvez voce queira implementar, talvez não
+        return "form/view-form";
     }
 
     @GetMapping("/detail/{id}")
@@ -54,7 +54,7 @@ public class AnswerController {
 
         answerService.create(answer);
 
-        return "";// pagina atual para continuar criando perguntas
+        return "form/question-form";// pagina atual para continuar criando perguntas
 
     }
 

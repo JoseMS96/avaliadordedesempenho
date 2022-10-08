@@ -32,7 +32,7 @@ public class QuestionController {
             model.addAttribute("questions", questions);
         }
 
-        return ""; //pagina que lista as perguntas
+        return "form/details-form"; //pagina que lista as perguntas
     }
 
     @PostMapping("/create-question")
@@ -40,7 +40,7 @@ public class QuestionController {
 
         questionService.create(question);
 
-        return "";// prox pag para criar avaliador
+        return "form/details-form";//
 
     }
 

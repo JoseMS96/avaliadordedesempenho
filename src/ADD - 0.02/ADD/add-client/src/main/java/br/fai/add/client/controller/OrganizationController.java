@@ -19,7 +19,7 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
 
-    @GetMapping("/list")
+    @GetMapping("/list-org-reviewer")
     public String getOrganizations(final Model model) {
 
         List<Organization> organizations = organizationService.find();
@@ -35,7 +35,7 @@ public class OrganizationController {
         return ""; //para a pagina dos dropdowns DOS REVIEWERS
     }
 
-    @GetMapping("/list2")
+    @GetMapping("/list-org-funcionario")
     public String getOrganizations2(final Model model) {
 
         List<Organization> organizations = organizationService.find();
