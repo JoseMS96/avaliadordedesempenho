@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <div th:replace="fragments/head-imports::scripts"></div>
 </head>
 <body>
 
@@ -10,16 +11,16 @@
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0 mx-">
             <div class="text-center border-bottom border-primary bg-light">
-                <h1 class="h4 text-gray-900 mb-4 my-2">Crie sua conta!</h1>
+                <h1 class="h4 text-gray-900 mb-4 my-2">Cadastre seus Colaboradores</h1>
             </div>
         </div>
-        <form method ="POST", th:action="@{/account/create}">
+        <form ><!--method ="POST", th:action="@{/account/create}"-->
             <div class="col-lg-12">
                 <div class="card-body ">
                     <div class="form-group">
                         <label>Insira a organização que o funcionario pertence:</label>
-                        <select name="organization" id="organizations" th:each="organization:${organizations}">
-                            <option th:text="${organization.name}">Organizações</option>
+                        <select name="organization" id="organizations"><!-- th:each="organization:${organizations}"-->
+                            <option >Organizações</option><!--th:text="${organization.name}"-->
                         </select>
 
                     </div>
@@ -52,7 +53,7 @@
             </div>
 
             <div class="card-footer d-flex justify-content-center p-4 bg-light">
-                <a class="btn btn-primary" th:href="@{/home/reviewer-home}">Voltar</a>
+                <a class="btn btn-primary" th:href="@{/reviewer-home}">Voltar</a>
                 <div class="ml-4">
                     <button type="submit" class="btn btn-primary ">Submit</button>
                 </div>
