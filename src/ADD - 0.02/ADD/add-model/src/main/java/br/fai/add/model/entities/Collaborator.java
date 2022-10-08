@@ -15,7 +15,7 @@ public class Collaborator extends BaseEntity {
     private String jobTitle;
     private String companyBranch;
     private String password;
-    private Organization organization;
+    private Organization organization; //manda organizacao atraves do post
 
     public UserType getType() {
         return type;
