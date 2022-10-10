@@ -11,7 +11,7 @@
 <div layout:fragment="body">
 	<div class="container-fluid">
 		<h2 class="mt-4">Criar Fomulário</h2>
-		<form th:action="@{/form/create-form}" method="post" th:object="${form}">
+		<form ><!--th:action="@{/form/create-form}" method="post" th:object="${form}"-->
 			<div class="form-row">
 				<div class="col">
 					<label>Entre com o título:</label>
@@ -28,16 +28,14 @@
 			</div>
 		</form>
 
-
 		</br>
 		</br>
-
 
 		<h3 class="mt-4">Formulários:</h3>
 		<div class="list-group">
 			<a th:each="form : ${forms}" th:text="${form.title}"
 			   class="list-group-item list-group-item-action list-group-item-light" th:href="@{/form/details-form}">
-				<!-- th:href="@{/form/details-form/{id}  (id=${form.id})}" id para adicionar as perguntas na prox pagina -->
+				<!-- th:href="@{/form/details-form/{id}  (id=${form.id})}" id para adicionar as perguntas na prox pagina perguntar pro luciano-->
 				Formulário Risco e Compliance</a>
 
 		</div>

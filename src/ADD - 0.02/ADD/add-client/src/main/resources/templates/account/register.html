@@ -20,7 +20,7 @@
                 </div>
 
             </div>
-            <form method="POST" , th:action="@{/account/create-collaborator}">
+            <form method="POST"  th:action="@{/account/create-collaborator}" th:object="${user}">
 
                 <div class="col-lg-12">
                     <div class="card-body">
@@ -59,7 +59,8 @@
                             <div class="row justify-content-md-center">
                                 <div class="col col-md-auto">
                                     <select name="organization" id="organizations"style="width:200px"  ><!-- -->
-                                        <option >ORGANIZAÇÃO</option> <!--th:each="organization:${organizations}" th:value="${organization.name}" th:text="${organization.name}" -->
+                                        <option th:selected="${organization.id}" th:each="organization:${organizations}"
+                                                th:value="${organization.id}" th:text="${organization.name}">ORGANIZAÇÃO</option> <!-- -->
                                     </select>
                                 </div>
 

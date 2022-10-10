@@ -9,15 +9,15 @@
 
 <div class="container">
 	<div class="card o-hidden border-0 shadow-lg my-5">
-		<div class="text-center border-bottom border-primary bg-light">
+		<div class="text-center border-bottom border-primary bg-light" >
 			<br/>
-			<h1 class="h4 text-gray-900 mb-4 my-2">Adicionar Colaboradores</h1>
+			<h1 class="h4 text-gray-900 mb-4 my-2" th:text="form.title">Adicionar Colaboradores</h1>
 		</div>
 		<div class="card-body p-0 ">
 			<div class="container-fluid">
 
 				<!--ver qual método chamar para esse th, vai depender do dilema do collaborator-->
-				<form id="form">
+				<form id="form" th:action="@{/user/update}" method="POST" th:object="${respondent}" >
 					<div class="card">
 
 						<div class="card-body">
