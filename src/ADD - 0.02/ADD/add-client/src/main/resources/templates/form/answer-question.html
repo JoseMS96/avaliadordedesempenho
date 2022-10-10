@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{employee-layout}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<div th:replace="fragments/head-imports::scripts"></div>
+</head>
+<body>
+<div layout:fragment="body">
+	<div class="container-fluid">
+
+		<form><!--vai ter os th :action da vida aqui para pegar a resposta-->
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-body">
+						<span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
+						<br/>
+						<div class="d-flex justify-content-center">
+							<textarea cols="150" rows="4">Insira aqui a resposta</textarea>
+						</div>
+						<a class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</a><!--th:href="@{/answer/save-answer}" -->
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<div th:replace="fragments/footer-imports::scripts"></div>
+</body>
+</html>

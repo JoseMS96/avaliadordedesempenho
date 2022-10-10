@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" layout:decorate="~{employee-layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <div th:replace="fragments/head-imports::scripts"></div>
 </head>
 <body>
-Link placeholder de responder formulário
+<div layout:fragment="body">
+    <div class="container-fluid">
+        <!--th:text="${form.title}"-->
+        <h3 class="mt-4">Formulário Risco e Compliance</h3>
+        <h6>                                    <!-- th:text="${form.datetime}"-->
+            Data de criação :
+        </h6><h6>29/09/2022</h6>
+
+        <h6>                                                        <!--no h6 filho th:text="${form.datelimit}"-->
+            Data limite para resposta:
+        </h6><h6 >15/12/2022</h6>
+
+        <form><!--vai ter os th :action da vida aqui -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Perguntas:</h5>
+
+                        <ul class="list-group">
+                            <!--th:each="question : ${questions}}"                                   th:text="${question.description}"-->
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1">Qual..............?</p>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Responder</button><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
+                        </ul>
+                        <br/>
+                        <a class="btn btn-primary btn-lg btn-block">Salvar Respostas</a><!--th:href="@{/answer/save-answer}" -->
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!-- Large modal PERGUNTAR PRO LUCIANO -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form><!--vai ter os th :action da vida aqui para pegar a resposta-->
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
+                                    <br/>
+                                    <div class="d-flex justify-content-center">
+                                        <textarea cols="100" rows="4">Insira aqui a resposta</textarea>
+                                    </div>
+                                    <a class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</a><!--th:href="@{/answer/save-answer}" -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <div th:replace="fragments/footer-imports::scripts"></div>
 </body>
