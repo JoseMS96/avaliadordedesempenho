@@ -62,8 +62,10 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
+//        final String sql = "SELECT * from resposta where id = ? ;";
+
         final String sql = "SELECT R.id, R.texto_resposta, A.descricao_da_alternativa FROM resposta R " +
-                " INNER JOIN pergunta P ON R.pergunta_id = P.id INNER JOIN alternativa A on R.alternativa_resposta_id = A.id" +
+                " INNER JOIN pergunta P ON R.pergunta_id = P.id FULL OUTER JOIN alternativa A on R.alternativa_resposta_id = A.id" +
                 " WHERE R.id = ?;";
 
         try {
@@ -79,13 +81,13 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
 
                 item = new Answer();
 
-                if (resultSet.getBoolean("pergunta_fechada") == true) {
-                    item.setId(resultSet.getInt("id"));
-                    item.setAnswerText(resultSet.getString("descricao_da_alternativa"));
-                } else {
-                    item.setId(resultSet.getInt("id"));
-                    item.setAnswerText(resultSet.getString("texto_resposta"));
-                }
+//                if (resultSet.getBoolean("pergunta_fechada") == true) {
+//                item.setId(resultSet.getInt("id"));
+//                item.setAnswerText(resultSet.getString("descricao_da_alternativa"));
+//                } else {
+                item.setId(resultSet.getInt("id"));
+                item.setAnswerText(resultSet.getString("texto_resposta"));
+//                }
 
             }
 

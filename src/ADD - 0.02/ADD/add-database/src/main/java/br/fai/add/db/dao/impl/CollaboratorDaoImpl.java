@@ -145,25 +145,35 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
             connection.setAutoCommit(false);
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, entity.getOrganization().getId()); //setInt para mandar o id, o BD recebe diversos tipos de dados nos inserts, por ex datas, etc
-            preparedStatement.setString(3, entity.getFullName());
-            preparedStatement.setString(4, entity.getGender());
-            preparedStatement.setString(5, entity.getCpf());
-            preparedStatement.setString(6, entity.getPhoneNumber());
-            preparedStatement.setString(7, entity.getEmail());
+            //setInt para mandar o id, o BD recebe diversos tipos de dados nos inserts, por ex datas, etc
+
 
             if (entity.getJobTitle() != null) {
-                preparedStatement.setString(8, entity.getJobTitle());
+                preparedStatement.setInt(1, entity.getOrganization().getId());
                 preparedStatement.setString(2, UserType.EMPLOYEE.toString());
+                preparedStatement.setString(3, entity.getFullName());
+                preparedStatement.setString(4, entity.getGender());
+                preparedStatement.setString(5, entity.getCpf());
+                preparedStatement.setString(6, entity.getPhoneNumber());
+                preparedStatement.setString(7, entity.getEmail());
+                preparedStatement.setString(8, entity.getJobTitle());
+                preparedStatement.setString(9, entity.getPassword());
+                preparedStatement.setString(10, entity.getUsername());
 
             }
             if (entity.getCompanyBranch() != null) {
-                preparedStatement.setString(9, entity.getCompanyBranch());
-                preparedStatement.setString(2, UserType.REVIEWER.toString());
+                preparedStatement.setInt(1, 1);
+                preparedStatement.setString(2, UserType.EMPLOYEE.toString());
+                preparedStatement.setString(3, entity.getFullName());
+                preparedStatement.setString(4, entity.getGender());
+                preparedStatement.setString(5, entity.getCpf());
+                preparedStatement.setString(6, entity.getPhoneNumber());
+                preparedStatement.setString(7, entity.getEmail());
+                preparedStatement.setString(8, entity.getCompanyBranch());
+                preparedStatement.setString(9, entity.getPassword());
+                preparedStatement.setString(10, entity.getUsername());
             }
 
-            preparedStatement.setString(10, entity.getPassword());
-            preparedStatement.setString(11, entity.getUsername());
 
             preparedStatement.execute();
 
