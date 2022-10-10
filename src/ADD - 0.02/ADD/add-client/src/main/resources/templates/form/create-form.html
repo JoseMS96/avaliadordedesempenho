@@ -1,51 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{reviewer-layout}">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <div th:replace="fragments/head-imports::scripts"></div>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<div th:replace="fragments/head-imports::scripts"></div>
 </head>
 <body>
 
 
 <div layout:fragment="body">
-  <div class="container-fluid">
-    <h2 class="mt-4">Criar Fomulário</h2>
-
-    <form th:action="@{/form/create-form}" method="post" th:object ="${form}">
-      <div class="form-row">
-        <div class="col">
-          <label>Entre com o título:</label>
-          <input type="text" class="form-control" id="titulo">
-        </div>
-        <div class="col">
-          <label>Data limite para resposta:</label>
-          <input type="date" class="form-control" id="date" >
-          <br/>
-        </div>
-
-        <button type="button" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
-
-      </div>
-    </form>
-
-
-    </br>
-    </br>
+	<div class="container-fluid">
+		<h2 class="mt-4">Criar Fomulário</h2>
+		<form th:action="@{/form/create-form}" method="post" th:object="${form}">
+			<div class="form-row">
+				<div class="col">
+					<label>Entre com o título:</label>
+					<input type="text" class="form-control" id="titulo">
+				</div>
+				<div class="col">
+					<label>Data limite para resposta:</label>
+					<input type="date" class="form-control" id="date">
+					<br/>
+				</div>
+				<div class="d-flex justify-content-center">
+					<button type="button" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
+				</div>
+			</div>
+		</form>
 
 
-    <h3 class="mt-4">Formulários:</h3>
-    <div class="list-group">
-      <a th:href="@{/form/details-form}" class="list-group-item list-group-item-action list-group-item-light">Formulário Risco e Compliance</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
+		</br>
+		</br>
 
-    </div>
-  </div>
+
+		<h3 class="mt-4">Formulários:</h3>
+		<div class="list-group">
+			<a th:each="form : ${forms}" th:text="${form.title}"
+			   class="list-group-item list-group-item-action list-group-item-light" th:href="@{/form/details-form}">
+				<!-- th:href="@{/form/details-form/{id}  (id=${form.id})}" id para adicionar as perguntas na prox pagina -->
+				Formulário Risco e Compliance</a>
+
+		</div>
+	</div>
 </div>
 
 

@@ -1,121 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-    <div th:replace="fragments/head-imports::scripts"></div>
+	<meta charset="UTF-8">
+	<title>Cadastro</title>
+	<div th:replace="fragments/head-imports::scripts"></div>
 </head>
 <body>
-
+<!--TALVEZ SEJA NECESSARIO 2 FORMS NESSA PAGINA PARA MANDAR PERGUNTA ABERTA OU FECHADA SEPARADAMENTE-->
 <div class="container">
-    <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0 ">
-            <div class="text-center border-bottom border-primary bg-light">
-                <h1 class="h4 text-gray-900 mb-4 my-2">Adicionar Perguntas</h1>
-            </div>
-            <div layout:fragment="body">
-                <div class="container-fluid">
-                    <form id="form">
-                        <div class="card-body" >
-                            <div class="card" id="question-content">
+	<div class="card o-hidden border-0 shadow-lg my-5">
+		<div class="card-body p-0 ">
+			<div class="text-center border-bottom border-primary bg-light">
+				<h1 class="h4 text-gray-900 mb-4 my-2">Adicionar Perguntas</h1>
+			</div>
+			<div layout:fragment="body">
+				<div class="container-fluid">
+					<form id="form" > <!--th:action="@{/question/create-question}" method="POST"-->
+						<div class="card-body">
+							<div class="card" id="question-content">
 
-                                <!--PERGUNTA ABERTA-->
-                                <div class="card-body" >
-                                    <div class="form-group" id="open-question-content ">
-                                        <label id="label-open-question">Adicionar Pergunta Aberta:</label>
-                                        <textarea class="form-control" rows="3" id="text-open-question" ></textarea>
+								<!--PERGUNTA ABERTA-->
+								<div class="card-body">
+									<div class="form-group" id="open-question-content ">
+										<label id="label-open-question">Adicionar Pergunta Aberta:</label>
+										<textarea class="form-control" rows="3" id="text-open-question"></textarea>
+									</div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="#" class="btn btn-primary">Submeter</a>
                                     </div>
-                                    <a href="#" class="btn btn-primary">Submeter</a>
-                                </div>
 
-                                <!--PERGUNTA FECHADA-->
-                                <div class="card-body" >
-                                    <div class="form-group" id="closed-question-content" >
-                                        <label>Adicionar Pergunta Fechada</label>
-                                        <textarea class="form-control" rows="3" ></textarea>
+								</div>
+
+								<!--PERGUNTA FECHADA-->
+								<div class="card-body">
+									<div class="form-group" id="closed-question-content">
+										<label>Adicionar Pergunta Fechada</label>
+										<textarea class="form-control" rows="3"></textarea>
+									</div>
+									<div class="d-flex flex-row">
+										<div class="p-2">
+											<label>A-</label>
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" type="checkbox">
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" size="50" type="text">
+										</div>
+									</div>
+									<div class="d-flex flex-row">
+										<div class="p-2">
+											<label>B-</label>
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" type="checkbox">
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" size="50" type="text">
+										</div>
+									</div>
+									<div class="d-flex flex-row">
+										<div class="p-2">
+											<label>C-</label>
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" type="checkbox">
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" size="50" type="text">
+										</div>
+									</div>
+									<div class="d-flex flex-row">
+										<div class="p-2">
+											<label>D-</label>
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" type="checkbox">
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" size="50" type="text">
+										</div>
+									</div>
+									<div class="d-flex flex-row">
+										<div class="p-2">
+											<label>E-</label>
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" type="checkbox">
+										</div>
+										<div class="ml-2 p-2">
+											<input class="form-check-input" size="50" type="text">
+										</div>
+									</div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="#" class="btn btn-primary">Submeter</a>
                                     </div>
-                                    <div class="d-flex flex-row">
-                                        <div class="p-2">
-                                            <label>A-</label>
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" size ="50" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row">
-                                        <div class="p-2">
-                                            <label>B-</label>
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" size ="50" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row">
-                                        <div class="p-2">
-                                            <label>C-</label>
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" size ="50" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row">
-                                        <div class="p-2">
-                                            <label>D-</label>
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" size ="50" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row">
-                                        <div class="p-2">
-                                            <label>E-</label>
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" type="checkbox">
-                                        </div>
-                                        <div class="ml-2 p-2">
-                                            <input class="form-check-input" size ="50"type="text">
-                                        </div>
-                                    </div>
-                                    <a href="#" class="btn btn-primary">Submeter</a>
-                                </div>
 
-                            </div>
-                        </div>
-                    </form>
-                </div>
+								</div>
 
-            </div>
-        </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+							</div>
+						</div>
+					</form>
+				</div>
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+			</div>
+		</div>
+		<!-- Bootstrap core JavaScript-->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="js/sb-admin-2.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="js/demo/datatables-demo.js"></script>
-        <div th:replace="fragments/footer-imports::scripts"></div>
+		<!-- Page level plugins -->
+		<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+		<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+		<!-- Page level custom scripts -->
+		<script src="js/demo/datatables-demo.js"></script>
+		<div th:replace="fragments/footer-imports::scripts"></div>
 </body>
 
 
