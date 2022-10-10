@@ -20,7 +20,7 @@
                 </div>
 
             </div>
-            <form method="POST" , th:action="@{/account/create-Collaborator}">
+            <form method="POST" , th:action="@{/account/create-collaborator}">
 
                 <div class="col-lg-12">
                     <div class="card-body">
@@ -56,10 +56,13 @@
                         </div>
                         <div class="form-group">
                             <label>Insira a organização que o funcionario pertence:</label>
-                            <div class="d-flex justify-content-center">
-                                <select name="organization" id="organizations"  ><!-- -->
-                                    <option th:each="organization:${organizations}" th:text="${organization.name}" >ORGANIZAÇÃO</option> <!---->
-                                </select>
+                            <div class="row justify-content-md-center">
+                                <div class="col col-md-auto">
+                                    <select name="organization" id="organizations"style="width:200px"  ><!-- -->
+                                        <option >ORGANIZAÇÃO</option> <!--th:each="organization:${organizations}" th:value="${organization.name}" th:text="${organization.name}" -->
+                                    </select>
+                                </div>
+
                             </div>
                         </div>
 
