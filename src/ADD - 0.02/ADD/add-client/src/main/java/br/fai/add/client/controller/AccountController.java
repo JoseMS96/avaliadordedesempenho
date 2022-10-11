@@ -27,7 +27,6 @@ public class AccountController {
 
     @GetMapping("/sign-up-organization")
     public String getSignUpOrganizationPage() {
-
         return "account/register-organization";
     }
 
