@@ -134,7 +134,6 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
             sql += " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ;";
         }
 
-
         //o nome usuario não precisar igual no dao e no bd
 
         try {

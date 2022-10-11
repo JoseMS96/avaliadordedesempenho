@@ -68,4 +68,11 @@ create table resposta(
     alternativa_resposta_id integer references alternativa(id) on update cascade
 );
 
+create table quem_responde(
+    id serial primary key,
+    foi_respondido boolean not null,
+    funcionario_id integer not null references funcionario(id) on update cascade,
+    avaliacao_id integer not null references avaliacao(id) on update cascade
+);
+
 commit;

@@ -1,6 +1,7 @@
 package br.fai.add.model.entities;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Form extends BaseEntity {
 
@@ -8,6 +9,7 @@ public class Form extends BaseEntity {
     private Timestamp datelimit;
     private String title;
     private Collaborator collaborator;
+    private List<Collaborator> employeeList;
 
     public Timestamp getDatetime() {
         return datetime;
@@ -39,5 +41,13 @@ public class Form extends BaseEntity {
 
     public void setCollaborator(Collaborator collaborator) {
         this.collaborator = collaborator;
+    }
+
+    public List<Collaborator> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Collaborator> employeeList) {
+        this.employeeList = employeeList;
     }
 }
