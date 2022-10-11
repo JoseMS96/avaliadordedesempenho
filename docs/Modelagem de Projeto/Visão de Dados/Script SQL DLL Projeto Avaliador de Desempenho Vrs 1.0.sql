@@ -71,7 +71,8 @@ create table resposta(
 create table quem_responde(
     id serial primary key,
     foi_respondido boolean not null,
-    funcionario_id integer not null references funcionario(id) on update cascade,
+    nome_respondente character varying(100) not null,
+    colaborador_id integer not null references funcionario(id) on update cascade,
     avaliacao_id integer not null references avaliacao(id) on update cascade
 );
 
