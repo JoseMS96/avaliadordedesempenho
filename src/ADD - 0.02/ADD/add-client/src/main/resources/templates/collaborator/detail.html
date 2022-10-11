@@ -30,13 +30,23 @@
                 <div class="mb-2 card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-3">Nome</div>
-                            <div class="col-sm-9" th:text="${collaborator.fullName}">tiburssinho</div>
+                            <div class="col-sm-3">Id</div>
+                            <div class="col-sm-9" th:text="${collaborator.id}">tiburssinho</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">Name</div>
+                            <div class="col-sm-9" th:text="${collaborator.fullName}">teste@gmail.com</div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">Email</div>
                             <div class="col-sm-9" th:text="${collaborator.email}">teste@gmail.com</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">Org_Id</div>
+                            <div class="col-sm-9" th:text="${collaborator.organization.id}">Organizacao</div>
                         </div>
                         <hr>
                         <div class="row">

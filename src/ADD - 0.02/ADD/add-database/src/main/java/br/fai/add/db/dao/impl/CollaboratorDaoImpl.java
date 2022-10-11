@@ -4,6 +4,7 @@ package br.fai.add.db.dao.impl;
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.CollaboratorDao;
 import br.fai.add.model.entities.Collaborator;
+import br.fai.add.model.entities.Organization;
 import br.fai.add.model.enums.UserType;
 import org.springframework.stereotype.Repository;
 
@@ -238,6 +239,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
     public Collaborator validateUsernameAndPassword(String username, String password) {
 
         Collaborator collaborator = null;
+        Organization organization = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -263,11 +265,15 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
             }
 
             collaborator = new Collaborator();
+            organization = new Organization();
+
             collaborator.setId(resultSet.getInt("id"));
             collaborator.setFullName(resultSet.getString("nome"));
+            collaborator.setCpf(resultSet.getString("cpf"));
             collaborator.setEmail(resultSet.getString("email"));
-//            collaborator.getOrganization().setId(resultSet.getInt("organizacao_id")); //testar quando possível
 
+            organization.setId(resultSet.getInt("organizacao_id"));
+            collaborator.setOrganization(organization);
 
             String userType = resultSet.getString("tipo");
             collaborator.setType(UserType.valueOf(userType));
