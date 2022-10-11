@@ -27,15 +27,20 @@
 
                         <div class="form-group">
                             <label >Email</label>
-                            <input  class="form-control" id="email" name="email">
+                            <input  class="form-control" id="email" name="email" type="email">
+
+                        </div><div class="form-group">
+                            <label >Nome de usuário</label>
+                            <input type="text" class="form-control" id="username" name="username">
                         </div>
+
                         <div class="form-group">
                             <label for="Password">Senha</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="password">
                         </div>
                         <div class="form-group">
                             <label >Nome</label>
-                            <input type="text" class="form-control" id="username"  name="username" placeholder="Nome">
+                            <input type="text" class="form-control" id="fullName"  name="fullName" placeholder="Nome">
                         </div>
                         <div class="form-group">
                             <label>Cpf</label>
@@ -43,11 +48,11 @@
                         </div>
                         <div class="form-group">
                             <label >Setor</label>
-                            <input type="text" class="form-control" id="setor" name="setor"placeholder="Setor">
+                            <input type="text" class="form-control" id="companyBranch" name="companyBranch"placeholder="Setor">
                         </div>
                         <div class="form-group">
                             <label>Sexo</label>
-                            <input type="text" class="form-control" id="sexo" name="sexo" placeholder="Sexo">
+                            <input type="text" class="form-control" id="gender" name="gender" placeholder="Sexo">
                         </div>
                         <div class="form-group">
                             <label >Telefone</label>
@@ -87,12 +92,12 @@
                                                 <tbody>
                                                 <tr th:each="organization:${organizations}" > <!--th:each="collaborator:${collaborators}"-->
                                                     <td th:text="${organization.id}">183</td><!--th:text="${collaborator.id}"-->
-                                                    <td th:text="${organization.name}">John Doe's Bakery</td> <!--th:text="${collaborator.fullName}"-->
+                                                    <td th:text="${organization.name}" >John Doe's Bakery</td> <!--th:text="${collaborator.fullName}"-->
                                                     <!--se estiver selecionado o colaborador será vinculado a avaliação-->
 
                                                     <td>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox">
+                                                            <input class="form-check-input" type="radio">
                                                             <label class="form-check-label">Selecionar</label>
                                                         </div>
                                                     </td>
