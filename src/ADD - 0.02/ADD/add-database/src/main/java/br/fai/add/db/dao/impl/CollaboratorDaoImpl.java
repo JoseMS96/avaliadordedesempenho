@@ -161,8 +161,8 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
             }
             if (entity.getCompanyBranch() != null) {
-                preparedStatement.setInt(1, 1);
-                preparedStatement.setString(2, UserType.EMPLOYEE.toString());
+                preparedStatement.setInt(1, entity.getOrganization().getId());
+                preparedStatement.setString(2, UserType.REVIEWER.toString());
                 preparedStatement.setString(3, entity.getFullName());
                 preparedStatement.setString(4, entity.getGender());
                 preparedStatement.setString(5, entity.getCpf());
