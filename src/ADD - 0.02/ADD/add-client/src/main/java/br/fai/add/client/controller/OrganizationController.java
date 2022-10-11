@@ -36,7 +36,7 @@ public class OrganizationController {
     }
 
 
-    @GetMapping("/list-org-funcionario")
+    @GetMapping("/list-org-employee")
     public String getOrganizations2(final Model model) {
 
         List<Organization> organizations = organizationService.find();

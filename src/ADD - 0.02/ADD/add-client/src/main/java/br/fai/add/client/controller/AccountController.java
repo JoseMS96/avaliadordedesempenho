@@ -67,6 +67,8 @@ public class AccountController {
     public String create(Collaborator collaborator) {
 
         collaboratorService.create(collaborator);
+
+
         return "redirect:/3";
     }
 

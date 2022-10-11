@@ -19,21 +19,21 @@
                 </div>
 
             </div>
-            <form method="POST" , th:action="@{/account/create-organization}">
+            <form class="user" method="POST" th:action="@{/account/create-organization}">
                 <div class="col-lg-12">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="organization-nome">Nome da Organização</label>
-                            <input type="text" class="form-control" id="organization-nome" placeholder="Nome">
+                            <label >Nome da Organização</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nome">
                         </div>
                         <div class="form-group">
-                            <label for="organization-cnpj">Cnpj</label>
-                            <input type="text" class="form-control" id="organization-cnpj" placeholder="Cnpj">
+                            <label>Cnpj</label>
+                            <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Cnpj">
                         </div>
 
                         <div class="form-group">
-                            <label for="organization-telefone">Telefone</label>
-                            <input type="text" class="form-control" id="organization-telefone" placeholder="(xx)-xxxxx-xxxx">
+                            <label >Email de Contato</label>
+                            <input type="email" class="form-control" id="contactEmail" name="contactEmail" >
                         </div>
 
 
