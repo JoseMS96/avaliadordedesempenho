@@ -1,12 +1,11 @@
 package br.fai.add.model.entities;
 
 
-import java.util.List;
-
 public class Respondent extends BaseEntity {
-    private boolean Is_Active;
+
+    private boolean answered;
     private String name;
-    private List<Collaborator> collaboratorList;
+    private Collaborator collaborator;
     private Form form;
 
     public String getName() {
@@ -16,21 +15,21 @@ public class Respondent extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
-    
-    public boolean isIs_Active() {
-        return Is_Active;
+
+    public boolean isAnswered() {
+        return answered;
     }
 
-    public void setIs_Active(boolean is_Active) {
-        Is_Active = is_Active;
+    public void setAnswered(boolean answered) {
+        this.answered = answered;
     }
 
-    public List<Collaborator> getCollaboratorList() {
-        return collaboratorList;
+    public Collaborator getCollaborator() {
+        return collaborator;
     }
 
-    public void setCollaboratorList(List<Collaborator> collaboratorList) {
-        this.collaboratorList = collaboratorList;
+    public void setCollaborator(Collaborator collaborator) {
+        this.collaborator = collaborator;
     }
 
     public Form getForm() {
