@@ -55,15 +55,65 @@
                                    placeholder="(xx)-xxxxx-xxxx">
                         </div>
                         <div class="form-group">
-                            <label>Insira a organização que o funcionario pertence:</label>
-                            <div class="row justify-content-md-center">
-                                <div class="col col-md-auto">
-                                    <select name="organization" id="organizations" style="width:200px"><!-- -->
-                                        <option th:selected="${organization.id}" th:each="organization:${organizations}"
-                                                th:value="${organization.id}" th:text="${organization.name}">ORGANIZAÇÃO
-                                        </option> <!-- -->
-                                    </select>
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <!--table de seleção dos colaboradores tem que adicionar os th each-->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Organização que você pertence:</h3>
+                                            <div class="card-tools">
+                                                <div class="input-group input-group-sm" style="width: 300px;">
+                                                    <input type="text" class="form-control float-right" placeholder="Search">
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-default">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body table-responsive p-0" style="height: 200px;">
+                                            <table class="table table-head-fixed text-nowrap">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Organização</th>
+                                                    <th>Opção</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="organization:${organizations}" > <!--th:each="collaborator:${collaborators}"-->
+                                                    <td th:text="${organization.id}">183</td><!--th:text="${collaborator.id}"-->
+                                                    <td th:text="${organization.name}">John Doe's Bakery</td> <!--th:text="${collaborator.fullName}"-->
+                                                    <!--se estiver selecionado o colaborador será vinculado a avaliação-->
+
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox">
+                                                            <label class="form-check-label">Selecionar</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <br/>
+                                        </div>
+                                    </div>
+
                                 </div>
+                            </div>
+<!--                            <label>Insira a organização que o funcionario pertence:</label>-->
+<!--                            <div class="row justify-content-md-center">-->
+<!--                                <div class="col col-md-auto">-->
+<!--&lt;!&ndash;                                    <select name="organization" id="organizations" style="width:200px">&lt;!&ndash; &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <option th:selected="${organization.id}" th:each="organization:${organizations}"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                th:value="${organization.id}" th:text="${organization.name}">ORGANIZAÇÃO&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </option> &lt;!&ndash; &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </select>&ndash;&gt;-->
+<!--                                </div>-->
 
                             </div>
                         </div>
@@ -71,7 +121,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-center p-4 bg-light">
-                    <a class="btn btn-primary" th:href="@{/account/register-organization}">Voltar</a>
+<!--                    <a class="btn btn-primary" th:href="@{/account/register-organization}">Voltar</a>-->
                     <div class="ml-4">
                         <button type="submit" class="btn btn-primary ">Submit</button>
                     </div>

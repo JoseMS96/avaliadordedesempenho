@@ -38,4 +38,8 @@ public class AddRestApiConfig {
         return new QuestionDaoImpl();
     }
 
+    @Bean
+    public RespondentDao getRespondentDao() {
+        return new RespondentDaoImpl();
+    }
 }
