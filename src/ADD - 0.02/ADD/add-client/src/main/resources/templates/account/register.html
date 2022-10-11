@@ -20,39 +20,46 @@
                 </div>
 
             </div>
-            <form method="POST" th:action="@{/account/create-collaborator}" th:object="${collaborator}">
+            <form method="POST" th:action="@{/account/create-collaborator}">  <!--th:object="${collaborator}-->
 
                 <div class="col-lg-12">
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label >Email</label>
-                            <input  class="form-control" id="email" name="email">
+                            <label>Email</label>
+                            <input class="form-control" id="email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="Password">Senha</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="password">
                         </div>
                         <div class="form-group">
-                            <label >Nome</label>
-                            <input type="text" class="form-control" id="username"  name="username" placeholder="Nome">
+                            <label>Nome de Usuario</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Nome">
                         </div>
                         <div class="form-group">
                             <label>Cpf</label>
                             <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Cpf">
                         </div>
                         <div class="form-group">
-                            <label >Setor</label>
-                            <input type="text" class="form-control" id="setor" name="setor"placeholder="Setor">
+                            <label>Setor</label>
+                            <input type="text" class="form-control" id="companyBranch" name="companyBranch"
+                                   placeholder="Setor">
                         </div>
                         <div class="form-group">
                             <label>Sexo</label>
                             <input type="text" class="form-control" id="sexo" name="sexo" placeholder="Sexo">
                         </div>
                         <div class="form-group">
-                            <label >Telefone</label>
+                            <label>Telefone</label>
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
                                    placeholder="(xx)-xxxxx-xxxx">
+                        </div>
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName"
+                                   placeholder="Nome Completo">
                         </div>
                         <div class="form-group">
                             <div class="card">
@@ -64,7 +71,8 @@
                                             <h3 class="card-title">Organização que você pertence:</h3>
                                             <div class="card-tools">
                                                 <div class="input-group input-group-sm" style="width: 300px;">
-                                                    <input type="text" class="form-control float-right" placeholder="Search">
+                                                    <input type="text" class="form-control float-right"
+                                                           placeholder="Search">
                                                     <div class="input-group-append">
                                                         <button type="submit" class="btn btn-default">
                                                             <i class="fas fa-search"></i>
@@ -85,14 +93,18 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr th:each="organization:${organizations}" > <!--th:each="collaborator:${collaborators}"-->
-                                                    <td th:text="${organization.id}">183</td><!--th:text="${collaborator.id}"-->
-                                                    <td th:text="${organization.name}">John Doe's Bakery</td> <!--th:text="${collaborator.fullName}"-->
+                                                <tr th:each="organization:${organizations}">
+                                                    <!--th:each="collaborator:${collaborators}"-->
+                                                    <td th:text="${organization.id}">183</td>
+                                                    <!--th:text="${collaborator.id}"-->
+                                                    <td th:text="${organization.name}">John Doe's Bakery</td>
+                                                    <!--th:text="${collaborator.fullName}"-->
                                                     <!--se estiver selecionado o colaborador será vinculado a avaliação-->
 
                                                     <td>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox">
+                                                            <input class="form-check-input" type="checkbox" name="id"
+                                                                   th:value="${organization.id}">
                                                             <label class="form-check-label">Selecionar</label>
                                                         </div>
                                                     </td>
@@ -108,11 +120,11 @@
                             <label>Insira a organização que o funcionario pertence:</label>
                             <div class="row justify-content-md-center">
                                 <div class="col col-md-auto">
-<!--                                    <select name="organization" id="organizations" style="width:200px">-->
-<!--                                        <option th:selected="${organization.id}" th:each="organization:${organizations}"-->
-<!--                                                th:value="${organization.id}" th:text="${organization.name}">ORGANIZAÇÃO-->
-<!--                                        </option> -->
-<!--                                    </select>-->
+                                    <!--                                    <select name="organization" id="organizations" style="width:200px">-->
+                                    <!--                                        <option th:selected="${organization.id}" th:each="organization:${organizations}"-->
+                                    <!--                                                th:value="${organization.id}" th:text="${organization.name}">ORGANIZAÇÃO-->
+                                    <!--                                        </option> -->
+                                    <!--                                    </select>-->
                                 </div>
 
                             </div>
@@ -121,7 +133,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-center p-4 bg-light">
-<!--                    <a class="btn btn-primary" th:href="@{/account/register-organization}">Voltar</a>-->
+                    <!--                    <a class="btn btn-primary" th:href="@{/account/register-organization}">Voltar</a>-->
                     <div class="ml-4">
                         <button type="submit" class="btn btn-primary ">Submit</button>
                     </div>

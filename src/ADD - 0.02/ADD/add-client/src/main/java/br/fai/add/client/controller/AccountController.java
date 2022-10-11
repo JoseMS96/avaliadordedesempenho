@@ -76,7 +76,7 @@ public class AccountController {
 
         organizationService.create(organization);
 
-        return "redirect:/account/register";
+        return "redirect:/account/sign-up";
     }
 }
 //    @PostMapping("/login")
