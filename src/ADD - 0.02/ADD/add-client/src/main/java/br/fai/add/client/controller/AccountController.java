@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +78,22 @@ public class AccountController {
         organizationService.create(organization);
 
         return "redirect:/account/sign-up";
+    }
+
+    @GetMapping("/profile")
+    public String getProfilePage(final Model model, final HttpSession session) {
+
+        Collaborator collaborator = (Collaborator) session.getAttribute("currentUser");
+//        UserModel user = (UserModel) userService.findById(id);
+
+        if (collaborator == null) {
+            // futuramente iremos injetar o erro
+            return "refirect:/user/list";
+        }
+
+        model.addAttribute("collaborator", collaborator); //testar verde
+
+        return "collaborator/detail";
     }
 }
 //    @PostMapping("/login")

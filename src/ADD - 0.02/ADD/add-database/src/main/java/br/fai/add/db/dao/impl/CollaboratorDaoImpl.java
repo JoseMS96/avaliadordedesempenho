@@ -44,6 +44,8 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
                 collaborator.setEmail(resultSet.getString("email"));
                 collaborator.setCpf(resultSet.getString("cpf"));
 
+                String userType = resultSet.getString("tipo");
+                collaborator.setType(UserType.valueOf(userType));
 
                 items.add(collaborator);
             }
@@ -94,6 +96,9 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
                 item.setEmail(resultSet.getString("email"));
                 item.setJobTitle(resultSet.getString("cargo"));
                 item.setCpf(resultSet.getString("cpf"));
+
+                String userType = resultSet.getString("tipo");
+                item.setType(UserType.valueOf(userType));
 
             }
 
@@ -261,7 +266,11 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
             collaborator.setId(resultSet.getInt("id"));
             collaborator.setFullName(resultSet.getString("nome"));
             collaborator.setEmail(resultSet.getString("email"));
+//            collaborator.getOrganization().setId(resultSet.getInt("organizacao_id")); //testar quando possível
 
+
+            String userType = resultSet.getString("tipo");
+            collaborator.setType(UserType.valueOf(userType));
 
         } catch (SQLException e) {
             e.printStackTrace();

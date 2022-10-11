@@ -10,7 +10,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +38,13 @@ public class AddAuthenticationProvider implements AuthenticationProvider {
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMINISTRADOR"));
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + collaborator.getType()));
+
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+
+        HttpSession session = attributes.getRequest().getSession(false);
+
+        session.setAttribute("currentUser", collaborator);
 
         return new UsernamePasswordAuthenticationToken(collaborator, password, grantedAuthorities);
     }

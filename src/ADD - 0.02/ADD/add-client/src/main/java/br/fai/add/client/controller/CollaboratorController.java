@@ -34,6 +34,22 @@ public class CollaboratorController {
         return "form/details-form"; //retornar pagina atual para adicionar colaborador ao form?
     }
 
+    @GetMapping("/detail/{id}")
+    public String getDetailPage(@PathVariable("id") final int id, final Model model) {
+
+        Collaborator collaborator = (Collaborator) collaboratorService.findById(id);
+
+        if (collaborator == null) {
+            // futuramente iremos injetar o erro
+            return "refirect:/collaborator/list";
+        }
+
+        model.addAttribute("collaborator", collaborator);
+
+        return "collaborator/detail";
+    }
+
+
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") final int id, Model model) {
 
