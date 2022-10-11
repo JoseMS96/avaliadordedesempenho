@@ -68,7 +68,7 @@ public class AccountController {
         collaboratorService.create(collaborator);
 
 
-        return "redirect:/3";
+        return "redirect:/account/sign-in";
     }
 
     @PostMapping("/create-organization")
@@ -76,7 +76,7 @@ public class AccountController {
 
         organizationService.create(organization);
 
-        return "redirect:/account/register";
+        return "redirect:/account/sign-up";
     }
 }
 //    @PostMapping("/login")
