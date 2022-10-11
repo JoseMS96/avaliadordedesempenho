@@ -68,7 +68,7 @@ public class AccountController {
         collaboratorService.create(collaborator);
 
 
-        return "redirect:/3";
+        return "redirect:/account/sign-in";
     }
 
     @PostMapping("/create-organization")
