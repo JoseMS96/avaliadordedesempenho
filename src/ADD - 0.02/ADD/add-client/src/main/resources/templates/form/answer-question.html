@@ -5,7 +5,7 @@
 	<title>Title</title>
 	<div th:replace="fragments/head-imports::scripts"></div>
 </head>
-<body>
+<body><!--sec:authorize="hasRole('EMPLOYEE')"-->
 <div layout:fragment="body">
 	<div class="container-fluid">
 

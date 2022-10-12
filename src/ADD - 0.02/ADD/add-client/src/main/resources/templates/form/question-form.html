@@ -5,7 +5,7 @@
 	<title>Cadastro</title>
 	<div th:replace="fragments/head-imports::scripts"></div>
 </head>
-<body>
+<body sec:authorize="hasRole('REVIEWER')">
 <!--TALVEZ SEJA NECESSARIO 2 FORMS NESSA PAGINA PARA MANDAR PERGUNTA ABERTA OU FECHADA SEPARADAMENTE-->
 <div class="container">
 	<div class="card o-hidden border-0 shadow-lg my-5">

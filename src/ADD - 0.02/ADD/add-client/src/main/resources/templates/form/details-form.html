@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div layout:fragment="body">
+<div layout:fragment="body" sec:authorize="hasRole('REVIEWER')">
 
     <!--falta os th dessa pagina -->
     <div class="container-fluid">

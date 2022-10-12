@@ -19,7 +19,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" sec:authorize="hasRole('REVIEWER')">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -182,7 +182,7 @@
             <div class="modal-body">Tem certeza que deseja deixar a sessão ?</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
             </div>
         </div>
     </div>

@@ -5,18 +5,23 @@
     <title>Title</title>
     <div th:replace="fragments/head-imports::scripts"></div>
 </head>
-<body>
-<div layout:fragment="body">
-    <div class="container-fluid">
-        <!--th:text="${form.title}"-->
-        <h3 class="mt-4">Formulário Risco e Compliance</h3>
-        <h6>                                    <!-- th:text="${form.datetime}"-->
-            Data de criação :
-        </h6><h6>29/09/2022</h6>
 
-        <h6>                                                        <!--no h6 filho th:text="${form.datelimit}"-->
-            Data limite para resposta:
-        </h6><h6 >15/12/2022</h6>
+<body >
+<!--sec:authorize="hasRole('EMPLOYEE')" DENTRO DO BODY-->
+<div layout:fragment="body" >
+    <div class="container-fluid">
+        <div class="col-sm-12">
+            <!--th:text="${form.title}"-->
+            <h3 class="mt-4">Formulário Risco e Compliance</h3>
+            <h6>                                    <!-- th:text="${form.datetime}"-->
+                Data de criação :
+            </h6><h6>29/09/2022</h6>
+
+            <h6>                                                        <!--no h6 filho th:text="${form.datelimit}"-->
+                Data limite para resposta:
+            </h6><h6 >15/12/2022</h6>
+        </div>
+
 
         <form><!--vai ter os th :action da vida aqui -->
             <div class="col-sm-12">
@@ -51,6 +56,7 @@
                                         <textarea cols="100" rows="4">Insira aqui a resposta</textarea>
                                     </div>
                                     <a class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</a><!--th:href="@{/answer/save-answer}" -->
+
                                 </div>
                             </div>
                         </div>

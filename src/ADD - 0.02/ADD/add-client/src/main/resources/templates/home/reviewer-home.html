@@ -7,7 +7,7 @@
 </head>
 
 
-<body>
+<body sec:authorize="hasRole('REVIEWER')">
 
 <div layout:fragment="body">
 
@@ -33,12 +33,6 @@
 
                             </tr>
                         </thead>
-                        <div class="input-group input-group-sm mb-2">
-                            <input type="text" class="form-control" >
-                            <span class="input-group-append">
-                            <button type="button" class="btn btn-info btn-flat bg-primary">Pesquisar</button>
-                        </span>
-                        </div>
 
                         <tbody>
 

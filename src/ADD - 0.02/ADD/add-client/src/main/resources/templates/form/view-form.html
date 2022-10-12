@@ -2,43 +2,73 @@
 <html lang="en" layout:decorate="~{reviewer-layout}">
 <head>
     <meta charset="UTF-8">
-    <title>View Form</title>
+    <title>Title</title>
     <div th:replace="fragments/head-imports::scripts"></div>
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-<body>
 
-<div layout:fragment="body">
+<body sec:authorize="hasRole('REVIEWER')">
 
+<div layout:fragment="body" >
     <div class="container-fluid">
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <!--aqui tem que ter o th:text do formulario escolhido no titulo da pagina -->
-                <h6 class="m-0 font-weight-bold text-primary" >*Titulo do formulario escolhido*</h6>
-            </div>
-            <!--daqui pra baixo tem que organizar e listar as perguntas e repostas -->
+        <div class="col-sm-12">
+            <!--th:text="${form.title}"-->
+            <h3 class="mt-4">Formulário Risco e Compliance</h3>
+            <h6>                                    <!-- th:text="${form.datetime}"-->
+                Data de criação :
+            </h6><h6>29/09/2022</h6>
+
+            <h6>                                                        <!--no h6 filho th:text="${form.datelimit}"-->
+                Data limite para resposta:
+            </h6><h6 >15/12/2022</h6>
         </div>
+
+
+        <form><!--vai ter os th :action da vida aqui -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Perguntas:</h5>
+
+                        <ul class="list-group">
+                            <!--                                  -->
+                            <li class="list-group-item d-flex" th:each="question : ${questions}}" ><p class="p-0 m-0 flex-grow-1" name="description" th:text="${question.description}" >Qual..............?</p><!---->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Avaliar</button><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
+                        </ul>
+                        <br/>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!-- Large modal PERGUNTAR PRO LUCIANO -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form><!--vai ter os th :action da vida aqui para pegar a resposta-->
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
+                                    <br/>
+                                    <div class="d-flex justify-content-center">
+                                        <textarea cols="100" rows="4">Insira aqui a resposta</textarea>
+                                    </div>
+                                    <a class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</a><!--th:href="@{/answer/save-answer}" -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-</body>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
 <div th:replace="fragments/footer-imports::scripts"></div>
 </body>
 </html>
