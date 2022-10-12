@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -49,11 +50,14 @@ public class FormController {
         return "form/create-form-page";
     }
 
-    @GetMapping("/create-form")
+    @PostMapping("/create-form")
     public String Create(Form form, HttpSession session) {
 
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
-        form.setCollaborator(collaborator_reviewer);
+
+        Collaborator collaborator = (Collaborator) collaboratorService.findById(collaborator_reviewer.getId());
+
+        form.setCollaborator(collaborator);
 
         formService.create(form);
 
