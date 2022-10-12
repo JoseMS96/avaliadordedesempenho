@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -26,29 +25,41 @@ public class FormController {
     private FormService formService;
     @Autowired
     private QuestionService questionService;
-     @Autowired
+    @Autowired
     private CollaboratorService collaboratorService;
 
     @Autowired
     private AnswerService answerService;
 
+    @GetMapping("/create-form")
+    public String getPageCreate(final Model model) {
+
+
+        List<Form> forms = formService.find();
+
+        if (forms == null || forms.isEmpty()) {
+            model.addAttribute("forms", new ArrayList<Form>());
+        } else {
+
+            model.addAttribute("forms", forms);
+        }
+
+        return "form/create-form";
+    }
+
     @GetMapping("/answer-form")
     public String getAnswerFormPage() {
         return "form/answer-form";
     }
+
     @GetMapping("/question-form")
-    public String getQuestionPage(){return "form/question-form";}
+    public String getQuestionPage() {
+        return "form/question-form";
+    }
+
     @GetMapping("/employee-form")
-    public String getPageCollaborator(){
+    public String getPageCollaborator() {
         return "form/employee-form";
-    }
-    @GetMapping("/create-form")
-    public String getPageCreate(){
-        return "form/create-form";
-    }
-    @GetMapping("/details-form")
-    public String getPageDetailsForm(){
-        return "form/details-form";
     }
 
     @GetMapping("/form-details")
@@ -71,7 +82,7 @@ public class FormController {
             model.addAttribute("collaborators", collaborators);
         }
 
-        return "form/details-form"; //pagina do form details
+        return "form/details-form"; //
     }
 
 
