@@ -67,7 +67,7 @@ public class AccountController {
 
         return "redirect:/"; //testar se o redirect vai assim
     }
-    
+
 
     @GetMapping("/sign-up-employee")
     public String getSignUpEmployeePage(final Model model) {
@@ -95,13 +95,7 @@ public class AccountController {
         return "account/sign-in-page";
     }
 
-
-    @GetMapping("/register-employee")
-    public String getEmployeeSignUpPage() {
-        return "account/register-employee";
-    }
-
-
+    
     @GetMapping("/profile")
     public String getProfilePage(final Model model, final HttpSession session) {
 
