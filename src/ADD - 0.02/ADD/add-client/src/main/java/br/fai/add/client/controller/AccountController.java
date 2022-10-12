@@ -32,19 +32,12 @@ public class AccountController {
         return "account/register-organization";
     }
 
-    @GetMapping("/sign-in")
-    public String getSignInPage() {
-        return "account/sign-in-page";
-    }
+    @PostMapping("/create-organization")
+    public String create(Organization organization) {
 
-    @GetMapping("/password-recovery")
-    public String getPasswordRecoveryPage() {
-        return "account/password-recovery";
-    }
+        organizationService.create(organization);
 
-    @GetMapping("/register-employee")
-    public String getEmployeeSignUpPage() {
-        return "account/register-employee";
+        return "redirect:/account/sign-up";
     }
 
     @GetMapping("/sign-up")
@@ -59,12 +52,10 @@ public class AccountController {
             model.addAttribute("organizations", organizations);
         }
 
-
-        return "account/register"; //para a pagina dos dropdowns DOS REVIEWERS
+        return "account/register";
     }
 
-
-    @PostMapping("/create-collaborator")
+    @PostMapping("/create-reviewer")
     public String create(Collaborator collaborator, @RequestParam("orgId") final int orgId) {
 
         Organization organization = (Organization) organizationService.findById(orgId);
@@ -74,19 +65,34 @@ public class AccountController {
         collaboratorService.create(collaborator);
 
 
-        return "redirect:/account/sign-in";
+        return "redirect:/"; //testar se o redirect vai assim
+    }
+
+    @PostMapping("/create-employee")
+    public String create(Collaborator collaborator, HttpSession session) {
+
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+
+        Organization organization = (Organization) organizationService.findById(collaborator_reviewer.getOrganization().getId());
+
+        collaborator.setOrganization(organization);
+
+        collaboratorService.create(collaborator);
+
+        return "redirect:/"; //testar se o redirect vai assim
+    }
+
+    @GetMapping("/sign-in")
+    public String getSignInPage() {
+        return "account/sign-in-page";
     }
 
 
-    @PostMapping("/create-organization")
-    public String create(Organization organization) {
-
-
-
-        organizationService.create(organization);
-
-        return "redirect:/account/sign-up";
+    @GetMapping("/register-employee")
+    public String getEmployeeSignUpPage() {
+        return "account/register-employee";
     }
+
 
     @GetMapping("/profile")
     public String getProfilePage(final Model model, final HttpSession session) {
