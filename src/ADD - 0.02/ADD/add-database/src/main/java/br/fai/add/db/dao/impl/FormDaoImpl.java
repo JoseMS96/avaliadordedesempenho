@@ -22,7 +22,7 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT * FROM avaliacao A INNER JOIN quem_responde QR " +
+        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN quem_responde QR  " +
                 " ON qr.avaliacao_id = A.id " +
                 " WHERE qr.foi_respondido = true ;";
 
