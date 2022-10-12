@@ -17,9 +17,20 @@ public class FormRestController {
     private FormRestService<Form> formService;
 
 
-    @GetMapping("/find")
-    public ResponseEntity<List<Form>> find() {
-        List<Form> forms = formService.find();
+    @GetMapping("/findAnsweredForms")
+    public ResponseEntity<List<Form>> findAnsweredForms() {
+        List<Form> forms = formService.findAnsweredForms();
+
+        if (forms == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(forms);
+    }
+
+    @GetMapping("/findUnansweredForms")
+    public ResponseEntity<List<Form>> findUnansweredForms() {
+        List<Form> forms = formService.findUnansweredForms();
 
         if (forms == null) {
             return ResponseEntity.badRequest().build();

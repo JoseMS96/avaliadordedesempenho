@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +32,12 @@ public class FormController {
     @Autowired
     private AnswerService answerService;
 
+    //só quero listar formularios criado pelo reviewer atual e não realizados
     @GetMapping("/create-form")
-    public String getPageCreate(final Model model) {
+    public String getFormCreatePage(final Model model, Form form, HttpSession session) {
 
-
-        List<Form> forms = formService.find();
+        //list
+        List<Form> forms = formService.findUnansweredForms();
 
         if (forms == null || forms.isEmpty()) {
             model.addAttribute("forms", new ArrayList<Form>());
@@ -43,6 +45,12 @@ public class FormController {
 
             model.addAttribute("forms", forms);
         }
+
+        //create
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+        form.setCollaborator(collaborator_reviewer);
+
+        formService.create(form);
 
         return "form/create-form";
     }

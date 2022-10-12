@@ -12,8 +12,9 @@ import java.util.List;
 @Repository
 public class FormDaoImpl implements FormDao<Form> {
 
+
     @Override
-    public List<Form> find() {
+    public List<Form> findAnsweredForms() {
         List<Form> items = new ArrayList<>();
 
         Connection connection = null;
@@ -21,7 +22,9 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT * FROM avaliacao ;";
+        final String sql = "SELECT * FROM avaliacao A INNER JOIN quem_responde QR " +
+                " ON qr.avaliacao_id = A.id " +
+                " WHERE qr.foi_respondido = true ;";
 
         //o nome usuario não precisar igual no dao e no bd
 
@@ -55,6 +58,53 @@ public class FormDaoImpl implements FormDao<Form> {
 
         return items;
     }
+
+    @Override
+    public List<Form> findUnansweredForms() {
+        List<Form> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT * FROM avaliacao A INNER JOIN quem_responde QR " +
+                " ON qr.avaliacao_id = A.id " +
+                " WHERE qr.foi_respondido = false ;";
+
+        //o nome usuario não precisar igual no dao e no bd
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Form form = new Form();
+                form.setId(resultSet.getInt("id"));
+                form.setDatetime(resultSet.getTimestamp("data_hora"));
+                form.setDatelimit(resultSet.getTimestamp("data_limite"));
+
+                form.setTitle(resultSet.getString("titulo"));
+
+                items.add(form);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
+
 
     @Override
     public Form findById(int id) {
@@ -114,8 +164,8 @@ public class FormDaoImpl implements FormDao<Form> {
             connection.setAutoCommit(false);
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setTimestamp(1, entity.getDatetime());
-            preparedStatement.setTimestamp(1, entity.getDatelimit());
+            preparedStatement.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+            preparedStatement.setTimestamp(2, entity.getDatelimit());
             preparedStatement.setString(3, entity.getTitle());
             preparedStatement.setInt(4, entity.getCollaborator().getId());
 

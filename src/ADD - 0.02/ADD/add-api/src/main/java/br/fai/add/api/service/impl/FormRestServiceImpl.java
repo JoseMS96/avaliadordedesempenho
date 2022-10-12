@@ -15,8 +15,13 @@ public class FormRestServiceImpl implements FormRestService<Form> {
     private FormDao formDao;
 
     @Override
-    public List<Form> find() {
-        return formDao.find();
+    public List<Form> findAnsweredForms() {
+        return formDao.findAnsweredForms();
+    }
+
+    @Override
+    public List<Form> findUnansweredForms() {
+        return formDao.findUnansweredForms();
     }
 
     @Override

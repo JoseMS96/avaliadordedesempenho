@@ -27,10 +27,15 @@ public class FormServiceImpl implements FormService<Form> {
     }
 
     @Override
-    public List<Form> find() {
-
-        return restService.get("form/find");
+    public List<Form> findAnsweredForms() {
+        return restService.get("form/findAnsweredForms");
     }
+
+    @Override
+    public List<Form> findUnansweredForms() {
+        return restService.get("form/findUnansweredForms");
+    }
+
 
     @Override
     public Form findById(int id) {
