@@ -11,7 +11,7 @@
 <div layout:fragment="body">
 	<div class="container-fluid">
 		<h2 class="mt-4">Criar Fomulário</h2>
-		<form ><!--th:action="@{/form/create-form}" method="post" th:object="${form}"-->
+		<form th:action="@{/form/create-form}" method="POST" ><!---->
 			<div class="form-row">
 				<div class="col">
 					<label>Entre com o título:</label>
@@ -19,12 +19,13 @@
 				</div>
 				<div class="col">
 					<label>Data limite para resposta:</label>
-					<input name="dateLimit" type="date" class="form-control" id="date">
+					<input name="datelimit" class="form-control" id="date">
 					<br/>
 				</div>
-				<div class="d-flex justify-content-center">
-					<button type="button" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
-				</div>
+
+			</div>
+			<div class="d-flex justify-content-center">
+				<button type="submit" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
 			</div>
 		</form>
 
@@ -32,12 +33,20 @@
 		</br>
 
 		<h3 class="mt-4">Formulários:</h3>
-		<div class="list-group">
-			<!--					th:each="form:${forms}" th:text="${form.title}"-->
-			<a
-			   class="list-group-item list-group-item-action list-group-item-light" th:href="@{/form/details-form}">
-				<!-- th:href="@{/form/details-form/{id}  (id=${form.id})}" talvez fazer pelo @PATHVARIABLE AO INVES DO REQUESTPARAM-->
-				Formulário Risco e Compliance</a>
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item d-flex" th:each="form:${forms}">
+					<p class="p-0 m-0 flex-grow-1" th:text="${form.title}"></p>
+					<button class="btn btn-primary" >
+						Detalhes
+					</button><!-- th:href="@{/form/details-form/{id}  (id=${form.id})}" talvez fazer pelo @PATHVARIABLE AO INVES DO REQUESTPARAM-->
+				</li>
+			</ul>
+
+<!--			<a-->
+<!--			   class="list-group-item list-group-item-action list-group-item-light"th:each="form:${forms}" th:text="${form.title}" th:href="@{/form/details-form}">-->
+
+<!--				Formulário Risco e Compliance</a>-->
 
 		</div>
 	</div>

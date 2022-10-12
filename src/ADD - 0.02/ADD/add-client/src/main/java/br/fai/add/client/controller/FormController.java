@@ -47,7 +47,7 @@ public class FormController {
             model.addAttribute("forms", forms);
         }
 
-        return "form/create-form-page";
+        return "form/create-form";
     }
 
     @PostMapping("/create-form")

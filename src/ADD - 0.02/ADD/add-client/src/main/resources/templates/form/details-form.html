@@ -23,14 +23,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Perguntas:</h5>
 
-                        <ul class="list-group">
-                            <!--dentro do li th:each="question : ${questions}}"-->
-                            <!--dentro do paragrafo th:text="${question.description}"-->
-                            <li class="list-group-item d-flex" ><p
-                                    class="p-0 m-0 flex-grow-1" name="description" >
+                        <ul class="list-group" >
+
+                            <li class="list-group-item d-flex" th:each="question : ${questions}" ><p th:text="${question.description}"
+                                    class="p-0 m-0 flex-grow-1" >
                                 Qual..............?</p>
                                 <!-- dentro do button th:href="@{/question/delete/{id}   (id=${question.id})}"-->
-                                <button class="btn-danger" >
+                                <button class="btn btn-danger" >
                                     DELETE
                                 </button>
                         </ul>
@@ -49,7 +48,7 @@
                             <li class="list-group-item d-flex" ><p
                                    class="p-0 m-0 flex-grow-1" name="fullName">Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
                                 <button
-                                        class="btn-danger">DELETE
+                                        class="btn btn-danger">DELETE
                                 </button><!--th:href="@{collaborator/delete/{id}  (id=${collaborator.id})}"-->
                             </li>
                         </ul>

@@ -155,7 +155,7 @@ public class FormDaoImpl implements FormDao<Form> {
 
         int id = -1;
 
-        String sql = "INSERT INTO resposta(data_hora, data_limite, titulo, " +
+        String sql = "INSERT INTO avaliacao(data_hora, data_limite, titulo, " +
                 " colaborador_id) VALUES(?, ?, ?, ?) ; ";
 
         try {
