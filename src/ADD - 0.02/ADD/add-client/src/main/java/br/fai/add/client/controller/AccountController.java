@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -64,7 +65,11 @@ public class AccountController {
 
 
     @PostMapping("/create-collaborator")
-    public String create(Collaborator collaborator) {
+    public String create(Collaborator collaborator, @RequestParam("orgId") final int orgId) {
+
+        Organization organization = (Organization) organizationService.findById(orgId);
+
+        collaborator.setOrganization(organization);
 
         collaboratorService.create(collaborator);
 
@@ -72,8 +77,11 @@ public class AccountController {
         return "redirect:/account/sign-in";
     }
 
+
     @PostMapping("/create-organization")
     public String create(Organization organization) {
+
+
 
         organizationService.create(organization);
 
