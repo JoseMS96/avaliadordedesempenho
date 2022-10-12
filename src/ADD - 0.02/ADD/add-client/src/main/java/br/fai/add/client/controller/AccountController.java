@@ -79,7 +79,7 @@ public class AccountController {
 
         collaboratorService.create(collaborator);
 
-        return "redirect:/"; //testar se o redirect vai assim
+        return "redirect:/reviewer-home"; //testar se o redirect vai assim
     }
 
     @GetMapping("/sign-in")
