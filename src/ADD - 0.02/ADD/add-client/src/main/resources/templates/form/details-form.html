@@ -27,7 +27,7 @@
                             <!--dentro do li th:each="question : ${questions}}"-->
                             <!--dentro do paragrafo th:text="${question.description}"-->
                             <li class="list-group-item d-flex" ><p
-                                    class="p-0 m-0 flex-grow-1" >
+                                    class="p-0 m-0 flex-grow-1" name="description" >
                                 Qual..............?</p>
                                 <!-- dentro do button th:href="@{/question/delete/{id}   (id=${question.id})}"-->
                                 <button class="btn-danger" >
@@ -47,7 +47,7 @@
                         <ul class="list-group ">
                             <!--dentro do li th:each="collaborator : ${collaborators}" -->
                             <li class="list-group-item d-flex" ><p
-                                   class="p-0 m-0 flex-grow-1">Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
+                                   class="p-0 m-0 flex-grow-1" name="fullName">Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
                                 <button
                                         class="btn-danger">DELETE
                                 </button><!--th:href="@{collaborator/delete/{id}  (id=${collaborator.id})}"-->

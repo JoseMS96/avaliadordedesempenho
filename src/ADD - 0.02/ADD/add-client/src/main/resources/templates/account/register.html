@@ -63,9 +63,9 @@
                             <label>Insira a organização que o funcionario pertence:</label>
                             <div class="row justify-content-md-center">
                                 <div class="col col-md-auto">
-                                    <select name="organization" id="organizations" style="width:200px">
-                                        <option th:each="organization:${organizations}"
-                                                th:value="${organization.id}" th:text="${organization.name}">ORGANIZAÇÃO
+                                    <select name="orgId" style="width:200px">
+                                        <option  th:each="organization:${organizations}" th:value="${organization.id}"
+                                                 th:text="${organization.name}">ORGANIZAÇÃO
                                         </option>
                                     </select>
                                 </div>

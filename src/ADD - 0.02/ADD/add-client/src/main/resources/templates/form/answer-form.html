@@ -25,12 +25,12 @@
                         <h5 class="card-title">Perguntas:</h5>
 
                         <ul class="list-group">
-                            <!--th:each="question : ${questions}}"                                   th:text="${question.description}"-->
-                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1">Qual..............?</p>
+                            <!--th:each="question : ${questions}}"                                   -->
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1" name="description" >Qual..............?</p><!--th:text="${question.description}-->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Responder</button><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
                         </ul>
                         <br/>
-                        <a class="btn btn-primary btn-lg btn-block">Salvar Respostas</a><!--th:href="@{/answer/save-answer}" -->
+                        <a class="btn btn-primary btn-lg btn-block">Enviar</a><!--th:href="@{/answer/save-answer}" -->
                     </div>
                 </div>
             </div>
