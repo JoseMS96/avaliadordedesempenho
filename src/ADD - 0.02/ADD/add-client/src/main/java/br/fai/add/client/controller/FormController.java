@@ -33,10 +33,10 @@ public class FormController {
     private AnswerService answerService;
 
     //só quero listar formularios criado pelo reviewer atual e não realizados
-    @GetMapping("/create-form")
-    public String getFormCreatePage(final Model model, Form form, HttpSession session) {
 
-        //list
+    @GetMapping("/create-form-page")
+    public String getFormCreatePage(final Model model) {
+
         List<Form> forms = formService.findUnansweredForms();
 
         if (forms == null || forms.isEmpty()) {
@@ -46,13 +46,18 @@ public class FormController {
             model.addAttribute("forms", forms);
         }
 
-        //create
+        return "form/create-form-page";
+    }
+
+    @GetMapping("/create-form")
+    public String Create(Form form, HttpSession session) {
+
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
         form.setCollaborator(collaborator_reviewer);
 
         formService.create(form);
 
-        return "form/create-form";
+        return "redirect:/form/create-form-page";
     }
 
     @GetMapping("/answer-form")
