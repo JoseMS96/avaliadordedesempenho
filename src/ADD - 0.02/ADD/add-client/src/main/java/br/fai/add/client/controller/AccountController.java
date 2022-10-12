@@ -28,7 +28,7 @@ public class AccountController {
 
 
     @GetMapping("/sign-up-organization")
-    public String getSignUpOrganizationPage() {
+    public String getOrganizationSignUpPage() {
         return "account/register-organization";
     }
 
@@ -40,8 +40,8 @@ public class AccountController {
         return "redirect:/account/sign-up";
     }
 
-    @GetMapping("/sign-up")
-    public String getOrganizations(final Model model) {
+    @GetMapping("/sign-up-reviewer")
+    public String getReviewerSignUpPage(final Model model) {
 
         List<Organization> organizations = organizationService.find();
 
@@ -66,6 +66,14 @@ public class AccountController {
 
 
         return "redirect:/"; //testar se o redirect vai assim
+    }
+    
+
+    @GetMapping("/sign-up-employee")
+    public String getSignUpEmployeePage(final Model model) {
+
+
+        return "account/register-employee";
     }
 
     @PostMapping("/create-employee")
