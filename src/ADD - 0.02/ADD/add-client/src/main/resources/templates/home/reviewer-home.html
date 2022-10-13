@@ -26,130 +26,31 @@
                     <table class="table table-bordered  " id="dataTable" width="100%" cellspacing="0">
 
                         <thead>
-                            <tr >
-                                <th >Data</th>
-                                <th >Título do Formulário</th>
-                                <th >Opções</th>
+                        <tr>
+                            <th>Data</th>
+                            <th>Título do Formulário</th>
+                            <th>Opções</th>
 
-                            </tr>
+                        </tr>
                         </thead>
 
                         <tbody>
 
-                            <tr th:each="form:${forms}">
-                                <td th:text="${form.datelimit}">30/12/2022</td>
-                                <td th:text="${form.title}">Teste de aptidão</td>
+                        <tr th:each="form:${forms}">
+                            <td th:text="${form.datelimit}">30/12/2022</td>
+                            <td th:text="${form.title}">Teste de aptidão</td>
 
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4">
-                                            <a class="nav-link active bg-danger " href="#"  >Excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>30/12/2022</td>
-                                <td>Teste maluco</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4">
-                                            <a class="nav-link active bg-danger" href="#" >excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>30/05/2022</td>
-                                <td>Teste maluco 2</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item ">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4 ">
-                                            <a class="nav-link active bg-danger " href="#">excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>30/05/2022</td>
-                                <td>Teste maluco 2</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item ">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4 ">
-                                            <a class="nav-link active bg-danger " href="#">excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>30/05/2022</td>
-                                <td>Teste maluco 2</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item ">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4 ">
-                                            <a class="nav-link active bg-danger " href="#">excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>30/05/2022</td>
-                                <td>Teste maluco 2</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item ">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4 ">
-                                            <a class="nav-link active bg-danger " href="#">excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>30/05/2022</td>
-                                <td>Teste maluco 2</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item ">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4 ">
-                                            <a class="nav-link active bg-danger " href="#">excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>30/05/2022</td>
-                                <td>Teste maluco 2</td>
-                                <td>
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item ">
-                                            <a class="nav-link active" href="#" >Avaliar</a>
-                                        </li>
-                                        <li class="nav-item ml-4 ">
-                                            <a class="nav-link active bg-danger " href="#">excluir</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            <td>
+                                <ul class="nav nav-pills ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Avaliar</a>
+                                    </li>
+                                    <li class="nav-item ml-4">
+                                        <a class="nav-link active bg-danger " href="#">Excluir</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
 
                         </tbody>
                     </table>
