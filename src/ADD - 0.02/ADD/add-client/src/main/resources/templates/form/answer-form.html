@@ -30,12 +30,12 @@
                         <h5 class="card-title">Perguntas:</h5>
 
                         <ul class="list-group">
-                            <!--th:each="question : ${questions}}"                                   -->
-                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1" name="description" >Qual..............?</p><!--th:text="${question.description}-->
+                            <!--th:each="question : ${questions}"                                   -->
+                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1" >Qual..............?</p><!--th:text="${question.description}-->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Responder</button><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
                         </ul>
                         <br/>
-                        <a class="btn btn-primary btn-lg btn-block">Enviar</a><!--th:href="@{/answer/save-answer}" -->
+                        <a class="btn btn-primary btn-lg btn-block">Enviar</a><!--th:href="@{/form/save-form}" salvando o formulario respondido-->
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
 
 
         <!-- Large modal PERGUNTAR PRO LUCIANO -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"><!--th:if="${question.alternativesQuestion == 'false' }"-->
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <form><!--vai ter os th :action da vida aqui para pegar a resposta-->
@@ -65,6 +65,31 @@
             </div>
         </div>
 
+        <div  class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"><!--th:if="${question.alternativesQuestion == 'true' }"-->
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form><!--vai ter os th :action post que pega alternativa correta-->
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}" tirar o escrito auzul dps -->
+                                    <br/>
+                                    <div class="d-flex flex-row" ><!--th:each option-->
+                                        <div class="ml-2 p-2">
+                                            <input class="form-check-input"  type="checkbox"><!--NAME="atributodeoptionescolhida" vai ser o atributo novo em option que é alternativa que o usuario marcou-->
+                                        </div>
+                                        <div class="ml-2 p-2">
+                                            <p>alternativa A</p><!--th:text="${option.description}" tirar o escrito azul depois-->
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</a><!--th:href="@{/answer/save-answer}" -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
     </div>
 </div>
 
