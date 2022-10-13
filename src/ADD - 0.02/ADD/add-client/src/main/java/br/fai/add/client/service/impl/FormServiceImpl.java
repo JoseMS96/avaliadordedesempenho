@@ -26,6 +26,11 @@ public class FormServiceImpl implements FormService<Form> {
     }
 
     @Override
+    public List<Form> find() {
+        return restService.get("form/find");
+    }
+
+    @Override
     public List<Form> findAllForms(int id) {
         return restService.getListById("form/findAllForms/" + id);
     }

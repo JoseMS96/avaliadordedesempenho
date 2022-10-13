@@ -17,6 +17,17 @@ public class FormRestController {
     private FormRestService<Form> formService;
 
 
+    @GetMapping("/find")
+    public ResponseEntity<List<Form>> find() {
+        List<Form> forms = formService.find();
+
+        if (forms == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(forms);
+    }
+
     @GetMapping("/findAllForms/{id}")
     public ResponseEntity<List<Form>> findAllForms(@PathVariable("id") final int id) {
 

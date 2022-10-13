@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -64,6 +65,35 @@ public class FormController {
         return "redirect:/form/create-form-page";
     }
 
+    @GetMapping("/form-details/{id}")
+    public String getFormDetailPage(@PathVariable("id") final int id, final Model model) {
+
+
+        Form form = (Form) formService.findById(id);
+
+        model.addAttribute("form", form);
+
+
+        List<Question> questions = questionService.findQuestionsByForm(id);
+
+        if (questions == null || questions.isEmpty()) {
+            model.addAttribute("questions", new ArrayList<Question>());
+        } else {
+            model.addAttribute("questions", questions);
+        }
+
+
+        List<Collaborator> collaborators = collaboratorService.findCollaboratorsByForm(id);
+
+        if (collaborators == null || collaborators.isEmpty()) {
+            model.addAttribute("collaborators", new ArrayList<Collaborator>());
+        } else {
+            model.addAttribute("collaborators", collaborators);
+        }
+
+        return "form/details-form"; //
+    }
+
     @GetMapping("/answer-form")
     public String getAnswerFormPage() {
         return "form/answer-form";
@@ -84,31 +114,5 @@ public class FormController {
     public String getPageViewForm() {
         return "form/view-form";
     }
-
-
-
-    @GetMapping("/form-details")
-    public String getFormDetailPage(final Model model) {
-        //finbyId LIST AQUI id do form
-        List<Question> questions = questionService.find();
-
-        if (questions == null || questions.isEmpty()) {
-            model.addAttribute("questions", new ArrayList<Question>());
-        } else {
-            model.addAttribute("questions", questions);
-        }
-
-
-        List<Collaborator> collaborators = collaboratorService.find();
-
-        if (collaborators == null || collaborators.isEmpty()) {
-            model.addAttribute("collaborators", new ArrayList<Collaborator>());
-        } else {
-            model.addAttribute("collaborators", collaborators);
-        }
-
-        return "form/details-form"; //
-    }
-
 
 }

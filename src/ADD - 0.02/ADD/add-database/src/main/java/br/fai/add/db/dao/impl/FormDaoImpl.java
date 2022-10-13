@@ -12,6 +12,46 @@ import java.util.List;
 @Repository
 public class FormDaoImpl implements FormDao<Form> {
 
+    @Override
+    public List<Form> find() {
+        List<Form> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT * FROM avaliacao ;";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Form form = new Form();
+                form.setId(resultSet.getInt("id_a"));
+                form.setDatetime(resultSet.getTimestamp("data_criacao"));
+                form.setDatelimit(resultSet.getDate("data_limite"));
+                form.setTitle(resultSet.getString("titulo"));
+
+                items.add(form);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
 
     @Override
     public List<Form> findAllForms(int id) {
@@ -41,7 +81,6 @@ public class FormDaoImpl implements FormDao<Form> {
                 form.setId(resultSet.getInt("id_a"));
                 form.setDatetime(resultSet.getTimestamp("data_criacao"));
                 form.setDatelimit(resultSet.getDate("data_limite"));
-
                 form.setTitle(resultSet.getString("titulo"));
 
                 items.add(form);
@@ -87,7 +126,6 @@ public class FormDaoImpl implements FormDao<Form> {
                 form.setId(resultSet.getInt("id_a"));
                 form.setDatetime(resultSet.getTimestamp("data_criacao"));
                 form.setDatelimit(resultSet.getDate("data_limite"));
-
                 form.setTitle(resultSet.getString("titulo"));
 
                 items.add(form);
@@ -133,7 +171,6 @@ public class FormDaoImpl implements FormDao<Form> {
                 form.setId(resultSet.getInt("id_a"));
                 form.setDatetime(resultSet.getTimestamp("data_criacao"));
                 form.setDatelimit(resultSet.getDate("data_limite"));
-
                 form.setTitle(resultSet.getString("titulo"));
 
                 items.add(form);
@@ -210,7 +247,7 @@ public class FormDaoImpl implements FormDao<Form> {
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
-            preparedStatement.setDate(2, (Date) entity.getDatelimit());
+            preparedStatement.setDate(2, entity.getDatelimit());
             preparedStatement.setString(3, entity.getTitle());
             preparedStatement.setInt(4, entity.getCollaborator().getId());
 

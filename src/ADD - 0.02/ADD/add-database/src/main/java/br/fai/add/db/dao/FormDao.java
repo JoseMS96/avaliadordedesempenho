@@ -2,7 +2,7 @@ package br.fai.add.db.dao;
 
 import java.util.List;
 
-public interface FormDao<T> {
+public interface FormDao<T> extends BaseDao<T> {
 
     List<T> findAllForms(int id);
 
@@ -10,9 +10,4 @@ public interface FormDao<T> {
 
     List<T> findUnansweredForms(int id);
 
-    T findById(int id);
-
-    int create(T entity);
-
-    boolean deleteById(int id);
 }
