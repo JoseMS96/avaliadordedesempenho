@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/account/sign-in")
                 .loginProcessingUrl("/account/login").permitAll() //redireciona pra essa pagina qnd não é autenticado?
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/default-home")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
