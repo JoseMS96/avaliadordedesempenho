@@ -22,7 +22,7 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN colaborador C " +
+        final String sql = "SELECT distinct ON(titulo) A.titulo, A.id as id_a, * FROM avaliacao A INNER JOIN colaborador C " +
                 " ON C.id = A.colaborador_id WHERE C.id = ?;";
 
 
@@ -38,7 +38,7 @@ public class FormDaoImpl implements FormDao<Form> {
             while (resultSet.next()) {
 
                 Form form = new Form();
-                form.setId(resultSet.getInt("id"));
+                form.setId(resultSet.getInt("id_a"));
                 form.setDatetime(resultSet.getTimestamp("data_criacao"));
                 form.setDatelimit(resultSet.getDate("data_limite"));
 
@@ -67,7 +67,7 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN colaborador C " +
+        final String sql = "SELECT distinct ON(titulo) A.titulo, A.id as id_a, * FROM avaliacao A INNER JOIN colaborador C " +
                 " ON C.id = A.colaborador_id " +
                 " INNER JOIN quem_responde QR ON qr.avaliacao_id = A.id " +
                 " WHERE qr.foi_respondido = true AND C.id = ?;";
@@ -84,7 +84,7 @@ public class FormDaoImpl implements FormDao<Form> {
             while (resultSet.next()) {
 
                 Form form = new Form();
-                form.setId(resultSet.getInt("id"));
+                form.setId(resultSet.getInt("id_a"));
                 form.setDatetime(resultSet.getTimestamp("data_criacao"));
                 form.setDatelimit(resultSet.getDate("data_limite"));
 
@@ -113,7 +113,7 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN colaborador C " +
+        final String sql = "SELECT distinct ON(titulo) A.titulo, A.id as id_a, * FROM avaliacao A INNER JOIN colaborador C " +
                 " ON C.id = A.colaborador_id " +
                 " INNER JOIN quem_responde QR ON qr.avaliacao_id = A.id " +
                 " WHERE qr.foi_respondido = false AND QR.colaborador_id = ?;";
@@ -130,7 +130,7 @@ public class FormDaoImpl implements FormDao<Form> {
             while (resultSet.next()) {
 
                 Form form = new Form();
-                form.setId(resultSet.getInt("id"));
+                form.setId(resultSet.getInt("id_a"));
                 form.setDatetime(resultSet.getTimestamp("data_criacao"));
                 form.setDatelimit(resultSet.getDate("data_limite"));
 
