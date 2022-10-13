@@ -1,12 +1,13 @@
 package br.fai.add.model.entities;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
 public class Form extends BaseEntity {
 
     private Timestamp datetime;
-    private Timestamp datelimit;
+    private Date datelimit;
     private String title;
     private Collaborator collaborator;
     private List<Collaborator> employeeList;
@@ -19,11 +20,11 @@ public class Form extends BaseEntity {
         this.datetime = datetime;
     }
 
-    public Timestamp getDatelimit() {
+    public Date getDatelimit() {
         return datelimit;
     }
 
-    public void setDatelimit(Timestamp datelimit) {
+    public void setDatelimit(Date datelimit) {
         this.datelimit = datelimit;
     }
 

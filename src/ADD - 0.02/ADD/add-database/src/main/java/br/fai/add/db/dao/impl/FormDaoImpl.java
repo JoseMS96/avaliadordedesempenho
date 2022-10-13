@@ -40,8 +40,8 @@ public class FormDaoImpl implements FormDao<Form> {
 
                 Form form = new Form();
                 form.setId(resultSet.getInt("id"));
-                form.setDatetime(resultSet.getTimestamp("data_hora"));
-                form.setDatelimit(resultSet.getTimestamp("data_limite"));
+                form.setDatetime(resultSet.getTimestamp("data_criacao"));
+                form.setDatelimit(resultSet.getDate("data_limite"));
 
                 form.setTitle(resultSet.getString("titulo"));
 
@@ -86,8 +86,8 @@ public class FormDaoImpl implements FormDao<Form> {
 
                 Form form = new Form();
                 form.setId(resultSet.getInt("id"));
-                form.setDatetime(resultSet.getTimestamp("data_hora"));
-                form.setDatelimit(resultSet.getTimestamp("data_limite"));
+                form.setDatetime(resultSet.getTimestamp("data_criacao"));
+                form.setDatelimit(resultSet.getDate("data_limite"));
 
                 form.setTitle(resultSet.getString("titulo"));
 
@@ -130,8 +130,8 @@ public class FormDaoImpl implements FormDao<Form> {
                 item = new Form();
 
                 item.setId(resultSet.getInt("id"));
-                item.setDatetime(resultSet.getTimestamp("data_hora"));
-                item.setDatelimit(resultSet.getTimestamp("data_limite"));
+                item.setDatetime(resultSet.getTimestamp("data_criacao"));
+                item.setDatelimit(resultSet.getDate("data_limite"));
                 item.setTitle(resultSet.getString("titulo"));
 
             }
@@ -155,7 +155,7 @@ public class FormDaoImpl implements FormDao<Form> {
 
         int id = -1;
 
-        String sql = "INSERT INTO avaliacao(data_hora, data_limite, titulo, " +
+        String sql = "INSERT INTO avaliacao(data_criacao, data_limite, titulo, " +
                 " colaborador_id) VALUES(?, ?, ?, ?) ; ";
 
         try {
@@ -165,7 +165,7 @@ public class FormDaoImpl implements FormDao<Form> {
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
-            preparedStatement.setTimestamp(2, entity.getDatelimit());
+            preparedStatement.setDate(2, (Date) entity.getDatelimit());
             preparedStatement.setString(3, entity.getTitle());
             preparedStatement.setInt(4, entity.getCollaborator().getId());
 

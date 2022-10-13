@@ -33,8 +33,8 @@ create table colaborador (
 
 create table avaliacao (
     id serial primary key,
-    data_hora timestamp without time zone not null,
-    data_limite timestamp without time zone,
+    data_criacao timestamp without time zone not null,
+    data_limite date,
     titulo character varying(100) not null unique,
 	colaborador_id integer not null references colaborador(id) on update cascade
 );
