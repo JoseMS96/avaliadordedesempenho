@@ -58,6 +58,53 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
             ConnectionFactory.close(preparedStatement, connection, resultSet);
         }
 
+        return items;
+
+    }
+
+    @Override
+    public List<Collaborator> findCollaboratorsByForm(int id) {
+        List<Collaborator> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT C.id as id_c, * FROM colaborador C INNER JOIN avaliacao A ON C.id = A.colaborador_id " +
+                " WHERE A.id = ?;";
+
+        //o nome usuario não precisar igual no dao e no bd
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Collaborator collaborator = new Collaborator();
+                collaborator.setId(resultSet.getInt("id_c"));
+                collaborator.setFullName(resultSet.getString("nome"));
+                collaborator.setEmail(resultSet.getString("email"));
+                collaborator.setCpf(resultSet.getString("cpf"));
+
+                String userType = resultSet.getString("tipo");
+                collaborator.setType(UserType.valueOf(userType));
+
+                items.add(collaborator);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
 
         return items;
 
@@ -109,7 +156,6 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
         } finally {
             ConnectionFactory.close(preparedStatement, connection, resultSet);
         }
-
 
         return item;
 
@@ -286,4 +332,5 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
 
         return collaborator;
     }
+
 }

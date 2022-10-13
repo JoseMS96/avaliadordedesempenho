@@ -21,6 +21,13 @@ public class CollaboratorRestServiceImpl implements CollaboratorRestService<Coll
     }
 
     @Override
+    public List<Collaborator> findCollaboratorsByForm(int id) {
+        if (id < 0) return null;
+
+        return collaboratorDao.findCollaboratorsByForm(id);
+    }
+
+    @Override
     public Collaborator findById(int id) {
         if (id < 0) return null;
 
@@ -51,4 +58,6 @@ public class CollaboratorRestServiceImpl implements CollaboratorRestService<Coll
 
         return collaboratorDao.validateUsernameAndPassword(username, password);
     }
+
+
 }
