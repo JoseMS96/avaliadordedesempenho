@@ -12,9 +12,9 @@
 
     <!--falta os th dessa pagina -->
     <div class="container-fluid">
-        <h3 class="mt-4">Formulário Risco e Compliance</h3> <!-- th:text="${form.title}"-->
-        <h6 class="mt-4" >Data de criação: 29/09/2022</h6><!--th:text="$form.datetime"-->
-        <h6 class="mt-4" >Data limite para resposta: 15/12/2022</h6><!--th:text="${form.datelimit}"-->
+        <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3> <!-- th:text="${form.title}"-->
+        <h6 class="mt-4" th:text="${form.datetime}">Data de criação: 29/09/2022</h6><!--th:text="$form.datetime"-->
+        <h6 class="mt-4" th:text="${form.datelimit}">Data limite para resposta: 15/12/2022</h6><!--th:text="${form.datelimit}"-->
         <br/>
 
         <div class="row">
@@ -34,6 +34,7 @@
                                 </button>
                         </ul>
                         <br/>
+<!--                        pathvariable?-->
                         <a th:href="@{/form/question-form}" class="btn btn-primary btn-lg btn-block">Adicionar
                             Perguntas</a>
                     </div>
@@ -45,8 +46,8 @@
                         <h5 class="card-title">Colaboradores:</h5>
                         <ul class="list-group ">
                             <!--dentro do li th:each="collaborator : ${collaborators}" -->
-                            <li class="list-group-item d-flex" ><p
-                                   class="p-0 m-0 flex-grow-1" name="fullName">Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
+                            <li class="list-group-item d-flex" th:each="collaborator : ${collaborators}" ><p th:text="${collaborator.fullName}"
+                                   class="p-0 m-0 flex-grow-1" >Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
                                 <button
                                         class="btn btn-danger">DELETE
                                 </button><!--th:href="@{collaborator/delete/{id}  (id=${collaborator.id})}"-->
