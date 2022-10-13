@@ -33,6 +33,11 @@ public class QuestionServiceImpl implements QuestionService<Question> {
     }
 
     @Override
+    public List<Question> findQuestionsByForm(int id) {
+        return restService.getListById("question/findQuestionsByForm/" + id);
+    }
+
+    @Override
     public Question findById(int id) {
 
         return restService.getById("question/find/" + id, Question.class);

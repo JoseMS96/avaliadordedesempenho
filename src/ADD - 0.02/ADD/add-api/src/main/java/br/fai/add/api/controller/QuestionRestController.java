@@ -28,6 +28,18 @@ public class QuestionRestController {
         return ResponseEntity.ok(questions);
     }
 
+    @GetMapping("/findQuestionsByForm/{id}")
+    public ResponseEntity<List<Question>> findQuestionsByForm(@PathVariable("id") final int id) {
+
+        List<Question> questions = questionService.findQuestionsByForm(id);
+
+        if (questions == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(questions);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Question> findById(@PathVariable("id") final int id) {
 

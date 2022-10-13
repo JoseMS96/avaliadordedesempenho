@@ -55,6 +55,49 @@ public class QuestionDaoImpl implements QuestionDao<Question> {
     }
 
     @Override
+    public List<Question> findQuestionsByForm(int id) {
+        List<Question> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT P.id as id_p, * FROM pergunta P INNER JOIN avaliacao A ON A.id = P.avaliacao_id " +
+                " WHERE A.id = ?;";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Question question = new Question();
+                question.setId(resultSet.getInt("id_p"));
+                question.setDescription(resultSet.getString("descricao_pergunta"));
+                question.setAlternativesQuestion(resultSet.getBoolean("pergunta_fechada"));
+
+
+                items.add(question);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
+
+    @Override
     public Question findById(int id) {
         Question item = null;
 
@@ -169,4 +212,5 @@ public class QuestionDaoImpl implements QuestionDao<Question> {
 
         }
     }
+
 }

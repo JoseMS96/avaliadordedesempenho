@@ -20,6 +20,13 @@ public class QuestionRestServiceImpl implements QuestionRestService<Question> {
     }
 
     @Override
+    public List<Question> findQuestionsByForm(int id) {
+        if (id < 0) return null;
+
+        return questionDao.findQuestionsByForm(id);
+    }
+
+    @Override
     public Question findById(int id) {
         if (id < 0) return null;
 
