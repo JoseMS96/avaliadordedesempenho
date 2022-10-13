@@ -79,6 +79,14 @@ public class FormController {
         return "form/employee-form";
     }
 
+    //chamando a pagina conseguir vizualizar pra cria-la
+    @GetMapping("/view-form")
+    public String getPageViewForm() {
+        return "form/view-form";
+    }
+
+
+
     @GetMapping("/form-details")
     public String getFormDetailPage(final Model model) {
         //finbyId LIST AQUI id do form

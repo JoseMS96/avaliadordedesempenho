@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="col-sm-12">
             <!--th:text="${form.title}"-->
-            <h3 class="mt-4">Formulário Risco e Compliance</h3>
+            <h3 class="mt-4">Formulário Risco e Compliance</h3> <!--tem que tirar oq ta em azul ai quando for por o th:href-->
             <h6>                                    <!-- th:text="${form.datetime}"-->
                 Data de criação :
             </h6><h6>29/09/2022</h6>
@@ -23,47 +23,50 @@
         </div>
 
 
-        <form>
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Perguntas:</h5>
 
-                        <ul class="list-group">
+        <div class="col-sm-12"  >
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Perguntas:</h5>
 
-                            <li class="list-group-item d-flex" th:each="question : ${questions}" ><p class="p-0 m-0 flex-grow-1" name="description" th:text="${question.description}" >Qual..............?</p><!---->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Avaliar</button><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
-                        </ul>
-                        <br/>
+                    <br/>
+                    <div class="col-sm-12 "><!--th:each="question : ${questions}"-->
+                        <div class="card"><!--tem que ver se funciona th:if="${question.alternativesQuestion == 'false' }"-->
+                            <div class="card-body ">
 
-                    </div>
-                </div>
-            </div>
-        </form>
+                                <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}"-->
+                                <br/>
+                                <div class="border-bottom border-primary"></div>
+                                <span style="padding-left:40px"></span><p >Descrição da resposta</p><!--th:text=${answer.description} talvez tenha que rolar um left join para pegar o description-->
 
-
-        <!-- Large modal PERGUNTAR PRO LUCIANO -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <form><!--vai ter os th :action da vida aqui para pegar a resposta-->
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
-                                    <br/>
-                                    <div class="d-flex justify-content-center">
-                                        <textarea cols="100" rows="4">Insira aqui a resposta</textarea>
-                                    </div>
-                                    <a class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</a><!--th:href="@{/answer/save-answer}" -->
-
-                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    </br>
+                    <div class="col-sm-12">
+                        <div class="card"> <!--th:if="${question.alternativesQuestion == 'true' }"-->
+                            <div class="card-body">
+                                <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
+                                <br/>
+                                <div class="border-bottom border-primary"></div>
+                                <br/>
+                                <div class="ml-4 p-2 "><!-- th:each="option:${options}"dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
+                                    <input class="form-check-input"  type="checkbox"><p >descricao alternativa</p><!--optionDestcription dentro do <p>! -->
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+
+
+
 
     </div>
 </div>
