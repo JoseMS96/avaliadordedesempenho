@@ -54,6 +54,27 @@ public class RestServiceImpl<T> implements RestService<T> {
     }
 
     @Override
+    public List<T> getListById(String resource) {
+
+        List<T> response = null;
+
+        final RestTemplate restTemplate = new RestTemplate();
+        try {
+            final HttpEntity<String> requestEntity = new HttpEntity<>("");
+
+            ResponseEntity<List<T>> requestResponse = restTemplate.exchange(buildEndpoint(resource), HttpMethod.GET, requestEntity, new ParameterizedTypeReference<List<T>>() {
+            });
+            //para retornar objeto generics
+
+            response = requestResponse.getBody();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @Override
     public T getById(String resource, Class<T> clazz) {
 
         T response = null;

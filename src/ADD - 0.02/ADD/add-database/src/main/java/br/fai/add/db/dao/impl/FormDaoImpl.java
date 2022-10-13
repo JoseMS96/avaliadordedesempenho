@@ -14,7 +14,7 @@ public class FormDaoImpl implements FormDao<Form> {
 
 
     @Override
-    public List<Form> findAnsweredForms() {
+    public List<Form> findAllForms(int id) {
         List<Form> items = new ArrayList<>();
 
         Connection connection = null;
@@ -22,16 +22,15 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN quem_responde QR  " +
-                " ON qr.avaliacao_id = A.id " +
-                " WHERE qr.foi_respondido = true ;";
+        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN colaborador C " +
+                " ON C.id = A.colaborador_id WHERE C.id = ?;";
 
-        //o nome usuario não precisar igual no dao e no bd
 
         try {
 
             connection = ConnectionFactory.getConnection();
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
 
 
             resultSet = preparedStatement.executeQuery();
@@ -60,7 +59,7 @@ public class FormDaoImpl implements FormDao<Form> {
     }
 
     @Override
-    public List<Form> findUnansweredForms() {
+    public List<Form> findAnsweredForms(int id) {
         List<Form> items = new ArrayList<>();
 
         Connection connection = null;
@@ -68,17 +67,63 @@ public class FormDaoImpl implements FormDao<Form> {
         ResultSet resultSet = null;
 
 
-        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN quem_responde QR  " +
-                " ON qr.avaliacao_id = A.id " +
-                " WHERE qr.foi_respondido = false ;";
+        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN colaborador C " +
+                " ON C.id = A.colaborador_id " +
+                " INNER JOIN quem_responde QR ON qr.avaliacao_id = A.id " +
+                " WHERE qr.foi_respondido = true AND C.id = ?;";
 
-        //o nome usuario não precisar igual no dao e no bd
 
         try {
 
             connection = ConnectionFactory.getConnection();
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
 
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Form form = new Form();
+                form.setId(resultSet.getInt("id"));
+                form.setDatetime(resultSet.getTimestamp("data_criacao"));
+                form.setDatelimit(resultSet.getDate("data_limite"));
+
+                form.setTitle(resultSet.getString("titulo"));
+
+                items.add(form);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
+
+    @Override
+    public List<Form> findUnansweredForms(int id) {
+        List<Form> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT distinct ON(titulo) A.titulo, * FROM avaliacao A INNER JOIN colaborador C " +
+                " ON C.id = A.colaborador_id " +
+                " INNER JOIN quem_responde QR ON qr.avaliacao_id = A.id " +
+                " WHERE qr.foi_respondido = false AND QR.colaborador_id = ?;";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
 
             resultSet = preparedStatement.executeQuery();
 

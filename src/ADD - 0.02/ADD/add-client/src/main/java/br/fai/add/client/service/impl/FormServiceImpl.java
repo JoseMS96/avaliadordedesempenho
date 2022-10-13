@@ -22,30 +22,32 @@ public class FormServiceImpl implements FormService<Form> {
 
     @Override
     public int create(Form entity) {
-
         return restService.post("form/create", entity);
     }
 
     @Override
-    public List<Form> findAnsweredForms() {
-        return restService.get("form/findAnsweredForms");
+    public List<Form> findAllForms(int id) {
+        return restService.getListById("form/findAllForms/" + id);
     }
 
     @Override
-    public List<Form> findUnansweredForms() {
-        return restService.get("form/findUnansweredForms");
+    public List<Form> findAnsweredForms(int id) {
+        return restService.getListById("form/findAnsweredForms/" + id);
+    }
+
+    @Override
+    public List<Form> findUnansweredForms(int id) {
+        return restService.getListById("form/findUnansweredForms/" + id);
     }
 
 
     @Override
     public Form findById(int id) {
-
         return restService.getById("form/find/" + id, Form.class);
     }
 
     @Override
     public boolean deleteById(int id) {
-
         return restService.deleteById("form/delete/" + id);
     }
 

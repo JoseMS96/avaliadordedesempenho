@@ -4,9 +4,11 @@ import java.util.List;
 
 public interface FormRestService<T> {
 
-    List<T> findAnsweredForms();
+    List<T> findAllForms(int id);
 
-    List<T> findUnansweredForms();
+    List<T> findAnsweredForms(int id);
+
+    List<T> findUnansweredForms(int id);
 
     T findById(int id);
 

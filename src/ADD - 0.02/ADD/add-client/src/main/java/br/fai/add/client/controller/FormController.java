@@ -33,12 +33,12 @@ public class FormController {
     @Autowired
     private AnswerService answerService;
 
-    //só quero listar formularios criado pelo reviewer atual e não realizados
-
     @GetMapping("/create-form-page")
-    public String getFormCreatePage(final Model model) {
+    public String getFormCreatePage(final Model model, HttpSession session) {
 
-        List<Form> forms = formService.findUnansweredForms();
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+
+        List<Form> forms = formService.findAllForms(collaborator_reviewer.getId());
 
         if (forms == null || forms.isEmpty()) {
             model.addAttribute("forms", new ArrayList<Form>());
