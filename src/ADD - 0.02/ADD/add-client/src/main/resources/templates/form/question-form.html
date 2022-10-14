@@ -13,106 +13,32 @@
 			<div class="text-center border-bottom border-danger bg-light">
 				<h1 class="h4 text-gray-900 mb-4 my-2">Adicionar Perguntas</h1>
 			</div>
-			<div layout:fragment="body">
-				<div class="container-fluid">
-					<form id="form" > <!--th:action="@{/question/create-question}" method="POST"-->
-						<div class="card-body">
-							<div class="card" >
 
-								<!--PERGUNTA ABERTA-->
-								<div class="card-body">
-									<div class="form-group" >
-										<label id="label-open-question">Adicionar Pergunta Aberta:</label>
-										<textarea  name="description" class="form-control" rows="3" ></textarea>
-									</div>
-                                    <div class="d-flex justify-content-center">
-                                        <a type="submit" class="btn btn-primary">Submeter</a>
-                                    </div>
-
+			<div class="container-fluid">
+				<form id="form" > <!--th:action="@{/question/create-question}" method="POST"-->
+					<div class="card" >
+						<!--PERGUNTA ABERTA-->
+						<div class="col-sm-12">
+							<div class="card-body">
+								<div class="form-group" >
+									<label >Descreva o enunciado da questão:</label>
+									<textarea name="description" class="form-control" rows="3" ></textarea>
+									<br/>
+									<input class="form-check-input" name="alternativesQuestion" type="checkbox" placeholder="Pergunta Fechada "><p>Para perguntas fechadas preencher a descrição da pergunta marcar  essa opão e submeter  para adicioanr alternativas.</p>
+									<!--se isso aqui for true vc vai passar para a pagina de alternativa no redirect add-form e false manda para pagina de details-->
+								</div>
+								<br/>
+								<div class="d-flex justify-content-center">
+									<a type="submit" class="btn btn-primary">Submeter</a>
 								</div>
 							</div>
 						</div>
-					</form>
-
-					</br>
-
-					<form > <!--th:action="@{/question/create-question}" method="POST"-->
-						<div class="card-body">
-							<div class="card" >
-
-								<!--PERGUNTA FECHADA-->
-								<div class="card-body">
-									<div class="form-group" >
-										<label>Adicionar Pergunta Fechada</label>
-										<textarea class="form-control" rows="3"></textarea>
-									</div>
-									<div class="d-flex flex-row">
-										<div class="p-2">
-											<label>A-</label>
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" type="checkbox">
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" size="110" type="text">
-										</div>
-									</div>
-									<div class="d-flex flex-row">
-										<div class="p-2">
-											<label>B-</label>
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" type="checkbox">
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" size="110" type="text">
-										</div>
-									</div>
-									<div class="d-flex flex-row">
-										<div class="p-2">
-											<label>C-</label>
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" type="checkbox">
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" size="110" type="text">
-										</div>
-									</div>
-									<div class="d-flex flex-row">
-										<div class="p-2">
-											<label>D-</label>
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" type="checkbox">
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" size="110" type="text">
-										</div>
-									</div>
-									<div class="d-flex flex-row">
-										<div class="p-2">
-											<label>E-</label>
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" type="checkbox">
-										</div>
-										<div class="ml-2 p-2">
-											<input class="form-check-input" size="110" type="text">
-										</div>
-									</div>
-									<div class="d-flex justify-content-center">
-										<a href="#" class="btn btn-primary">Submeter</a>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</form>
-
-				</div>
+					</div>
+				</form>
+				</br>
 			</div>
 		</div>
+	</div>
 		<!-- Bootstrap core JavaScript-->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -130,7 +56,7 @@
 		<!-- Page level custom scripts -->
 		<script src="js/demo/datatables-demo.js"></script>
 		<div th:replace="fragments/footer-imports::scripts"></div>
-	</body>
+</body>
 
 
 </html>
