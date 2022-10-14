@@ -2,6 +2,7 @@ package br.fai.add.client.service.impl;
 
 import br.fai.add.client.service.RestService;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -87,7 +88,7 @@ public class RestServiceImpl<T> implements RestService<T> {
             //JSON para não precisar de cast
             final ResponseEntity<String> requestResponse = restTemplate.exchange(buildEndpoint(resource), HttpMethod.GET, requestEntity, String.class);
 
-            final Gson gson = new Gson();
+            final Gson gson = new GsonBuilder().setDateFormat("YY-MM-DD").create();
 
             response = gson.fromJson(requestResponse.getBody(), clazz);
 
