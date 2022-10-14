@@ -44,6 +44,12 @@ public class CollaboratorServiceImpl implements CollaboratorService<Collaborator
     }
 
     @Override
+    public List<Collaborator> findCollaboratorsByOrganization(int id) {
+        return restService.getListById("collaborator/findCollaboratorsByOrganization/" + id);
+    }
+
+
+    @Override
     public Collaborator findById(int id) {
 
         return restService.getById("collaborator/find/" + id, Collaborator.class);

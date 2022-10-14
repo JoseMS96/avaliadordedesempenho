@@ -46,16 +46,16 @@
                         <h5 class="card-title">Colaboradores:</h5>
                         <ul class="list-group ">
                             <!--dentro do li th:each="collaborator : ${collaborators}" -->
-                            <li class="list-group-item d-flex" th:each="collaborator : ${collaborators}" ><p th:text="${collaborator.fullName}"
+                            <li class="list-group-item d-flex" th:each="respondent : ${respondents}" ><p th:text="${respondent.name}"
                                    class="p-0 m-0 flex-grow-1" >Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
-                                <button
-                                        class="btn btn-danger">DELETE
-                                </button><!--th:href="@{collaborator/delete/{id}  (id=${collaborator.id})}"-->
+                                <a th:href="@{/respondent/delete/{id}  (id=${respondent.id})}"
+                                        class="btn btn-danger" role="button">DELETE
+                                </a><!--th:href="@{collaborator/delete/{id}  (id=${collaborator.id})}"-->
                             </li>
                         </ul>
                         <br/>
 
-                        <a th:href="@{/form/employee-form}" class="btn btn-primary btn-lg btn-block">Adicionar
+                        <a th:href="@{/form/add-employee/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block">Adicionar
                             Colaboradoes</a>
                     </div>
                 </div>

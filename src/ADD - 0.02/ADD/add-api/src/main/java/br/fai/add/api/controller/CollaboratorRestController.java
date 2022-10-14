@@ -41,6 +41,18 @@ public class CollaboratorRestController {
         return ResponseEntity.ok(collaborators);
     }
 
+    @GetMapping("/findCollaboratorsByOrganization/{id}")
+    public ResponseEntity<List<Collaborator>> findCollaboratorsByOrganization(@PathVariable("id") final int id) {
+
+        List<Collaborator> collaborators = collaboratorService.findCollaboratorsByOrganization(id);
+
+        if (collaborators == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(collaborators);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Collaborator> findById(@PathVariable("id") final int id) {
 

@@ -2,6 +2,7 @@ package br.fai.add.db.dao.impl;
 
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.RespondentDao;
+import br.fai.add.model.entities.Form;
 import br.fai.add.model.entities.Respondent;
 import org.springframework.stereotype.Repository;
 
@@ -88,6 +89,10 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
                 item.setName(resultSet.getString("nome_respondente"));
                 item.setAnswered(resultSet.getBoolean("foi_respondido"));
 
+                Form form = new Form();
+                form.setId(resultSet.getInt("avaliacao_id"));
+                item.setForm(form);
+
             }
 
 
@@ -123,7 +128,7 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
 //            preparedStatement.setString(2, entity.getName();
             // Decidir oq vamos fazer nessa linha, considerando que talvez utilizemos o session
             preparedStatement.setInt(3, entity.getCollaborator().getId());
-            preparedStatement.setInt(3, entity.getForm().getId());
+            preparedStatement.setInt(4, entity.getForm().getId());
 
             preparedStatement.execute();
             resultSet = preparedStatement.getGeneratedKeys();

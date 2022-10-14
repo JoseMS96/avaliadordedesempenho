@@ -11,13 +11,14 @@
 	<div class="card o-hidden border-0 shadow-lg my-5">
 		<div class="text-center border-bottom border-primary bg-light" >
 			<br/>
-			<h1 class="h4 text-gray-900 mb-4 my-2" th:text="form.title">Adicionar Colaboradores</h1>
+			<h1 class="h4 text-gray-900 mb-4 my-2" th:text="${form.title}">Adicionar Colaboradores</h1>
 		</div>
 		<div class="card-body p-0 ">
 			<div class="container-fluid">
 
 				<!--ver qual método chamar para esse th, vai depender do dilema do collaborator-->
-				<form id="form" th:action="@{/user/update}" method="POST" th:object="${respondent}" >
+				<form id="form" th:action="@{/form/add-employee}" method="POST" th:object="${respondent}" >
+					<input name="formId" th:value="${form.id}" type="hidden"><!-- Form form.id de respondente-->
 					<div class="card">
 
 						<div class="card-body">
@@ -48,16 +49,16 @@
 										</tr>
 										</thead>
 										<tbody>
-										<tr > <!--th:each="collaborator:${collaborators}"-->
-											<td >183</td><!--th:text="${collaborator.id}"-->
-											<td >John Doe</td> <!--th:text="${collaborator.fullName}"-->
+										<tr th:each="collaborator:${collaborators}"> <!--th:each="collaborator:${collaborators}"-->
+											<td  th:text="${collaborator.id}">183</td><!--th:text="${collaborator.id}"-->
+											<td th:text="${collaborator.fullName}">John Doe</td> <!--th:text="${collaborator.fullName}"-->
 											<!--se estiver selecionado o colaborador será vinculado a avaliação
 											arrumar o radio para selecionar apenas um
 											-->
 
-											<td>
+											<td >
 												<div class="form-check">
-													<input class="form-check-input" name="" type="radio">
+													<input class="form-check-input" th:value="${collaborator.id}" name="colId" type="radio">
 													<label class="form-check-label">Selecionar</label>
 												</div>
 											</td>
@@ -70,7 +71,7 @@
 							</div>
 							</br>
                             <div class="d-flex justify-content-center">
-                                <a href="#" class="btn btn-primary">Submeter</a>
+                                <button type="submit" class="btn btn-primary">Submeter</button>
                             </div>
 
 						</div>

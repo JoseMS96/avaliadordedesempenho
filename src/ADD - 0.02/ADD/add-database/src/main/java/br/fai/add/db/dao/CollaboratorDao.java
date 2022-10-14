@@ -11,4 +11,6 @@ public interface CollaboratorDao<T> extends BaseDao<T> {
 
     List<T> findCollaboratorsByForm(int id);
 
+    List<T> findCollaboratorsByOrganization(int id);
+
 }

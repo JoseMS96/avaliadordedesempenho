@@ -10,4 +10,6 @@ public interface CollaboratorService<T> extends BaseService<T> {
 
     List<T> findCollaboratorsByForm(int id);
 
+    List<T> findCollaboratorsByOrganization(int id);
+
 }

@@ -12,5 +12,7 @@ public interface CollaboratorRestService<T> extends BaseRestService<T> {
 
     List<T> findCollaboratorsByForm(int id);
 
+    List<T> findCollaboratorsByOrganization(int id);
+
 
 }

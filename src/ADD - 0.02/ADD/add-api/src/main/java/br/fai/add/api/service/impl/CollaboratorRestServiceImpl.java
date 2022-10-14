@@ -28,6 +28,13 @@ public class CollaboratorRestServiceImpl implements CollaboratorRestService<Coll
     }
 
     @Override
+    public List<Collaborator> findCollaboratorsByOrganization(int id) {
+        if (id < 0) return null;
+
+        return collaboratorDao.findCollaboratorsByOrganization(id);
+    }
+
+    @Override
     public Collaborator findById(int id) {
         if (id < 0) return null;
 

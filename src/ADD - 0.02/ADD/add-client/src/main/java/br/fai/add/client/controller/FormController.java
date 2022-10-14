@@ -1,19 +1,14 @@
 package br.fai.add.client.controller;
 
-import br.fai.add.client.service.AnswerService;
-import br.fai.add.client.service.CollaboratorService;
-import br.fai.add.client.service.FormService;
-import br.fai.add.client.service.QuestionService;
+import br.fai.add.client.service.*;
 import br.fai.add.model.entities.Collaborator;
 import br.fai.add.model.entities.Form;
 import br.fai.add.model.entities.Question;
+import br.fai.add.model.entities.Respondent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -33,6 +28,12 @@ public class FormController {
 
     @Autowired
     private AnswerService answerService;
+
+    @Autowired
+    private OrganizationService organizationService;
+
+    @Autowired
+    private RespondentService respondentService;
 
     @GetMapping("/create-form-page")
     public String getFormCreatePage(final Model model, HttpSession session) {
@@ -82,17 +83,63 @@ public class FormController {
             model.addAttribute("questions", questions);
         }
 
+        List<Respondent> respondents = respondentService.find();
 
-        List<Collaborator> collaborators = collaboratorService.findCollaboratorsByForm(id);
-
-        if (collaborators == null || collaborators.isEmpty()) {
-            model.addAttribute("collaborators", new ArrayList<Collaborator>());
+        if (respondents == null || respondents.isEmpty()) {
+            model.addAttribute("respondents", new ArrayList<Respondent>());
         } else {
-            model.addAttribute("collaborators", collaborators);
+            model.addAttribute("respondents", respondents);
         }
 
         return "form/details-form"; //
     }
+
+    @GetMapping("/add-employee/{id}")
+    public String getAddEmployeePage(@PathVariable("id") final int id, HttpSession session, final Model model) {
+
+        Form form = (Form) formService.findById(id);
+
+        model.addAttribute("form", form);
+
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+
+        List<Collaborator> collaborators = collaboratorService.findCollaboratorsByOrganization(collaborator_reviewer.getOrganization().getId());
+
+        if (collaborators == null || collaborators.isEmpty()) {
+            model.addAttribute("collaborators", new ArrayList<Collaborator>());
+        } else {
+
+            model.addAttribute("collaborators", collaborators);
+        }
+        return "form/employee-form";
+    }
+
+    @PostMapping("/add-employee")
+    public String create(Respondent respondent, @RequestParam("colId") final int colId, @RequestParam("formId") final int formId) {
+
+        Collaborator collaborator = (Collaborator) collaboratorService.findById(colId);
+        respondent.setCollaborator(collaborator);
+
+        Form form = (Form) formService.findById(formId);
+        respondent.setForm(form);
+
+        respondent.setAnswered(false);
+
+        respondentService.create(respondent);
+
+        return "redirect:/form/form-details/" + formId;
+    }
+
+//criar create do employee
+
+
+    @GetMapping("/add-question")
+    public String getAddQuestionPage() {
+
+
+        return "form/question-form";
+    }
+
 
     @GetMapping("/answer-form")
     public String getAnswerFormPage() {

@@ -61,9 +61,12 @@ public class RespondentController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") final int id, Model model) {
 
+        Respondent respondent = (Respondent) respondentService.findById(id);
+
+        int formId = respondent.getForm().getId();
+
         respondentService.deleteById(id);
 
-
-        return getRespondents(model);
+        return "redirect:/form/form-details/" + formId;
     }
 }
