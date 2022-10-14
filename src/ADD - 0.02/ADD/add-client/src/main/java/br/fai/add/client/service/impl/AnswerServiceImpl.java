@@ -39,9 +39,15 @@ public class AnswerServiceImpl implements AnswerService<Answer> {
     }
 
     @Override
+    public Answer findAnswerByQuestion(int id) {
+        return restService.getById("answer/findAnswerByQuestion/" + id, Answer.class);
+    }
+
+    @Override
     public boolean deleteById(int id) {
 
         return restService.deleteById("answer/delete/" + id);
     }
+
 
 }

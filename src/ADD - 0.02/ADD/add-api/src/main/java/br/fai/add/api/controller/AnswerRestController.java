@@ -42,6 +42,20 @@ public class AnswerRestController {
         return ResponseEntity.ok(answer);
     }
 
+    @GetMapping("/findAnswerByQuestion/{id}")
+    public ResponseEntity<Answer> findAnswerByQuestion(@PathVariable("id") final int id) {
+
+        Answer answer = answerService.findById(id);
+
+        if (answer == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+
+        return ResponseEntity.ok(answer);
+    }
+
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") final int id) {
         boolean result = answerService.deleteById(id);

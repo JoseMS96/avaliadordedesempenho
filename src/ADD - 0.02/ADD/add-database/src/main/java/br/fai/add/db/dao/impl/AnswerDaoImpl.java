@@ -104,6 +104,56 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
     }
 
     @Override
+    public Answer findAnswerByQuestion(int id) {
+
+        Answer item = null;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+//        final String sql = "SELECT * from resposta where id = ? ;";
+
+        final String sql = "SELECT R.id, R.texto_resposta, A.descricao_da_alternativa FROM resposta R " +
+                " INNER JOIN pergunta P ON R.pergunta_id = P.id FULL OUTER JOIN alternativa A on R.alternativa_resposta_id = A.id" +
+                " WHERE P.id = ?;";
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                item = new Answer();
+
+//                if (resultSet.getBoolean("pergunta_fechada") == true) {
+//                item.setId(resultSet.getInt("id"));
+//                item.setAnswerText(resultSet.getString("descricao_da_alternativa"));
+//                } else {
+                item.setId(resultSet.getInt("id"));
+                item.setAnswerText(resultSet.getString("texto_resposta"));
+//                }
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return item;
+
+    }
+
+    @Override
     public int create(Answer entity) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -179,4 +229,6 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
 
         }
     }
+
+
 }
