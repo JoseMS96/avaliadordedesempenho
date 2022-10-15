@@ -56,6 +56,7 @@ create table pergunta_img(
 create table alternativa(
 	id serial primary key,
 	descricao_da_alternativa text not null,
+    letra_rotulo character varying(1) not null,
 	correta boolean not null,
 	pergunta_id integer not null references pergunta(id) on update cascade 
 );

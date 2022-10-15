@@ -117,9 +117,10 @@ public class OptionDaoImpl implements OptionDao<Option> {
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, entity.getDescription());
-            preparedStatement.setBoolean(2, entity.isCorrectAnswer());
-            preparedStatement.setInt(3, entity.getQuestion().getId());
-            preparedStatement.setString(4, entity.getOption_label());
+            preparedStatement.setString(2, entity.getOption_label());
+            preparedStatement.setBoolean(3, entity.isCorrectAnswer());
+            preparedStatement.setInt(4, entity.getQuestion().getId());
+
 
             preparedStatement.execute();
             resultSet = preparedStatement.getGeneratedKeys();

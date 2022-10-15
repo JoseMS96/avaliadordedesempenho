@@ -151,7 +151,7 @@ public class FormController {
         int id = questionService.create(question);
 
         if (question.isAlternativesQuestion() == true) {
-            return "redirect:/form/option-test/" + id +"/"+formId;
+            return "redirect:/form/option-test/" + id + "/" + formId;
         } else {
             return "redirect:/form/form-details/" + formId;
         }
@@ -159,7 +159,7 @@ public class FormController {
 
     @GetMapping("/option-test/{id}/{formId}")
     public String getOptionTestPG(@PathVariable("id") final int id,
-                                  @PathVariable("formId")final int formId, final Model model) {
+                                  @PathVariable("formId") final int formId, final Model model) {
 
         Question question = (Question) questionService.findById(id);
         model.addAttribute("question", question);
@@ -170,8 +170,8 @@ public class FormController {
         return "form/add-option";
     }
 
-    @GetMapping("/option-create/")
-    public String create(Option option,@RequestParam("formId")final int formId, @RequestParam("questionId") final int questionId) {
+    @PostMapping("/option-create")
+    public String create(Option option, @RequestParam("formId") final int formId, @RequestParam("questionId") final int questionId) {
 
         Question question = (Question) questionService.findById(questionId);
 
@@ -192,6 +192,7 @@ public class FormController {
     public String getPageViewForm() {
         return "form/view-form";
     }
+
     @GetMapping("/add-form")
     public String getPageAddForm() {
         return "form/add-form";

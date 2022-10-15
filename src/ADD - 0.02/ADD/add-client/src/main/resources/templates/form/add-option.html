@@ -15,7 +15,7 @@
                 </div>
             </div>
             <!--PERGUNTA FECHADA ai o options vai ganhar os atributos A,B,C,D,E   e tem que ter no banco tb-->
-            <form >
+            <form id="form" th:action="@{/form/option-create}" method="POST">
                 <input type="hidden" th:value="${question.id}" name="questionId">
                 <input type="hidden" th:value="${form.id}" name="formId">
                 <!--th:text="${question}"ou thvalue e isso é o id da questao-->
@@ -30,23 +30,23 @@
                                     <div class="col col-md-auto">
                                         <label>Qual letra:</label><span style="padding-left:30px"></span>
                                         <select
-                                            name="option_label" id="option_label" style="width:100px">
-                                        <option
-                                                value="A">A
-                                        </option>
-                                        <option
-                                                value="B">B
-                                        </option>
-                                        <option
-                                                value="C">C
-                                        </option>
-                                        <option
-                                                value="D">D
-                                        </option>
-                                        <option
-                                                value="E">E
-                                        </option>
-                                    </select>
+                                                name="option_label" id="option_label" style="width:100px">
+                                            <option
+                                                    value="A">A
+                                            </option>
+                                            <option
+                                                    value="B">B
+                                            </option>
+                                            <option
+                                                    value="C">C
+                                            </option>
+                                            <option
+                                                    value="D">D
+                                            </option>
+                                            <option
+                                                    value="E">E
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
