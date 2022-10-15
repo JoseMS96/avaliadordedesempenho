@@ -102,6 +102,54 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
     }
 
     @Override
+    public List<Respondent> findRespondentsByOrg(int id) {
+        List<Respondent> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = " SELECT * FROM quem_responde QR " +
+                " INNER JOIN colaborador C ON C.id = QR.colaborador_id " +
+                " INNER JOIN avaliacao A ON A.id = QR.avaliacao_id " +
+                " WHERE organizacao_id = ? AND foi_respondido = true;";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Respondent respondent = new Respondent();
+                respondent.setId(resultSet.getInt("id"));
+                respondent.setAnswered(resultSet.getBoolean("foi_respondido"));
+                respondent.setName(resultSet.getString("nome_respondente"));
+                Form form = new Form();
+                form.setTitle(resultSet.getString("titulo"));
+                respondent.setForm(form);
+
+
+                items.add(respondent);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
+
+    @Override
     public Respondent findById(int id) {
 
         Respondent item = null;

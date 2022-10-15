@@ -38,6 +38,11 @@ public class RespondentServiceImpl implements RespondentService<Respondent> {
     }
 
     @Override
+    public List<Respondent> findRespondentsByOrg(int id) {
+        return restService.getListById("respondent/findRespondentsByOrg/" + id);
+    }
+
+    @Override
     public Respondent findById(int id) {
 
         return restService.getById("respondent/find/" + id, Respondent.class);

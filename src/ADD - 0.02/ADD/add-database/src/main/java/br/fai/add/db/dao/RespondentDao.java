@@ -6,4 +6,6 @@ public interface RespondentDao<T> extends BaseDao<T> {
 
     List<T> findRespondentsByForm(int id);
 
+    List<T> findRespondentsByOrg(int id);
+
 }

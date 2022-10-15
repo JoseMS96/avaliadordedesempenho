@@ -6,4 +6,6 @@ public interface RespondentService<T> extends BaseService<T> {
 
     List<T> findRespondentsByForm(int id);
 
+    List<T> findRespondentsByOrg(int id);
+
 }

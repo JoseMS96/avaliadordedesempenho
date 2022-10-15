@@ -25,6 +25,12 @@ public class RespondentRestServiceImpl implements RespondentRestService<Responde
     }
 
     @Override
+    public List<Respondent> findRespondentsByOrg(int id) {
+        return respondentDao.findRespondentsByOrg(id);
+    }
+
+
+    @Override
     public Respondent findById(int id) {
         if (id < 0) return null;
 

@@ -40,6 +40,18 @@ public class RespondentRestController {
         return ResponseEntity.ok(respondents);
     }
 
+    @GetMapping("/findRespondentsByOrg/{id}")
+    public ResponseEntity<List<Respondent>> findRespondentsByOrg(@PathVariable("id") final int id) {
+
+        List<Respondent> respondents = respondentService.findRespondentsByOrg(id);
+
+        if (respondents == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(respondents);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Respondent> findById(@PathVariable("id") final int id) {
 

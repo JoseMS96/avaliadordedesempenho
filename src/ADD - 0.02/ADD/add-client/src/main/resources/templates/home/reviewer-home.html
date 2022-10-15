@@ -28,7 +28,7 @@
                         <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Cargo</th>
+                            <th>Titulo do formulário</th>
                             <th>Opções</th>
 
                         </tr>
@@ -36,14 +36,15 @@
 
                         <tbody>
 
-                        <tr th:each="collaborator:${collaborators}">
-                            <td th:text="${collaborator.fullName}">30/12/2022</td>
-                            <td th:text="${collaborator.jobTitle}">Teste de aptidão</td>
+                        <tr th:each="respondent:${respondents}">
+                            <td th:text="${respondent.name}">30/12/2022</td>
+                            <td th:text="${respondent.form.title}">Teste de aptidão</td>
 
                             <td>
                                 <ul class="nav nav-pills ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#">Avaliar</a><!-- vai mandar para a listagem de avaliações daquele colaborador-->
+                                        <a class="nav-link active" href="#">Avaliar</a>
+                                        <!-- vai mandar para a listagem de avaliações daquele colaborador-->
                                     </li>
 
                                 </ul>
