@@ -1,76 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" layout:decorate="~{reviewer-layout}">
+<html lang="pt-BR" layout:decorate="~{employee-layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <div th:replace="fragments/head-imports::scripts"></div>
+    <title>Home</title>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
-<body sec:authorize="hasRole('REVIEWER')">
+<!--sec:authorize="hasRole('REVIEWER')"-->
+<body>
 
-<div layout:fragment="body" >
+<div layout:fragment="body">
+
     <div class="container-fluid">
-        <div class="col-sm-12" >
-            <!---->
-            <h3 class="mt-4"th:text="${form.title}">Formulário Risco e Compliance</h3> <!--tem que tirar oq ta em azul ai quando for por o th:href-->
-            <h6 th:text="${form.datetime}">                                    <!-- -->
-                Data de criação :
-            </h6><h6>29/09/2022</h6>
 
-            <h6 th:text="${form.datelimit}">                                                        <!--no h6 filho -->
-                Data limite para resposta:
-            </h6><h6 >15/12/2022</h6>
-        </div>
+        <!-- Page Heading -->
+        <p class="mb-4">Abaixo está listado os formulários do colaborador:<label></label></p><!--dentro do label th:text="${collaborator.fullName}"}-->
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Formulários :</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                        <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Título do Formulário</th>
+                            <th>Opções</th>
+
+                        </tr>
+                        </thead>
 
 
+                        <tbody>
 
-        <div class="col-sm-12"  >
-            <div class="card border border-danger " >
-                <div class="card-body">
-                    <h5 class="card-title">Perguntas:</h5>
+                        <tr th:each="form:${forms}">
+                            <td th:text="${form.datelimit}">30/12/2022</td>
+                            <td th:text="${form.title}">Teste de aptidão</td>
 
-                    <br/>
-                    <div class="col-sm-12" th:each="question : ${questions}">
-                        <!---->
-                        <div class="card border border-danger" th:if="${question.alternativesQuestion == 'false' }"><!--tem que ver se funciona -->
-                            <div class="card-body ">
+                            <td>
+                                <ul class="nav nav-pills ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Responder</a><!--th:href="@{}" id da avaliação que vai ser visualizada em view-form-question-->
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
 
-                                <span style="padding-left:40px"></span><p th:text="${question.description}" >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo -->
-                                <br/>
-                                <div class="border-bottom border-danger"></div>
-                                <span style="padding-left:40px"></span><p th:text=${answer.description} >Descrição da resposta</p><!-- talvez tenha que rolar um left join para pegar o description-->
-
-                            </div>
-                        </div>
-                    </div>
-                    </br>
-                    <div class="col-sm-12" th:each="question : ${questions}"><!---->
-                        <div class="card border border-danger" th:if="${question.alternativesQuestion == 'true' }"> <!---->
-                            <div class="card-body ">
-                                <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
-                                <br/>
-                                <div class="border-bottom border-danger"></div>
-                                <br/>
-                                <div class="ml-4 p-2 " th:each="option:${options}"><!-- dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
-                                    <input class="form-check-input" th:value="${option.correctAnswer}" type="checkbox"><p th:text="${option.description}">descricao alternativa</p><!--optionDestcription dentro do <p>! -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            </br>
         </div>
-
-
-
-
     </div>
+
 </div>
 
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<div th:replace="fragments/footer-imports::scripts"></div>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 </body>
+
 </html>
