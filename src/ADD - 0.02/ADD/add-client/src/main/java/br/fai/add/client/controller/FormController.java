@@ -1,10 +1,8 @@
-
-
 package br.fai.add.client.controller;
 
 import br.fai.add.client.service.*;
+import br.fai.add.client.service.impl.AnsweredQuestionServiceImpl;
 import br.fai.add.model.entities.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +35,9 @@ public class FormController {
     @Autowired
     private RespondentService respondentService;
 
+    @Autowired
+    private AnsweredQuestionServiceImpl answeredQuestionService;
+
     @GetMapping("/create-form-page")
     public String getFormCreatePage(final Model model, HttpSession session) {
 
@@ -51,7 +52,7 @@ public class FormController {
             model.addAttribute("forms", forms);
         }
 
-        model.addAttribute("currentUser",collaborator_reviewer);
+        model.addAttribute("currentUser", collaborator_reviewer);
 
         return "form/create-form";
     }
@@ -71,7 +72,7 @@ public class FormController {
     }
 
     @GetMapping("/form-details/{id}")
-    public String getFormDetailPage(@PathVariable("id") final int id, final Model model,HttpSession session) {
+    public String getFormDetailPage(@PathVariable("id") final int id, final Model model, HttpSession session) {
 
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
         Form form = (Form) formService.findById(id);
@@ -95,7 +96,7 @@ public class FormController {
             model.addAttribute("respondents", respondents);
         }
 
-        model.addAttribute("currentUser",collaborator_reviewer);
+        model.addAttribute("currentUser", collaborator_reviewer);
         return "form/details-form"; //
     }
 
@@ -104,13 +105,23 @@ public class FormController {
 
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
 
-        Collaborator collaborator = (Collaborator) collaboratorService.findById(id);
-        model.addAttribute("collaborator",collaborator);
+        Respondent respondent = (Respondent) respondentService.findById(id);
+        model.addAttribute("respondent", respondent);
+
+
         Form form = (Form) formService.findById(formId);
         model.addAttribute("form", form);
 
+        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find();
 
-        model.addAttribute("currentUser",collaborator_reviewer);
+        if (answeredQuestions == null || answeredQuestions.isEmpty()) {
+            model.addAttribute("answeredQuestions", new ArrayList<AnsweredQuestion>());
+        } else {
+            model.addAttribute("answeredQuestions", answeredQuestions);
+        }
+
+
+        model.addAttribute("currentUser", collaborator_reviewer);
         return "form/view-form-question";
     }
 
@@ -131,7 +142,7 @@ public class FormController {
 
             model.addAttribute("collaborators", collaborators);
         }
-        model.addAttribute("currentUser",collaborator_reviewer);
+        model.addAttribute("currentUser", collaborator_reviewer);
 
         return "form/employee-form";
     }
@@ -156,14 +167,14 @@ public class FormController {
 
 
     @GetMapping("/add-question-page/{id}")
-    public String getAddQuestionPage(@PathVariable("id") final int id, final Model model,HttpSession session) {
+    public String getAddQuestionPage(@PathVariable("id") final int id, final Model model, HttpSession session) {
         Form form = (Form) formService.findById(id);
 
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
 
         model.addAttribute("form", form);
 
-        model.addAttribute("currentUser",collaborator_reviewer);
+        model.addAttribute("currentUser", collaborator_reviewer);
         return "form/question-form";
     }
 
@@ -212,6 +223,7 @@ public class FormController {
     public String getAnswerFormPage() {
         return "form/answer-form";
     }
+
     @GetMapping("/answer-question")
     public String getAnswerQuestionPage() {
         return "form/answer-question";

@@ -2,11 +2,9 @@ package br.fai.add.model.entities;
 
 public class AnsweredQuestion {
 
-
     private Question question;
 
     private Answer answer;
-
 
 
     public Question getQuestion() {
