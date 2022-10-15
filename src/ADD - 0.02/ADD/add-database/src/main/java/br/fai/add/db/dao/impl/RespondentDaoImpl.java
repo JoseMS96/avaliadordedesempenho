@@ -110,7 +110,7 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
         ResultSet resultSet = null;
 
 
-        final String sql = " SELECT * FROM quem_responde QR " +
+        final String sql = " SELECT A.id as id_a, * FROM quem_responde QR " +
                 " INNER JOIN colaborador C ON C.id = QR.colaborador_id " +
                 " INNER JOIN avaliacao A ON A.id = QR.avaliacao_id " +
                 " WHERE organizacao_id = ? AND foi_respondido = true;";
@@ -130,7 +130,9 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
                 respondent.setId(resultSet.getInt("id"));
                 respondent.setAnswered(resultSet.getBoolean("foi_respondido"));
                 respondent.setName(resultSet.getString("nome_respondente"));
+
                 Form form = new Form();
+                form.setId(resultSet.getInt("id_a"));
                 form.setTitle(resultSet.getString("titulo"));
                 respondent.setForm(form);
 

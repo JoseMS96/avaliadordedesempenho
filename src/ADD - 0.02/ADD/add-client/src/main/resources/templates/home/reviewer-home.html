@@ -43,8 +43,8 @@
                             <td>
                                 <ul class="nav nav-pills ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#">Avaliar</a>
-                                        <!-- vai mandar para a listagem de avaliações daquele colaborador-->
+                                        <a class="nav-link active" th:href="@{/form/view-form-question/{id}/{formId}  (id=${respondent.id}) (formId=${respondent.form.id})  }">Avaliar</a><!--th:href="@{/form/view-form-question/{id}/{formId}  (id=${respondent.id}) (formId=${form.id})}"-->
+                                        <!-- vai mandar para a listagem de avaliações daquele colaborador   th:href="@{/form/add-employee-page/{id}  (id=${form.id})}"-->
                                     </li>
 
                                 </ul>

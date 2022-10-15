@@ -4,6 +4,7 @@ package br.fai.add.client.controller;
 
 import br.fai.add.client.service.*;
 import br.fai.add.model.entities.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -98,21 +99,19 @@ public class FormController {
         return "form/details-form"; //
     }
 
-    @GetMapping("/view-form/{id}")
-    public String getPageViewForm(@PathVariable("id") final int id, final Model model, HttpSession session) {
+    @GetMapping("/view-form-question/{id}/{formId}")
+    public String getPageViewForm(@PathVariable("id") final int id, @PathVariable("formId") final int formId, final Model model, HttpSession session) {
 
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
 
-        Form form = (Form) formService.findById(id);
+        Collaborator collaborator = (Collaborator) collaboratorService.findById(id);
+        model.addAttribute("collaborator",collaborator);
+        Form form = (Form) formService.findById(formId);
         model.addAttribute("form", form);
-
-        AnsweredQuestion answeredQuestion = new AnsweredQuestion();
-
-
 
 
         model.addAttribute("currentUser",collaborator_reviewer);
-        return "form/view-form";
+        return "form/view-form-question";
     }
 
     @GetMapping("/add-employee-page/{id}")
