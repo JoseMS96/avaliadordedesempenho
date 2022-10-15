@@ -16,7 +16,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <span style="padding-left:40px"></span>
+                            <input class="form-check-input" type="hidden" name="questionId" th:value="${question.id}">
                             <p th:text="${question.description}">Descrição da pergunta</p>
                             <!--(gambiarra)span serve para dar o espacinho de paragrafo th:text="${question.description}"-->
                             <br/>
@@ -25,7 +25,7 @@
                                           rows="4">	</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</button>
-                            <!--th:href="@{/answer/save-answer}" -->
+
                         </div>
                     </div>
                 </div>
@@ -41,21 +41,25 @@
                 <div class="col-sm-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <span style="padding-left:40px"></span>
+                            <input class="form-check-input" type="hidden" name="questionId" th:value="${question.id}">
                             <p th:text="${question.description}">Descrição da pergunta</p>
                             <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}" tirar o escrito auzul dps -->
                             <br/>
 
-                            <div class="form-check" th:each="option : ${options}"><!--th:each="option : ${options}"-->
+                            <div class="form-check flex-row" th:each="option : ${options}"><!--th:each="option : ${options}"-->
+
+
                                 <input class="form-check-input" type="radio" name="optionId" th:value="${option.id}">
+                                <span style="padding-left:20px"></span>
+                                <label class="pr-6" name="option_label " th:text="${option.option_label}"></label>
+                                <label>-</label>
                                 <label class="form-check-label" th:text="${option.description}">
                                     <!--th:text=${option.description}-->
                                     descriçao alternativa
                                 </label>
-                            </div>
 
-                            <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</button>
-                            <!--create resposta -->
+                            </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</button>
 
                         </div>
                     </div>
