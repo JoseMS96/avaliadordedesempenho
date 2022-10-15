@@ -42,6 +42,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
                 Collaborator collaborator = new Collaborator();
                 collaborator.setId(resultSet.getInt("id"));
                 collaborator.setFullName(resultSet.getString("nome"));
+                collaborator.setUsername(resultSet.getString("nome_usuario"));
                 collaborator.setEmail(resultSet.getString("email"));
                 collaborator.setCpf(resultSet.getString("cpf"));
 
@@ -90,6 +91,8 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
                 Collaborator collaborator = new Collaborator();
                 collaborator.setId(resultSet.getInt("id_c"));
                 collaborator.setFullName(resultSet.getString("nome"));
+                collaborator.setUsername(resultSet.getString("nome_usuario"));
+
                 collaborator.setEmail(resultSet.getString("email"));
                 collaborator.setCpf(resultSet.getString("cpf"));
 
@@ -140,6 +143,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
                 collaborator.setFullName(resultSet.getString("nome"));
                 collaborator.setEmail(resultSet.getString("email"));
                 collaborator.setCpf(resultSet.getString("cpf"));
+                collaborator.setUsername(resultSet.getString("nome_usuario"));
 
                 String userType = resultSet.getString("tipo");
                 collaborator.setType(UserType.valueOf(userType));
@@ -191,6 +195,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
                 item.setEmail(resultSet.getString("email"));
                 item.setJobTitle(resultSet.getString("cargo"));
                 item.setCpf(resultSet.getString("cpf"));
+                item.setUsername(resultSet.getString("nome_usuario"));
 
                 String userType = resultSet.getString("tipo");
                 item.setType(UserType.valueOf(userType));
@@ -364,6 +369,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao<Collaborator> {
             collaborator.setFullName(resultSet.getString("nome"));
             collaborator.setCpf(resultSet.getString("cpf"));
             collaborator.setEmail(resultSet.getString("email"));
+            collaborator.setUsername(resultSet.getString("nome_usuario"));
 
             organization.setId(resultSet.getInt("organizacao_id"));
             collaborator.setOrganization(organization);
