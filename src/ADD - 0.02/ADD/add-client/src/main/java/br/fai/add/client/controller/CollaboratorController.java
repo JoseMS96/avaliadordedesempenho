@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +36,11 @@ public class CollaboratorController {
     }
 
     @GetMapping("/detail/{id}")
-    public String getDetailPage(@PathVariable("id") final int id, final Model model) {
+    public String getDetailPage(@PathVariable("id") final int id, final Model model, HttpSession session) {
 
         Collaborator collaborator = (Collaborator) collaboratorService.findById(id);
+        Collaborator currentUser = (Collaborator) session.getAttribute("currentUser");
+
 
         if (collaborator == null) {
             // futuramente iremos injetar o erro
@@ -45,7 +48,7 @@ public class CollaboratorController {
         }
 
         model.addAttribute("collaborator", collaborator);
-
+        model.addAttribute("currentUser",currentUser);
         return "collaborator/detail";
     }
 
