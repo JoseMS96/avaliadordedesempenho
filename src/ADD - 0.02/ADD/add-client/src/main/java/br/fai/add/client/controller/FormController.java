@@ -100,23 +100,16 @@ public class FormController {
 
     @GetMapping("/view-form/{id}")
     public String getPageViewForm(@PathVariable("id") final int id, final Model model, HttpSession session) {
-        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
-        Form form = (Form) formService.findById(id);
 
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+
+        Form form = (Form) formService.findById(id);
         model.addAttribute("form", form);
 
-        List<Question> questions = questionService.findQuestionsByForm(id);
+        AnsweredQuestion answeredQuestion = new AnsweredQuestion();
 
-        for (Question question : questions) {
-            Answer answer = (Answer) answerService.findAnswerByQuestion(question.getId());
-            model.addAttribute("answer", answer);
-        }
 
-        if (questions == null || questions.isEmpty()) {
-            model.addAttribute("questions", new ArrayList<Question>());
-        } else {
-            model.addAttribute("questions", questions);
-        }
+
 
         model.addAttribute("currentUser",collaborator_reviewer);
         return "form/view-form";
