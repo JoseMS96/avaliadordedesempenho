@@ -1,6 +1,7 @@
 package br.fai.add.client.controller;
 
 import br.fai.add.client.service.QuestionService;
+import br.fai.add.model.entities.Collaborator;
 import br.fai.add.model.entities.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,17 +23,17 @@ public class QuestionController {
     private QuestionService questionService;
 
     @GetMapping("/list")
-    public String getQuestions(final Model model) {
+    public String getQuestions(final Model model, HttpSession session) {
 
         List<Question> questions = questionService.find();
-
+        Collaborator currentUser = (Collaborator) session.getAttribute("currentUser");
         if (questions == null || questions.isEmpty()) {
             model.addAttribute("questions", new ArrayList<Question>());
         } else {
 
             model.addAttribute("questions", questions);
         }
-
+        model.addAttribute("currentUser",currentUser);
         return "form/details-form"; //pagina que lista as perguntas
     }
 
