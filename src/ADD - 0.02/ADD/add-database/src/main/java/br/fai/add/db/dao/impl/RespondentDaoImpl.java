@@ -58,6 +58,50 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
     }
 
     @Override
+    public List<Respondent> findRespondentsByForm(int id) {
+        List<Respondent> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = " SELECT * FROM quem_responde QR INNER JOIN colaborador C ON " +
+                " C.id = QR.colaborador_id INNER JOIN avaliacao A ON QR.avaliacao_id = A.id " +
+                " WHERE A.id = ?";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Respondent respondent = new Respondent();
+                respondent.setId(resultSet.getInt("id"));
+                respondent.setAnswered(resultSet.getBoolean("foi_respondido"));
+                respondent.setName(resultSet.getString("nome_respondente"));
+
+
+                items.add(respondent);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
+
+    @Override
     public Respondent findById(int id) {
 
         Respondent item = null;
@@ -184,4 +228,6 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
 
         }
     }
+
+
 }

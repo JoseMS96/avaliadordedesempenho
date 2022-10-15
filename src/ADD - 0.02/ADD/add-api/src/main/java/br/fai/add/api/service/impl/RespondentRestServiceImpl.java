@@ -20,6 +20,11 @@ public class RespondentRestServiceImpl implements RespondentRestService<Responde
     }
 
     @Override
+    public List<Respondent> findRespondentsByForm(int id) {
+        return respondentDao.findRespondentsByForm(id);
+    }
+
+    @Override
     public Respondent findById(int id) {
         if (id < 0) return null;
 
@@ -36,5 +41,6 @@ public class RespondentRestServiceImpl implements RespondentRestService<Responde
     public boolean deleteById(int id) {
         return respondentDao.deleteById(id);
     }
+
 
 }

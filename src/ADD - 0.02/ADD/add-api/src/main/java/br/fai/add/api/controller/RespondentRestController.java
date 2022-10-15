@@ -28,6 +28,18 @@ public class RespondentRestController {
         return ResponseEntity.ok(respondents);
     }
 
+    @GetMapping("/findRespondentsByForm/{id}")
+    public ResponseEntity<List<Respondent>> findRespondentsByForm(@PathVariable("id") final int id) {
+
+        List<Respondent> respondents = respondentService.findRespondentsByForm(id);
+
+        if (respondents == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(respondents);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Respondent> findById(@PathVariable("id") final int id) {
 

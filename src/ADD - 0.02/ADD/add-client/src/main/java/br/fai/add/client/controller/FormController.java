@@ -82,7 +82,7 @@ public class FormController {
             model.addAttribute("questions", questions);
         }
 
-        List<Respondent> respondents = respondentService.find();
+        List<Respondent> respondents = respondentService.findRespondentsByForm(id);
 
         if (respondents == null || respondents.isEmpty()) {
             model.addAttribute("respondents", new ArrayList<Respondent>());
@@ -99,7 +99,6 @@ public class FormController {
         Form form = (Form) formService.findById(id);
 
         model.addAttribute("form", form);
-
 
         List<Question> questions = questionService.findQuestionsByForm(id);
 
