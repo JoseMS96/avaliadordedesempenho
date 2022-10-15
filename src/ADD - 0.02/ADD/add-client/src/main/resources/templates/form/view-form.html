@@ -10,14 +10,14 @@
 
 <div layout:fragment="body" >
     <div class="container-fluid">
-        <div class="col-sm-12">
-            <!--th:text="${form.title}"-->
-            <h3 class="mt-4">Formulário Risco e Compliance</h3> <!--tem que tirar oq ta em azul ai quando for por o th:href-->
-            <h6>                                    <!-- th:text="${form.datetime}"-->
+        <div class="col-sm-12" >
+            <!---->
+            <h3 class="mt-4"th:text="${form.title}">Formulário Risco e Compliance</h3> <!--tem que tirar oq ta em azul ai quando for por o th:href-->
+            <h6 th:text="${form.datetime}">                                    <!-- -->
                 Data de criação :
             </h6><h6>29/09/2022</h6>
 
-            <h6>                                                        <!--no h6 filho th:text="${form.datelimit}"-->
+            <h6 th:text="${form.datelimit}">                                                        <!--no h6 filho -->
                 Data limite para resposta:
             </h6><h6 >15/12/2022</h6>
         </div>
@@ -30,28 +30,29 @@
                     <h5 class="card-title">Perguntas:</h5>
 
                     <br/>
-                    <div class="col-sm-12 "><!--th:each="question : ${questions}"-->
-                        <div class="card border border-danger"><!--tem que ver se funciona th:if="${question.alternativesQuestion == 'false' }"-->
+                    <div class="col-sm-12" th:each="question : ${questions}">
+                        <!---->
+                        <div class="card border border-danger" th:if="${question.alternativesQuestion == 'false' }"><!--tem que ver se funciona -->
                             <div class="card-body ">
 
-                                <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}"-->
+                                <span style="padding-left:40px"></span><p th:text="${question.description}" >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo -->
                                 <br/>
                                 <div class="border-bottom border-danger"></div>
-                                <span style="padding-left:40px"></span><p >Descrição da resposta</p><!--th:text=${answer.description} talvez tenha que rolar um left join para pegar o description-->
+                                <span style="padding-left:40px"></span><p th:text=${answer.description} >Descrição da resposta</p><!-- talvez tenha que rolar um left join para pegar o description-->
 
                             </div>
                         </div>
                     </div>
                     </br>
-                    <div class="col-sm-12">
-                        <div class="card border border-danger"> <!--th:if="${question.alternativesQuestion == 'true' }"-->
+                    <div class="col-sm-12" th:each="question : ${questions}"><!---->
+                        <div class="card border border-danger" th:if="${question.alternativesQuestion == 'true' }"> <!---->
                             <div class="card-body ">
                                 <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
                                 <br/>
                                 <div class="border-bottom border-danger"></div>
                                 <br/>
-                                <div class="ml-4 p-2 "><!-- th:each="option:${options}"dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
-                                    <input class="form-check-input"  type="checkbox"><p >descricao alternativa</p><!--optionDestcription dentro do <p>! -->
+                                <div class="ml-4 p-2 " th:each="option:${options}"><!-- dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
+                                    <input class="form-check-input" th:value="${option.correctAnswer}" type="checkbox"><p th:text="${option.description}">descricao alternativa</p><!--optionDestcription dentro do <p>! -->
 
                                 </div>
 
