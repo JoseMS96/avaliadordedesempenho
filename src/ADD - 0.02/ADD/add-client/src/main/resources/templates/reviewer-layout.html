@@ -104,7 +104,12 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nome de usuario</span>
+                            <div th:if="${currentUser.username == null}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bem Vindo</span>
+                            </div>
+                            <div th:if="${currentUser.username != null}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${currentUser.username}">Nome de usuario</span>
+                            </div><!--th:text="${collaborator.username}"-->
 
                         </a>
                         <!-- Dropdown - User Information -->

@@ -37,16 +37,11 @@
 			<ul class="list-group">
 				<li class="list-group-item d-flex" th:each="form:${forms}">
 					<p class="p-0 m-0 flex-grow-1" th:text="${form.title}"></p>
-					<button class="btn btn-primary" >
+					<button class="btn btn-primary" th:href="@{/form/form-details/{id}  (id=${form.id}) }" >
 						Detalhes
-					</button><!-- th:href="@{/form/details-form/{id}  (id=${form.id})}" talvez fazer pelo @PATHVARIABLE AO INVES DO REQUESTPARAM-->
+					</button>
 				</li>
 			</ul>
-
-<!--			<a-->
-<!--			   class="list-group-item list-group-item-action list-group-item-light"th:each="form:${forms}" th:text="${form.title}" th:href="@{/form/details-form}">-->
-
-<!--				Formulário Risco e Compliance</a>-->
 
 		</div>
 	</div>
