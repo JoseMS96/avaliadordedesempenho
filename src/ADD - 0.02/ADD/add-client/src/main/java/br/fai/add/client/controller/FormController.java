@@ -19,6 +19,8 @@ public class FormController {
     @Autowired
     private FormService formService;
     @Autowired
+    private OptionService optionService;
+    @Autowired
     private QuestionService questionService;
     @Autowired
     private CollaboratorService collaboratorService;
@@ -149,26 +151,35 @@ public class FormController {
         int id = questionService.create(question);
 
         if (question.isAlternativesQuestion() == true) {
-            return "redirect:/form/option-test/" + id;
+            return "redirect:/form/option-test/" + id +"/"+formId;
         } else {
             return "redirect:/form/form-details/" + formId;
         }
     }
 
-    @GetMapping("/option-test/{id}")
-    public String getOptionTestPG(@PathVariable("id") final int id, final Model model) {
+    @GetMapping("/option-test/{id}/{formId}")
+    public String getOptionTestPG(@PathVariable("id") final int id,
+                                  @PathVariable("formId")final int formId, final Model model) {
 
         Question question = (Question) questionService.findById(id);
         model.addAttribute("question", question);
 
+        Form form = (Form) formService.findById(formId);
+        model.addAttribute("form", form);
+
         return "form/add-option";
     }
 
-    @GetMapping("/option-create")
-    public String create(Option option, @RequestParam("questionId") final int questionId) {
+    @GetMapping("/option-create/")
+    public String create(Option option,@RequestParam("formId")final int formId, @RequestParam("questionId") final int questionId) {
 
+        Question question = (Question) questionService.findById(questionId);
 
-        return "";
+        option.setQuestion(question);
+
+        optionService.create(option);
+
+        return "redirect:/form/form-details/" + formId;
     }
 
     @GetMapping("/answer-form")
@@ -180,6 +191,10 @@ public class FormController {
     @GetMapping("/view-form")
     public String getPageViewForm() {
         return "form/view-form";
+    }
+    @GetMapping("/add-form")
+    public String getPageAddForm() {
+        return "form/add-form";
     }
 
 }

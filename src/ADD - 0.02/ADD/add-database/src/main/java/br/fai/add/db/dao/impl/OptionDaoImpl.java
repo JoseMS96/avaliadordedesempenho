@@ -36,6 +36,7 @@ public class OptionDaoImpl implements OptionDao<Option> {
 
                 Option option = new Option();
                 option.setId(resultSet.getInt("id"));
+                option.setOption_label(resultSet.getString("letra_rotulo"));
                 option.setDescription(resultSet.getString("descricao_da_alternativa"));
                 option.setCorrectAnswer(resultSet.getBoolean("correta"));
 
@@ -81,6 +82,7 @@ public class OptionDaoImpl implements OptionDao<Option> {
                 item = new Option();
 
                 item.setId(resultSet.getInt("id"));
+                item.setOption_label(resultSet.getString("letra_rotulo"));
                 item.setDescription(resultSet.getString("descricao_da_alternativa"));
                 item.setCorrectAnswer(resultSet.getBoolean("correta"));
 
