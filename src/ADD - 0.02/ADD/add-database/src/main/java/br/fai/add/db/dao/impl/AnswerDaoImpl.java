@@ -131,13 +131,13 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
 
                 item = new Answer();
 
-//                if (resultSet.getBoolean("pergunta_fechada") == true) {
-//                item.setId(resultSet.getInt("id"));
-//                item.setAnswerText(resultSet.getString("descricao_da_alternativa"));
-//                } else {
-                item.setId(resultSet.getInt("id"));
-                item.setAnswerText(resultSet.getString("texto_resposta"));
-//                }
+                if (resultSet.getBoolean("pergunta_fechada") == true) {
+                    item.setId(resultSet.getInt("id"));
+                    item.setAnswerText(resultSet.getString("descricao_da_alternativa"));
+                } else {
+                    item.setId(resultSet.getInt("id"));
+                    item.setAnswerText(resultSet.getString("texto_resposta"));
+                }
 
             }
 

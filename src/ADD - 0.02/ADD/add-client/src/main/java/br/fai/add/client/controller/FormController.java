@@ -93,6 +93,31 @@ public class FormController {
         return "form/details-form"; //
     }
 
+    @GetMapping("/view-form/{id}")
+    public String getPageViewForm(@PathVariable("id") final int id, final Model model) {
+
+        Form form = (Form) formService.findById(id);
+
+        model.addAttribute("form", form);
+
+
+        List<Question> questions = questionService.findQuestionsByForm(id);
+
+        for (Question question : questions) {
+            Answer answer = (Answer) answerService.findAnswerByQuestion(question.getId());
+            model.addAttribute("answer", answer);
+        }
+
+        if (questions == null || questions.isEmpty()) {
+            model.addAttribute("questions", new ArrayList<Question>());
+        } else {
+            model.addAttribute("questions", questions);
+        }
+
+
+        return "form/view-form";
+    }
+
     @GetMapping("/add-employee-page/{id}")
     public String getAddEmployeePage(@PathVariable("id") final int id, HttpSession session, final Model model) {
 
@@ -187,11 +212,6 @@ public class FormController {
         return "form/answer-form";
     }
 
-    //chamando a pagina conseguir vizualizar pra cria-la
-    @GetMapping("/view-form")
-    public String getPageViewForm() {
-        return "form/view-form";
-    }
 
     @GetMapping("/add-form")
     public String getPageAddForm() {
