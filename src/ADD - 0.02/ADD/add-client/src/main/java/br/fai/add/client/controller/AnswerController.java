@@ -54,7 +54,7 @@ public class AnswerController {
 
         answerService.create(answer);
 
-        return "form/question-form";// pagina atual para continuar criando perguntas
+        return "form/question-form";// pagina atual para continuar respondendo perguntas
 
     }
 

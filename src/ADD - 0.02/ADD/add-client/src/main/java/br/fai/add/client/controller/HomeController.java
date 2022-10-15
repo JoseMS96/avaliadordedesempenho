@@ -36,6 +36,7 @@ public class HomeController {
 
             model.addAttribute("forms", forms);
         }
+        model.addAttribute("currentUser",collaborator_employee);
         return "/home/employee-home";
     }
 
@@ -52,6 +53,7 @@ public class HomeController {
 
             model.addAttribute("forms", forms);
         }
+        model.addAttribute("currentUser",collaborator_reviewer);
         return "/home/reviewer-home";
     }
 
