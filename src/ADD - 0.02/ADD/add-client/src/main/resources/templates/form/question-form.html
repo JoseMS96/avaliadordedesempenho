@@ -15,10 +15,11 @@
 			</div>
 
 			<div class="container-fluid">
-				<form id="form" > <!--th:action="@{/question/create-question}" method="POST"-->
+				<form id="form" th:action="@{/form/add-question}" method="POST"> <!--th:action="@{/question/create-question}" method="POST"-->
 					<div class="card" >
 						<!--PERGUNTA ABERTA-->
 						<div class="col-sm-12">
+							<input name="formId" th:value="${form.id}" type="hidden">
 							<div class="card-body">
 								<div class="form-group" >
 									<label >Descreva o enunciado da questão:</label>
@@ -29,7 +30,7 @@
 								</div>
 								<br/>
 								<div class="d-flex justify-content-center">
-									<a type="submit" class="btn btn-primary">Submeter</a>
+									<button type="submit" class="btn btn-primary">Submeter</button>
 								</div>
 							</div>
 						</div>

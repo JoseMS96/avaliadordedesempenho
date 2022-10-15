@@ -29,13 +29,13 @@
                                     class="p-0 m-0 flex-grow-1" >
                                 Qual..............?</p>
                                 <!-- dentro do button th:href="@{/question/delete/{id}   (id=${question.id})}"-->
-                                <button class="btn btn-danger" >
-                                    DELETE
-                                </button>
+                                <a th:href="@{/question/delete/{id}  (id=${question.id})}"
+                                   class="btn btn-danger" role="button">DELETE
+                                </a>
                         </ul>
                         <br/>
 <!--                        pathvariable?-->
-                        <a th:href="@{/form/question-form}" class="btn btn-primary btn-lg btn-block">Adicionar
+                        <a th:href="@{/form/add-question-page/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block">Adicionar
                             Perguntas</a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         </ul>
                         <br/>
 
-                        <a th:href="@{/form/add-employee/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block">Adicionar
+                        <a th:href="@{/form/add-employee-page/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block">Adicionar
                             Colaboradoes</a>
                     </div>
                 </div>

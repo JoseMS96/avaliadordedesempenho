@@ -47,10 +47,13 @@ public class QuestionController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") final int id, Model model) {
 
+        Question question = (Question) questionService.findById(id);
+
+        int formId = question.getForm().getId();
+
         questionService.deleteById(id);
 
-
-        return getQuestions(model);
+        return "redirect:/form/form-details/" + formId;
     }
 
 }

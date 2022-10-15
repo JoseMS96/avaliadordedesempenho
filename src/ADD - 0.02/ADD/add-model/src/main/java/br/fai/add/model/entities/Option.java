@@ -3,6 +3,7 @@ package br.fai.add.model.entities;
 public class Option extends BaseEntity {
 
     private String description;
+    private String option_label;
     private boolean correctAnswer;
     private Question question;
 
@@ -12,6 +13,14 @@ public class Option extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getOption_label() {
+        return option_label;
+    }
+
+    public void setOption_label(String option_label) {
+        this.option_label = option_label;
     }
 
     public boolean isCorrectAnswer() {

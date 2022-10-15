@@ -105,8 +105,8 @@ public class OptionDaoImpl implements OptionDao<Option> {
 
         int id = -1;
 
-        String sql = "INSERT INTO alternativa(descricao_da_alternativa, correta, " +
-                " pergunta_id) VALUES(?, ?, ?) ; ";
+        String sql = "INSERT INTO alternativa(descricao_da_alternativa, letra_rotulo, correta, " +
+                " pergunta_id) VALUES(?, ?, ?, ?) ; ";
 
         try {
             connection = ConnectionFactory.getConnection();
@@ -117,6 +117,7 @@ public class OptionDaoImpl implements OptionDao<Option> {
             preparedStatement.setString(1, entity.getDescription());
             preparedStatement.setBoolean(2, entity.isCorrectAnswer());
             preparedStatement.setInt(3, entity.getQuestion().getId());
+            preparedStatement.setString(4, entity.getOption_label());
 
             preparedStatement.execute();
             resultSet = preparedStatement.getGeneratedKeys();

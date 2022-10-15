@@ -1,10 +1,7 @@
 package br.fai.add.client.controller;
 
 import br.fai.add.client.service.*;
-import br.fai.add.model.entities.Collaborator;
-import br.fai.add.model.entities.Form;
-import br.fai.add.model.entities.Question;
-import br.fai.add.model.entities.Respondent;
+import br.fai.add.model.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,7 +50,7 @@ public class FormController {
     }
 
     @PostMapping("/create-form")
-    public String Create(Form form, HttpSession session) {
+    public String create(Form form, HttpSession session) {
 
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
 
@@ -94,7 +91,7 @@ public class FormController {
         return "form/details-form"; //
     }
 
-    @GetMapping("/add-employee/{id}")
+    @GetMapping("/add-employee-page/{id}")
     public String getAddEmployeePage(@PathVariable("id") final int id, HttpSession session, final Model model) {
 
         Form form = (Form) formService.findById(id);
@@ -133,27 +130,50 @@ public class FormController {
 //criar create do employee
 
 
-    @GetMapping("/add-question")
-    public String getAddQuestionPage() {
+    @GetMapping("/add-question-page/{id}")
+    public String getAddQuestionPage(@PathVariable("id") final int id, final Model model) {
+        Form form = (Form) formService.findById(id);
 
+        model.addAttribute("form", form);
 
         return "form/question-form";
     }
 
+    @PostMapping("/add-question")
+    public String create(Question question, @RequestParam("formId") final int formId) {
+
+        Form form = (Form) formService.findById(formId);
+
+        question.setForm(form);
+
+        int id = questionService.create(question);
+
+        if (question.isAlternativesQuestion() == true) {
+            return "redirect:/form/option-test/" + id;
+        } else {
+            return "redirect:/form/form-details/" + formId;
+        }
+    }
+
+    @GetMapping("/option-test/{id}")
+    public String getOptionTestPG(@PathVariable("id") final int id, final Model model) {
+
+        Question question = (Question) questionService.findById(id);
+        model.addAttribute("question", question);
+
+        return "form/add-option";
+    }
+
+    @GetMapping("/option-create")
+    public String create(Option option, @RequestParam("questionId") final int questionId) {
+
+
+        return "";
+    }
 
     @GetMapping("/answer-form")
     public String getAnswerFormPage() {
         return "form/answer-form";
-    }
-
-    @GetMapping("/question-form")
-    public String getQuestionPage() {
-        return "form/question-form";
-    }
-
-    @GetMapping("/employee-form")
-    public String getPageCollaborator() {
-        return "form/employee-form";
     }
 
     //chamando a pagina conseguir vizualizar pra cria-la

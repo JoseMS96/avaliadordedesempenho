@@ -2,6 +2,7 @@ package br.fai.add.db.dao.impl;
 
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.QuestionDao;
+import br.fai.add.model.entities.Form;
 import br.fai.add.model.entities.Question;
 import org.springframework.stereotype.Repository;
 
@@ -123,6 +124,10 @@ public class QuestionDaoImpl implements QuestionDao<Question> {
                 item.setId(resultSet.getInt("id"));
                 item.setDescription(resultSet.getString("descricao_pergunta"));
                 item.setAlternativesQuestion(resultSet.getBoolean("pergunta_fechada"));
+
+                Form form = new Form();
+                form.setId(resultSet.getInt("avaliacao_id"));
+                item.setForm(form);
 
             }
 
