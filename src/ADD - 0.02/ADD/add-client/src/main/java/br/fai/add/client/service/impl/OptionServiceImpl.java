@@ -33,6 +33,11 @@ public class OptionServiceImpl implements OptionService<Option> {
     }
 
     @Override
+    public List<Option> findOptionsByQuestion(int id) {
+        return restService.getListById("option/findOptionsByQuestion/" + id);
+    }
+
+    @Override
     public Option findById(int id) {
 
         return restService.getById("option/find/" + id, Option.class);
@@ -43,5 +48,6 @@ public class OptionServiceImpl implements OptionService<Option> {
 
         return restService.deleteById("option/delete/" + id);
     }
+
 
 }

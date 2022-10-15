@@ -1,5 +1,6 @@
 package br.fai.add.api.config.beans;
 
+import br.fai.add.api.service.impl.AnsweredQuestionRestServiceImpl;
 import br.fai.add.db.dao.*;
 import br.fai.add.db.dao.impl.*;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,11 @@ public class AddRestApiConfig {
     @Bean
     public AnswerDao getAnswerDao() {
         return new AnswerDaoImpl();
+    }
+
+    @Bean
+    public AnsweredQuestionRestServiceImpl getAnswerRestService() {
+        return new AnsweredQuestionRestServiceImpl();
     }
 
     @Bean

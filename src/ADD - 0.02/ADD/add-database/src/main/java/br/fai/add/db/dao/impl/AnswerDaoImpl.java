@@ -114,7 +114,7 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
 
 //        final String sql = "SELECT * from resposta where id = ? ;";
 
-        final String sql = "SELECT R.id, R.texto_resposta, A.descricao_da_alternativa FROM resposta R " +
+        final String sql = "SELECT R.id, R.texto_resposta, A.descricao_da_alternativa, * FROM resposta R " +
                 " INNER JOIN pergunta P ON R.pergunta_id = P.id FULL OUTER JOIN alternativa A on R.alternativa_resposta_id = A.id" +
                 " WHERE P.id = ?;";
 
@@ -161,8 +161,17 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
 
         int id = -1;
 
-        String sql = "INSERT INTO resposta(texto_resposta, colaborador_id, pergunta_id, " +
-                " alternativa_resposta_id) VALUES(?, ?, ?, ?) ; ";
+        String sql;
+
+        if (entity.getOption() != null) {
+            sql = "INSERT INTO resposta(texto_resposta, colaborador_id, pergunta_id, ";
+            sql += " alternativa_resposta_id) VALUES(?, ?, ?, ?) ; ";
+
+        } else {
+            sql = "INSERT INTO resposta(texto_resposta, colaborador_id, pergunta_id) ";
+            sql += " VALUES(?, ?, ?) ; ";
+        }
+
 
         try {
             connection = ConnectionFactory.getConnection();
@@ -170,10 +179,18 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
             connection.setAutoCommit(false);
 
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, entity.getAnswerText());
-            preparedStatement.setInt(2, entity.getCollaborator().getId());
-            preparedStatement.setInt(3, entity.getQuestion().getId());
-            preparedStatement.setInt(4, entity.getOption().getId());
+
+            if (entity.getOption() != null) {
+                preparedStatement.setString(1, entity.getAnswerText());
+                preparedStatement.setInt(2, entity.getCollaborator().getId());
+                preparedStatement.setInt(3, entity.getQuestion().getId());
+                preparedStatement.setInt(4, entity.getOption().getId());
+            } else {
+                preparedStatement.setString(1, entity.getAnswerText());
+                preparedStatement.setInt(2, entity.getCollaborator().getId());
+                preparedStatement.setInt(3, entity.getQuestion().getId());
+            }
+
 
             preparedStatement.execute();
             resultSet = preparedStatement.getGeneratedKeys();

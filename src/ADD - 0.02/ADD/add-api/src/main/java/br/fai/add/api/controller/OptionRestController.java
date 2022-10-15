@@ -28,6 +28,19 @@ public class OptionRestController {
         return ResponseEntity.ok(options);
     }
 
+    @GetMapping("/findOptionsByQuestion/{id}")
+    public ResponseEntity<List<Option>> findOptionsByQuestion(@PathVariable("id") final int id) {
+
+        List<Option> options = optionService.findOptionsByQuestion(id);
+
+        if (options == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(options);
+    }
+
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Option> findById(@PathVariable("id") final int id) {
 

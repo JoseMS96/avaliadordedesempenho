@@ -20,6 +20,13 @@ public class OptionRestServiceImpl implements OptionRestService<Option> {
     }
 
     @Override
+    public List<Option> findOptionsByQuestion(int id) {
+        if (id < 0) return null;
+
+        return optionDao.findOptionsByQuestion(id);
+    }
+
+    @Override
     public Option findById(int id) {
         if (id < 0) return null;
 
@@ -36,5 +43,6 @@ public class OptionRestServiceImpl implements OptionRestService<Option> {
     public boolean deleteById(int id) {
         return optionDao.deleteById(id);
     }
+
 
 }

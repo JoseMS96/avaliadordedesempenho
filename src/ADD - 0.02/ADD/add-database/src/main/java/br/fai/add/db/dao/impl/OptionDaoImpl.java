@@ -56,6 +56,51 @@ public class OptionDaoImpl implements OptionDao<Option> {
     }
 
     @Override
+    public List<Option> findOptionsByQuestion(int id) {
+        List<Option> items = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT * FROM alternativa A INNER JOIN pergunta P ON " +
+                " P.id = A.pergunta_id WHERE P.id = ?;";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Option option = new Option();
+                option.setId(resultSet.getInt("id"));
+                option.setOption_label(resultSet.getString("letra_rotulo"));
+                option.setDescription(resultSet.getString("descricao_da_alternativa"));
+                option.setCorrectAnswer(resultSet.getBoolean("correta"));
+
+
+                items.add(option);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return items;
+    }
+
+    @Override
     public Option findById(int id) {
         Option item = null;
 
@@ -176,4 +221,6 @@ public class OptionDaoImpl implements OptionDao<Option> {
 
         }
     }
+
+
 }

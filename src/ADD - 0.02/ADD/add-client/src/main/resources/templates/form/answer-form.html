@@ -12,14 +12,14 @@
     <div class="container-fluid">
         <div class="col-sm-12">
             <!--th:text="${form.title}"-->
-            <h3 class="mt-4">Formulário Risco e Compliance</h3>
-            <h6>                                    <!-- th:text="${form.datetime}"-->
+            <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3>
+            <h6 >                                    <!-- th:text="${form.datetime}"-->
                 Data de criação :
-            </h6><h6>29/09/2022</h6>
+            </h6><h6 th:text="${form.datetime}">29/09/2022</h6>
 
             <h6>                                                        <!--no h6 filho th:text="${form.datelimit}"-->
                 Data limite para resposta:
-            </h6><h6 >15/12/2022</h6>
+            </h6><h6 th:text="${form.datelimit}">15/12/2022</h6>
         </div>
 
         <form><!--vai ter os th :action da vida aqui -->
@@ -28,12 +28,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Perguntas:</h5>
 
-                        <ul class="list-group">
+                        <ul class="list-group" th:each="question : ${questions}">
                             <!--th:each="question : ${questions}"                                   -->
-                            <li class="list-group-item d-flex"><p class="p-0 m-0 flex-grow-1" >Qual..............?</p><!--th:text="${question.description}-->
-                                <button type="button" class="btn btn-primary">Responder</button><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
+                            <li class="list-group-item d-flex mt-4" ><p class="p-0 m-0 flex-grow-1" th:text="${question.description}">Qual..............?</p><!--th:text="${question.description}-->
+                                <a th:href="@{/form/answer-question/{id}   (id=${question.id})}" type="button" class="btn btn-primary" >Responder</a>
+                                </li><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
                         </ul>
-                        <br/>
+
 
                     </div>
                 </div>

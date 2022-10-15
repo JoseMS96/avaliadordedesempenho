@@ -122,7 +122,7 @@ public class FormController {
 
 
         model.addAttribute("currentUser", collaborator_reviewer);
-        return "form/view-form-question";
+        return "form/view-form";
     }
 
     @GetMapping("/add-employee-page/{id}")
@@ -219,20 +219,64 @@ public class FormController {
         return "redirect:/form/form-details/" + formId;
     }
 
-    @GetMapping("/answer-form")
-    public String getAnswerFormPage() {
+    @GetMapping("/answer-form/{id}")
+    public String getAnswerFormPage(@PathVariable("id") final int id, final Model model, HttpSession session) {
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+
+        Form form = (Form) formService.findById(id);
+        model.addAttribute("form", form);
+
+
+        List<Question> questions = questionService.findQuestionsByForm(id);
+
+        if (questions == null || questions.isEmpty()) {
+            model.addAttribute("questions", new ArrayList<Question>());
+        } else {
+            model.addAttribute("questions", questions);
+        }
+
+
+        model.addAttribute("currentUser", collaborator_reviewer);
         return "form/answer-form";
     }
 
-    @GetMapping("/answer-question")
-    public String getAnswerQuestionPage() {
+    @GetMapping("/answer-question/{id}")
+    public String getAnswerQuestionPage(@PathVariable("id") final int id, final Model model, HttpSession session) {
+        Collaborator collaborator_employee = (Collaborator) session.getAttribute("currentUser");
+
+        Question question = (Question) questionService.findById(id);
+        model.addAttribute("question", question);
+
+        if (question.isAlternativesQuestion() == true) {
+            List<Option> options = optionService.findOptionsByQuestion(id);
+
+            if (options == null || options.isEmpty()) {
+                model.addAttribute("options", new ArrayList<Option>());
+            } else {
+                model.addAttribute("options", options);
+            }
+        }
+
+
+        model.addAttribute("currentUser", collaborator_employee);
         return "form/answer-question";
     }
 
+    @PostMapping("/create-answer")
+    public String CreateAnswer(HttpSession session, final Model model, @RequestParam("optionId") final int optionId, Answer answer) {
+        Collaborator collaborator_employee = (Collaborator) session.getAttribute("currentUser");
 
-    @GetMapping("/add-form")
-    public String getPageAddForm() {
-        return "form/add-form";
+        Option option = (Option) optionService.findById(optionId);
+
+        answer.setCollaborator(collaborator_employee);
+        answer.setOption(option);
+//        answer.setQuestion(question);
+
+        answerService.create(answer);
+
+        model.addAttribute("currentUser", collaborator_employee);
+        return "form/answer-form";
     }
+
 
 }
