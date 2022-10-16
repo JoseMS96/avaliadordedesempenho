@@ -43,6 +43,16 @@ public class RespondentServiceImpl implements RespondentService<Respondent> {
     }
 
     @Override
+    public Respondent findRespondentByCollaboratorAndForm(int id, int id2) {
+        return restService.getById("answer/findRespondentByCollaboratorAndForm/" + id + "/" + id2, Respondent.class);
+    }
+
+    @Override
+    public boolean update(int id, Respondent entity) {
+        return restService.put("respondent/update/" + id, entity);
+    }
+
+    @Override
     public Respondent findById(int id) {
 
         return restService.getById("respondent/find/" + id, Respondent.class);

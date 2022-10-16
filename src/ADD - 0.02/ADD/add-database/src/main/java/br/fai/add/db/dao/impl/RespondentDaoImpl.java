@@ -153,6 +153,97 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
     }
 
     @Override
+    public Respondent findRespondentByCollaboratorAndForm(int id, int id2) {
+        Respondent item = null;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT * FROM quem_responde QR INNER JOIN colaborador C ON QR.colaborador_id = C.id " +
+                " INNER JOIN avaliacao A ON QR.avaliacao_id = A.id " +
+                " WHERE A.id = ? AND QR.colaborador_id = ?;";
+
+        //o nome usuario não precisar igual no dao e no bd
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.setInt(1, id2);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                item = new Respondent();
+
+
+                item.setId(resultSet.getInt("id"));
+                item.setName(resultSet.getString("nome_respondente"));
+                item.setAnswered(resultSet.getBoolean("foi_respondido"));
+
+                Form form = new Form();
+                form.setId(resultSet.getInt("avalia" +
+                        "cao_id"));
+                item.setForm(form);
+
+                Collaborator collaborator = new Collaborator();
+                collaborator.setId(resultSet.getInt("colaborador_id"));
+                item.setCollaborator(collaborator);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return item;
+    }
+
+    @Override
+    public boolean update(Respondent entity, int id) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String sql = "UPDATE quem_responde QR SET foi_respondido = true WHERE QR.id = ?;";
+
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+
+            connection.setAutoCommit(false);
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+
+            preparedStatement.execute();
+            connection.commit();
+            //grava informações permanentemente no bd qnd o commit acontece
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return false;
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection);
+        }
+    }
+
+    @Override
     public Respondent findById(int id) {
 
         Respondent item = null;

@@ -273,6 +273,10 @@ public class FormController {
         answer.setCollaborator(collaborator_employee);
         answer.setQuestion(question);
 
+        Respondent respondent = (Respondent) respondentService.findRespondentByCollaboratorAndForm(collaborator_employee.getId(), formId);
+        respondentService.update(respondent.getId(), respondent);
+
+
         answerService.create(answer);
 
         model.addAttribute("currentUser", collaborator_employee);
@@ -294,6 +298,10 @@ public class FormController {
         answer.setOption(option);
         answer.setCollaborator(collaborator_employee);
         answer.setQuestion(question);
+
+        Respondent respondent = (Respondent) respondentService.findRespondentByCollaboratorAndForm(collaborator_employee.getId(), formId);
+        respondentService.update(respondent.getId(), respondent);
+
 
         answerService.create(answer);
 

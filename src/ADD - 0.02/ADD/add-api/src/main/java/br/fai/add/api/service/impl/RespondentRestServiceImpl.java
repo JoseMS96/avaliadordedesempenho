@@ -29,6 +29,12 @@ public class RespondentRestServiceImpl implements RespondentRestService<Responde
         return respondentDao.findRespondentsByOrg(id);
     }
 
+    @Override
+    public Respondent findRespondentByCollaboratorAndForm(int id, int id2) {
+        if (id < 0) return null;
+
+        return (Respondent) respondentDao.findRespondentByCollaboratorAndForm(id, id2);
+    }
 
     @Override
     public Respondent findById(int id) {
@@ -42,6 +48,19 @@ public class RespondentRestServiceImpl implements RespondentRestService<Responde
         return respondentDao.create(entity);
     }
 
+
+    @Override
+    public boolean update(final int id, Respondent entity) {
+
+        Respondent respondent = (Respondent) respondentDao.findById(id);
+        if (respondent == null) return false;
+
+
+        respondent.setAnswered(true);
+
+        return respondentDao.update(respondent, id);
+
+    }
 
     @Override
     public boolean deleteById(int id) {

@@ -65,6 +65,15 @@ public class RespondentRestController {
         return ResponseEntity.ok(respondent);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Boolean> update(@PathVariable("id") final int id, @RequestBody final Respondent entity) {
+
+        boolean response = respondentService.update(id, entity);
+
+        return response ? ResponseEntity.ok(response) : ResponseEntity.badRequest().build();
+
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") final int id) {
         boolean result = respondentService.deleteById(id);
