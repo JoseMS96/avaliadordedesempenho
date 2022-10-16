@@ -37,7 +37,7 @@ public class AccountController {
 
         organizationService.create(organization);
 
-        return "redirect:/account/sign-up";
+        return "redirect:/account/sign-up-reviewer";
     }
 
     @GetMapping("/sign-up-reviewer")
