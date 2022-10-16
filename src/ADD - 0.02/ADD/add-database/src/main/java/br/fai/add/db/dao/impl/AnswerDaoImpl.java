@@ -3,6 +3,7 @@ package br.fai.add.db.dao.impl;
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.AnswerDao;
 import br.fai.add.model.entities.Answer;
+import br.fai.add.model.entities.Option;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -67,6 +68,7 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
         final String sql = "SELECT R.id, R.texto_resposta, A.descricao_da_alternativa FROM resposta R " +
                 " INNER JOIN pergunta P ON R.pergunta_id = P.id FULL OUTER JOIN alternativa A on R.alternativa_resposta_id = A.id" +
                 " WHERE R.id = ?;";
+
 
         try {
 
@@ -134,10 +136,14 @@ public class AnswerDaoImpl implements AnswerDao<Answer> {
                 if (resultSet.getBoolean("pergunta_fechada") == true) {
                     item.setId(resultSet.getInt("id"));
                     item.setAnswerText(resultSet.getString("descricao_da_alternativa"));
+                    Option option = new Option();
+                    option.setId(resultSet.getInt("alternativa_resposta_id"));
+                    item.setOption(option);
                 } else {
                     item.setId(resultSet.getInt("id"));
                     item.setAnswerText(resultSet.getString("texto_resposta"));
                 }
+
 
             }
 

@@ -5,4 +5,6 @@ import java.util.List;
 public interface OptionRestService<T> extends BaseRestService<T> {
     List<T> findOptionsByQuestion(int id);
 
+    T findOptionByQuestion(int id, int id2);
+
 }
