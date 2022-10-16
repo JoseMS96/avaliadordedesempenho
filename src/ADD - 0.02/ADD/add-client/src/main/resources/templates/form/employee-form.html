@@ -49,12 +49,9 @@
 										</tr>
 										</thead>
 										<tbody>
-										<tr th:each="collaborator:${collaborators}"> <!--th:each="collaborator:${collaborators}"-->
-											<td  th:text="${collaborator.id}">183</td><!--th:text="${collaborator.id}"-->
-											<td th:text="${collaborator.fullName}">John Doe</td> <!--th:text="${collaborator.fullName}"-->
-											<!--se estiver selecionado o colaborador será vinculado a avaliação
-											arrumar o radio para selecionar apenas um
-											-->
+										<tr th:each="collaborator:${collaborators}">
+											<td  th:text="${collaborator.id}"></td>
+											<td th:text="${collaborator.fullName}"></td>
 
 											<td >
 												<div class="form-check">
@@ -78,7 +75,7 @@
 					</div>
 				</form>
 				<div class="card-footer d-flex justify-content-center p-4 bg-light">
-					<a class="btn btn-primary" th:href="@{/form/details-form}">Voltar</a>
+					<a class="btn btn-primary" th:href="@{/form/form-details/{id}  (id=${form.id}) }">Voltar</a>
 				</div>
 
 			</div>
