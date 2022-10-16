@@ -65,7 +65,7 @@ create table resposta(
     id serial primary key,
     texto_resposta text,
     colaborador_id integer not null references colaborador(id) on update cascade,
-    pergunta_id integer not null references pergunta(id) on update cascade,
+    pergunta_id integer not null references pergunta(id) on update cascade on delete cascade,
     alternativa_resposta_id integer references alternativa(id) on update cascade
 );
 
