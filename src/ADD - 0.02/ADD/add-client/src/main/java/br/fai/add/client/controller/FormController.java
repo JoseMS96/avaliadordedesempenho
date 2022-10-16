@@ -299,7 +299,8 @@ public class FormController {
         answer.setCollaborator(collaborator_employee);
         answer.setQuestion(question);
 
-        Respondent respondent = (Respondent) respondentService.findRespondentByCollaboratorAndForm(collaborator_employee.getId(), formId);
+        Respondent respondent = (Respondent) respondentService.
+                findRespondentByCollaboratorAndForm(collaborator_employee.getId(), formId);
         respondentService.update(respondent.getId(), respondent);
 
 

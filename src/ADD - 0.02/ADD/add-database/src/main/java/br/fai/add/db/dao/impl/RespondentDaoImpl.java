@@ -163,7 +163,7 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
 
         final String sql = "SELECT * FROM quem_responde QR INNER JOIN colaborador C ON QR.colaborador_id = C.id " +
                 " INNER JOIN avaliacao A ON QR.avaliacao_id = A.id " +
-                " WHERE A.id = ? AND QR.colaborador_id = ?;";
+                " WHERE QR.colaborador_id = ? AND A.id = ?;";
 
         //o nome usuario não precisar igual no dao e no bd
 
@@ -172,7 +172,7 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
             connection = ConnectionFactory.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
-            preparedStatement.setInt(1, id2);
+            preparedStatement.setInt(2, id2);
 
 
             resultSet = preparedStatement.executeQuery();

@@ -65,6 +65,19 @@ public class RespondentRestController {
         return ResponseEntity.ok(respondent);
     }
 
+    @GetMapping("/findRespondentByCollaboratorAndForm/{id}/{id2}")
+    public ResponseEntity<Respondent> findById(@PathVariable("id") final int id, @PathVariable("id2") final int id2) {
+
+        Respondent respondent = respondentService.findRespondentByCollaboratorAndForm(id, id2);
+
+        if (respondent == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+
+        return ResponseEntity.ok(respondent);
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Boolean> update(@PathVariable("id") final int id, @RequestBody final Respondent entity) {
 
