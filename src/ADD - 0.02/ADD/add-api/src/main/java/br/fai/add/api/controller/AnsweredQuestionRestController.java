@@ -5,10 +5,7 @@ import br.fai.add.api.service.impl.AnsweredQuestionRestServiceImpl;
 import br.fai.add.model.entities.AnsweredQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,15 +18,15 @@ public class AnsweredQuestionRestController {
     @Autowired
     AnsweredQuestionRestServiceImpl answeredQuestionRestService;
 
-//    @GetMapping("/find")
-//    public ResponseEntity<List<AnsweredQuestion>> find() {
-//    //    List<AnsweredQuestion> answeredQuestions = (AnsweredQuestion) answeredQuestionRestService.find();
-//
-//        if (answeredQuestions == null) {
-//            return ResponseEntity.badRequest().build();
-//        }
-//
-//        return ResponseEntity.ok(answeredQuestions);
-//    }
+    @GetMapping("/find/{formId}/{collaboratorId}")
+    public ResponseEntity<List<AnsweredQuestion>> find(@PathVariable("formId") final int formId, @PathVariable("collaboratorId") final int collaboratorId) {
+        List<AnsweredQuestion> answeredQuestions = answeredQuestionRestService.find(formId, collaboratorId);
+
+        if (answeredQuestions == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(answeredQuestions);
+    }
 
 }

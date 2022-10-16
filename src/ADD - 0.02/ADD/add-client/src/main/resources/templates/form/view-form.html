@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{reviewer-layout}">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-	<div th:replace="fragments/head-imports::scripts"></div>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="fragments/head-imports::scripts"></div>
 </head>
 
 <body sec:authorize="hasRole('REVIEWER')">
 
 <div layout:fragment="body" >
-	<div class="container-fluid">
-		<div class="col-sm-12" >
-			<!---->
-			<h3 class="mt-4"th:text="${form.title}">Formulário Risco e Compliance</h3> <!--tem que tirar oq ta em azul ai quando for por o th:href-->
-			<h6 th:text="${form.datetime}">                                    <!-- -->
-				Data de criação :
-			</h6><h6>29/09/2022</h6>
+    <div class="container-fluid">
+        <div class="col-sm-12" >
+            <!---->
+            <h3 class="mt-4"th:text="${form.title}">Formulário Risco e Compliance</h3> <!--tem que tirar oq ta em azul ai quando for por o th:href-->
+            <h6 th:text="${form.datetime}">                                    <!-- -->
+                Data de criação :
+            </h6><h6>29/09/2022</h6>
 
-			<h6 th:text="${form.datelimit}">                                                        <!--no h6 filho -->
-				Data limite para resposta:
-			</h6><h6 >15/12/2022</h6>
-		</div>
-
-
-
-		<div class="col-sm-12"  >
-			<div class="card border border-danger " >
-				<div class="card-body">
-					<h5 class="card-title">Perguntas:</h5>
-
-					<br/>
-					<div class="col-sm-12" th:each="answeredQuestion : ${answeredQuestions}">
-						<!---->
-						<div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == false }"  ><!--tem que ver se funciona th:if="${answeredQuestion.question.alternativesQuestion == 'false' } -->
-							<div class="card-body ">
-
-								<span style="padding-left:40px"></span><p th:text="${answeredQuestion.question.description}" >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo -->
-								<br/>
-								<div class="border-bottom border-danger"></div>
-								<span style="padding-left:40px"></span><p th:text=${answeredQuestion.answer.answerText} >Descrição da resposta</p><!-- talvez tenha que rolar um left join para pegar o description-->
-
-							</div>
-						</div>
-						<br>
-					</div>
-					</br>
-					<div class="col-sm-12" th:each="answeredQuestion : ${answeredQuestions}"><!---->
-						<div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == true }"> <!---->
-							<div class="card-body ">
-								<span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
-								<br/>
-								<div class="border-bottom border-danger"></div>
-								<br/>
-								<div class="ml-4 p-2 " th:each="answeredQuestion :${answeredQuestion}"><!-- dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
-									<input class="form-check-input" th:value="${answeredQuestion.answer.option.correctAnswer}" type="checkbox"><p th:text="${answeredQuestion.answer.answerText}">descricao alternativa</p><!--optionDestcription dentro do <p>! -->
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			</br>
-		</div>
+            <h6 th:text="${form.datelimit}">                                                        <!--no h6 filho -->
+                Data limite para resposta:
+            </h6><h6 >15/12/2022</h6>
+        </div>
 
 
 
+        <div class="col-sm-12"  >
+            <div class="card border border-danger " >
+                <div class="card-body">
+                    <h5 class="card-title">Perguntas:</h5>
 
-	</div>
+                    <br/>
+                    <div class="col-sm-12" th:each="answeredQuestion : ${answeredQuestions}">
+                        <!---->
+                        <div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == false }"  ><!--tem que ver se funciona th:if="${answeredQuestion.question.alternativesQuestion == 'false' } -->
+                            <div class="card-body ">
+
+                                <span style="padding-left:40px"></span><p th:text="${answeredQuestion.question.description}" >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo -->
+                                <br/>
+                                <div class="border-bottom border-danger"></div>
+                                <span style="padding-left:40px"></span><p th:text=${answeredQuestion.answer.answerText} >Descrição da resposta</p><!-- talvez tenha que rolar um left join para pegar o description-->
+
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    </br>
+                    <div class="col-sm-12" th:each="answeredQuestion : ${answeredQuestions}"><!---->
+                        <div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == true }"> <!---->
+                            <div class="card-body ">
+                                <span style="padding-left:40px"></span><p th:text="${answeredQuestion.question.description}" >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
+                                <br/>
+                                <div class="border-bottom border-danger"></div>
+                                <br/>
+                                <div class="ml-4 p-2"><!-- dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
+                                    <input class="form-check-input" th:value="${answeredQuestion.answer.option.correctAnswer}" type="checkbox"><p th:text="${answeredQuestion.answer.answerText}">descricao alternativa</p><!--optionDestcription dentro do <p>! -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </br>
+        </div>
+
+
+
+
+    </div>
 </div>
 
 

@@ -106,13 +106,14 @@ public class FormController {
         Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
 
         Respondent respondent = (Respondent) respondentService.findById(id);
+        Collaborator collaborator = (Collaborator) collaboratorService.findById(respondent.getCollaborator().getId());
         model.addAttribute("respondent", respondent);
 
 
         Form form = (Form) formService.findById(formId);
         model.addAttribute("form", form);
 
-        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find();
+        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find(formId, collaborator.getId());
 
         if (answeredQuestions == null || answeredQuestions.isEmpty()) {
             model.addAttribute("answeredQuestions", new ArrayList<AnsweredQuestion>());
@@ -215,7 +216,7 @@ public class FormController {
 
         optionService.create(option);
 
-        return "redirect:/form/option-test/"+questionId+"/"+ formId;
+        return "redirect:/form/option-test/" + questionId + "/" + formId;
     }
 
     @GetMapping("/answer-form/{id}")

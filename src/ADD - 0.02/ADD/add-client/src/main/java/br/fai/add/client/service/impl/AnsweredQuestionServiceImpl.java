@@ -19,9 +19,9 @@ public class AnsweredQuestionServiceImpl {
     @Autowired
     private RestService<AnsweredQuestion> restService;
 
-    public List<AnsweredQuestion> find() {
+    public List<AnsweredQuestion> find(int formId, int collaboratorId) {
 
-        return restService.get("answeredQuestion/find");
+        return restService.get("answeredQuestion/find/" + formId + "/" + collaboratorId);
 
     }
 

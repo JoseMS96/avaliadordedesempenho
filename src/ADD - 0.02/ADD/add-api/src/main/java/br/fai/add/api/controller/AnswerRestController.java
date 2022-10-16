@@ -55,6 +55,18 @@ public class AnswerRestController {
         return ResponseEntity.ok(answer);
     }
 
+    @GetMapping("/findAnswerByQuestionAndCollaborator/{id}/{id2}")
+    public ResponseEntity<Answer> findAnswerByQuestionAndCollaborator(@PathVariable("id") final int id, @PathVariable("id2") final int id2) {
+
+        Answer answer = answerService.findAnswerByQuestionAndCollaborator(id, id2);
+
+        if (answer == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(answer);
+    }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") final int id) {

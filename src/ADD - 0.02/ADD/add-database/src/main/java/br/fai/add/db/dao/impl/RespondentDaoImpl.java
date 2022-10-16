@@ -2,6 +2,7 @@ package br.fai.add.db.dao.impl;
 
 import br.fai.add.db.connection.ConnectionFactory;
 import br.fai.add.db.dao.RespondentDao;
+import br.fai.add.model.entities.Collaborator;
 import br.fai.add.model.entities.Form;
 import br.fai.add.model.entities.Respondent;
 import org.springframework.stereotype.Repository;
@@ -186,6 +187,10 @@ public class RespondentDaoImpl implements RespondentDao<Respondent> {
                 Form form = new Form();
                 form.setId(resultSet.getInt("avaliacao_id"));
                 item.setForm(form);
+
+                Collaborator collaborator = new Collaborator();
+                collaborator.setId(resultSet.getInt("colaborador_id"));
+                item.setCollaborator(collaborator);
 
             }
 

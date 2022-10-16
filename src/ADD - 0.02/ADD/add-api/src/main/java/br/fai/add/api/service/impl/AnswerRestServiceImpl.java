@@ -34,6 +34,14 @@ public class AnswerRestServiceImpl implements AnswerRestService<Answer> {
     }
 
     @Override
+    public Answer findAnswerByQuestionAndCollaborator(int id, int id2) {
+        if (id < 0) return null;
+
+        return (Answer) answerDao.findAnswerByQuestionAndCollaborator(id, id2);
+    }
+
+
+    @Override
     public int create(Answer entity) {
         return answerDao.create(entity);
     }

@@ -44,6 +44,11 @@ public class AnswerServiceImpl implements AnswerService<Answer> {
     }
 
     @Override
+    public Answer findAnswerByQuestionAndCollaborator(int id, int id2) {
+        return restService.getById("answer/findAnswerByQuestion/" + id + "/" + id2, Answer.class);
+    }
+
+    @Override
     public boolean deleteById(int id) {
 
         return restService.deleteById("answer/delete/" + id);
