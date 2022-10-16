@@ -101,6 +101,50 @@ public class OptionDaoImpl implements OptionDao<Option> {
     }
 
     @Override
+    public Option findOptionByQuestion(int id, int id2) {
+        Option item = null;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+
+        final String sql = "SELECT * FROM alternativa WHERE id = ?;";
+
+        //o nome usuario não precisar igual no dao e no bd
+
+        try {
+
+            connection = ConnectionFactory.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                item = new Option();
+
+                item.setId(resultSet.getInt("id"));
+                item.setOption_label(resultSet.getString("letra_rotulo"));
+                item.setDescription(resultSet.getString("descricao_da_alternativa"));
+                item.setCorrectAnswer(resultSet.getBoolean("correta"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.close(preparedStatement, connection, resultSet);
+        }
+
+
+        return item;
+    }
+
+    @Override
     public Option findById(int id) {
         Option item = null;
 

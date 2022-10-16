@@ -45,7 +45,7 @@ public class AnswerRestController {
     @GetMapping("/findAnswerByQuestion/{id}")
     public ResponseEntity<Answer> findAnswerByQuestion(@PathVariable("id") final int id) {
 
-        Answer answer = answerService.findById(id);
+        Answer answer = answerService.findAnswerByQuestion(id);
 
         if (answer == null) {
             return ResponseEntity.notFound().build();

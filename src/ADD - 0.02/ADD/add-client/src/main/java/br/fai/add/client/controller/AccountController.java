@@ -69,7 +69,7 @@ public class AccountController {
     }
 
 
-    @GetMapping("/sign-up-employee")
+    @GetMapping("/register-employee")
     public String getSignUpEmployeePage(final Model model) {
 
 
@@ -95,7 +95,7 @@ public class AccountController {
         return "account/sign-in-page";
     }
 
-    
+
     @GetMapping("/profile")
     public String getProfilePage(final Model model, final HttpSession session) {
 

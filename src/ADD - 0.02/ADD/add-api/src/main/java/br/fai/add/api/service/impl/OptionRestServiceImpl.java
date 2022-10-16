@@ -27,6 +27,14 @@ public class OptionRestServiceImpl implements OptionRestService<Option> {
     }
 
     @Override
+    public Option findOptionByQuestion(int id, int id2) {
+        if (id < 0) return null;
+
+        return (Option) optionDao.findOptionByQuestion(id, id2);
+    }
+
+
+    @Override
     public Option findById(int id) {
         if (id < 0) return null;
 

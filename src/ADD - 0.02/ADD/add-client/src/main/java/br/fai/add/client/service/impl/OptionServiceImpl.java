@@ -38,6 +38,11 @@ public class OptionServiceImpl implements OptionService<Option> {
     }
 
     @Override
+    public Option findOptionByQuestion(int id, int id2) {
+        return restService.getById("answer/findOptionByQuestion/" + id + "/" + id2, Option.class);
+    }
+
+    @Override
     public Option findById(int id) {
 
         return restService.getById("option/find/" + id, Option.class);

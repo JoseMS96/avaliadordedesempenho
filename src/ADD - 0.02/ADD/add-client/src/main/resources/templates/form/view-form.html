@@ -45,20 +45,20 @@
                         <br>
                     </div>
                     </br>
-<!--                    <div class="col-sm-12" th:each="answeredQuestion : ${answeredQuestion}">&lt;!&ndash;&ndash;&gt;-->
-<!--                        <div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == 'true' }"> &lt;!&ndash;&ndash;&gt;-->
-<!--                            <div class="card-body ">-->
-<!--                                <span style="padding-left:40px"></span><p >Descrição da pergunta</p> &lt;!&ndash;span serve para dar o espaçinho de paragrafo th:text="${question.description}}"&ndash;&gt;-->
-<!--                                <br/>-->
-<!--                                <div class="border-bottom border-danger"></div>-->
-<!--                                <br/>-->
-<!--                                <div class="ml-4 p-2 " th:each="option:${answeredQuestion.options}">&lt;!&ndash; dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou&ndash;&gt;-->
-<!--                                    <input class="form-check-input" th:value="${answeredQuestion.option.correctAnswer}" type="checkbox"><p th:text="${answeredQuestion.answer.answerText}">descricao alternativa</p>&lt;!&ndash;optionDestcription dentro do <p>! &ndash;&gt;-->
+                    <div class="col-sm-12" th:each="answeredQuestion : ${answeredQuestions}"><!---->
+                        <div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == true }"> <!---->
+                            <div class="card-body ">
+                                <span style="padding-left:40px"></span><p >Descrição da pergunta</p> <!--span serve para dar o espaçinho de paragrafo th:text="${question.description}}"-->
+                                <br/>
+                                <div class="border-bottom border-danger"></div>
+                                <br/>
+                                <div class="ml-4 p-2 " th:each="answeredQuestion :${answeredQuestion}"><!-- dentro do input name vai ser o atributo novo em option que é alternativa que o usuario marcou-->
+                                    <input class="form-check-input" th:value="${answeredQuestion.answer.option.correctAnswer}" type="checkbox"><p th:text="${answeredQuestion.answer.answerText}">descricao alternativa</p><!--optionDestcription dentro do <p>! -->
 
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

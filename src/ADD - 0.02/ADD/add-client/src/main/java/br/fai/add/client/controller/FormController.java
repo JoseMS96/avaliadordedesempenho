@@ -112,14 +112,13 @@ public class FormController {
         Form form = (Form) formService.findById(formId);
         model.addAttribute("form", form);
 
-        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find();
+        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find(formId);
 
         if (answeredQuestions == null || answeredQuestions.isEmpty()) {
             model.addAttribute("answeredQuestions", new ArrayList<AnsweredQuestion>());
         } else {
             model.addAttribute("answeredQuestions", answeredQuestions);
         }
-
 
         model.addAttribute("currentUser", collaborator_reviewer);
         return "form/view-form";
@@ -263,19 +262,43 @@ public class FormController {
     }
 
     @PostMapping("/create-answer")
-    public String CreateAnswer(HttpSession session, final Model model, @RequestParam("optionId") final int optionId, Answer answer) {
+    public String CreateAnswer(HttpSession session, final Model model, @RequestParam("questionId") final int questionId, Answer answer) {
         Collaborator collaborator_employee = (Collaborator) session.getAttribute("currentUser");
 
-        Option option = (Option) optionService.findById(optionId);
+        Question question = (Question) questionService.findById(questionId);
+
+        int formId = question.getForm().getId();
 
         answer.setCollaborator(collaborator_employee);
-        answer.setOption(option);
-//        answer.setQuestion(question);
+        answer.setQuestion(question);
 
         answerService.create(answer);
 
         model.addAttribute("currentUser", collaborator_employee);
-        return "form/answer-form";
+        return "redirect:answer-form/" + formId;
+    }
+
+    @PostMapping("create-alternative-answer")
+    public String CreateAlternativeAnswer(HttpSession session, final Model model,
+                                          @RequestParam("questionId") final int questionId,
+                                          Answer answer, @RequestParam("optionId") final int optionId) {
+        Collaborator collaborator_employee = (Collaborator) session.getAttribute("currentUser");
+
+        Question question = (Question) questionService.findById(questionId);
+
+        Option option = (Option) optionService.findById(optionId);
+
+        int formId = question.getForm().getId();
+
+        answer.setOption(option);
+        answer.setCollaborator(collaborator_employee);
+        answer.setQuestion(question);
+
+        answerService.create(answer);
+
+        model.addAttribute("currentUser", collaborator_employee);
+        return "redirect:answer-form/" + formId;
+
     }
 
 

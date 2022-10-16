@@ -54,6 +54,19 @@ public class OptionRestController {
         return ResponseEntity.ok(option);
     }
 
+    @GetMapping("/findOptionByQuestion/{id}/{id2}")
+    public ResponseEntity<Option> findOptionByQuestion(@PathVariable("id") final int id, @PathVariable("id2") final int id2) {
+
+        Option option = optionService.findOptionByQuestion(id, id2);
+
+        if (option == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+
+        return ResponseEntity.ok(option);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") final int id) {
         boolean result = optionService.deleteById(id);
