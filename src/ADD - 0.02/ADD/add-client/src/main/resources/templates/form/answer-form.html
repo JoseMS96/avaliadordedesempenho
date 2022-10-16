@@ -10,7 +10,7 @@
 <!--sec:authorize="hasRole('EMPLOYEE')" DENTRO DO BODY-->
 <div layout:fragment="body" >
     <div class="container-fluid">
-        <div class="col-sm-12">
+        <div class="col-sm-12 mt-4">
             <!--th:text="${form.title}"-->
             <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3>
             <h6 >                                    <!-- th:text="${form.datetime}"-->
@@ -21,10 +21,9 @@
                 Data limite para resposta:
             </h6><h6 th:text="${form.datelimit}">15/12/2022</h6>
         </div>
-
-        <form><!--vai ter os th :action da vida aqui -->
+        <form ><!--TALVEZ SEJA AQUI A SOLUÇÃO DO VIEW POIS AQUI-->
             <div class="col-sm-12">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Perguntas:</h5>
 
@@ -32,7 +31,7 @@
                             <!--th:each="question : ${questions}"                                   -->
                             <li class="list-group-item d-flex mt-4" ><p class="p-0 m-0 flex-grow-1" th:text="${question.description}">Qual..............?</p><!--th:text="${question.description}-->
                                 <a th:href="@{/form/answer-question/{id}   (id=${question.id})}" type="button" class="btn btn-primary" >Responder</a>
-                                </li><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
+                            </li><!--th:href="@{/question/delete/{id}   (id=${question.id})}"  aqui nao é delete e nem question-->
                         </ul>
 
 
@@ -40,6 +39,8 @@
                 </div>
             </div>
         </form>
+
+
 
 
 

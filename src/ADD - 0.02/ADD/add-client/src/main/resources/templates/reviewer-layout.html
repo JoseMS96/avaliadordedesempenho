@@ -28,12 +28,13 @@
     <ul class="navbar-nav bg-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/reviewer-home}">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-light fa-book"></i>
             </div>
             <div class="sidebar-brand-text mx-3">ADD</div>
         </a>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -52,14 +53,6 @@
             </a>
         </li>
 
-        <li class="nav-item active">
-            <a class="nav-link collapse-item" th:href="@{/form/view-form}"
-               aria-expanded="true"
-               aria-controls="collapsePages">
-                <i class="fas fa-light fa-bookmark"></i>
-                <span>Formulários Respondidos</span>
-            </a>
-        </li>
 
         <li class="nav-item active">
             <a class="nav-link collapse-item" th:href="@{/account/register-employee}"

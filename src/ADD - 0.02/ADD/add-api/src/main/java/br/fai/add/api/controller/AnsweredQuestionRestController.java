@@ -21,15 +21,15 @@ public class AnsweredQuestionRestController {
     @Autowired
     AnsweredQuestionRestServiceImpl answeredQuestionRestService;
 
-    @GetMapping("/find")
-    public ResponseEntity<List<AnsweredQuestion>> find() {
-        List<AnsweredQuestion> answeredQuestions = answeredQuestionRestService.find();
-
-        if (answeredQuestions == null) {
-            return ResponseEntity.badRequest().build();
-        }
-
-        return ResponseEntity.ok(answeredQuestions);
-    }
+//    @GetMapping("/find")
+//    public ResponseEntity<List<AnsweredQuestion>> find() {
+//    //    List<AnsweredQuestion> answeredQuestions = (AnsweredQuestion) answeredQuestionRestService.find();
+//
+//        if (answeredQuestions == null) {
+//            return ResponseEntity.badRequest().build();
+//        }
+//
+//        return ResponseEntity.ok(answeredQuestions);
+//    }
 
 }

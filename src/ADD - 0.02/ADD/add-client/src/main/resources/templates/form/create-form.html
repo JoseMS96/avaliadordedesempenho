@@ -37,9 +37,9 @@
 			<ul class="list-group">
 				<li class="list-group-item d-flex" th:each="form:${forms}">
 					<p class="p-0 m-0 flex-grow-1" th:text="${form.title}"></p>
-					<button class="btn btn-primary" th:href="@{/form/form-details/{id}  (id=${form.id}) }" >
+					<a class="btn btn-primary" th:href="@{/form/form-details/{id}  (id=${form.id}) }" >
 						Detalhes
-					</button>
+					</a>
 				</li>
 			</ul>
 

@@ -6,8 +6,8 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
-<!--sec:authorize="hasRole('REVIEWER')"-->
-<body>
+<!--"-->
+<body sec:authorize="hasRole('EMPLOYEE')">
 
 <div layout:fragment="body">
 
@@ -38,13 +38,14 @@
                         <tbody>
 
                         <tr th:each="form:${forms}">
+
                             <td th:text="${form.datelimit}">30/12/2022</td>
                             <td th:text="${form.title}">Teste de aptidão</td>
 
                             <td>
                                 <ul class="nav nav-pills ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#">Responder</a><!--th:href="@{}" id da avaliação que vai ser respondida-->
+                                        <a class="nav-link active" th:href="@{/form/answer-form/{id}  (id=${form.id}) }">Responder</a><!--th:href="@{/form/answer-form{id}" id da avaliação que vai ser respondida-->
                                     </li>
                                 </ul>
                             </td>

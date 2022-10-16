@@ -112,7 +112,7 @@ public class FormController {
         Form form = (Form) formService.findById(formId);
         model.addAttribute("form", form);
 
-        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find(formId);
+        List<AnsweredQuestion> answeredQuestions = answeredQuestionService.find();
 
         if (answeredQuestions == null || answeredQuestions.isEmpty()) {
             model.addAttribute("answeredQuestions", new ArrayList<AnsweredQuestion>());
@@ -215,7 +215,7 @@ public class FormController {
 
         optionService.create(option);
 
-        return "redirect:/form/form-details/" + formId;
+        return "redirect:/form/option-test/"+questionId+"/"+ formId;
     }
 
     @GetMapping("/answer-form/{id}")
