@@ -6,16 +6,17 @@
     <div th:replace="fragments/head-imports::scripts"></div>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-<body>
+<body sec:authorize="hasRole('REVIEWER')">
 
-<div layout:fragment="body" sec:authorize="hasRole('REVIEWER')">
+<div layout:fragment="body" >
 
     <!--falta os th dessa pagina -->
     <div class="container-fluid">
-        <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3> <!-- th:text="${form.title}"-->
+        <div class="d-flex justify-content-center">
+            <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3> <!-- th:text="${form.title}"-->
+        </div>
         <h6 class="mt-4" th:text="${form.datetime}">Data de criação: 29/09/2022</h6><!--th:text="$form.datetime"-->
         <h6 class="mt-4" th:text="${form.datelimit}">Data limite para resposta: 15/12/2022</h6><!--th:text="${form.datelimit}"-->
-        <br/>
 
         <div class="row">
             <div class="col-sm-6">

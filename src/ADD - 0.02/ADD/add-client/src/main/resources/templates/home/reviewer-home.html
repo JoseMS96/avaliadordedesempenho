@@ -19,7 +19,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Formulários Respondidos</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Formulários Respondidos</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive ">
@@ -41,15 +41,9 @@
                             <td th:text="${respondent.form.title}">Teste de aptidão</td>
 
                             <td>
-                                <ul class="nav nav-pills ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link active"
-                                           th:href="@{/form/view-form-question/{id}/{formId}   (id=${respondent.id}, formId=${respondent.form.id})   }">Avaliar</a>
-                                        <!--th:href="@{/form/view-form-question/{id}/{formId}  (id=${respondent.id}) (formId=${form.id})}"-->
-                                        <!-- vai mandar para a listagem de avaliações daquele colaborador   th:href="@{/form/add-employee-page/{id}  (id=${form.id})}"-->
-                                    </li>
-
-                                </ul>
+                                <a class="btn btn-danger" th:href="@{/form/view-form-question/{id}/{formId}   (id=${respondent.id}, formId=${respondent.form.id})   }">Avaliar</a>
+                                <!--th:href="@{/form/view-form-question/{id}/{formId}  (id=${respondent.id}) (formId=${form.id})}"-->
+                                <!-- vai mandar para a listagem de avaliações daquele colaborador   th:href="@{/form/add-employee-page/{id}  (id=${form.id})}"-->
                             </td>
                         </tr>
 
