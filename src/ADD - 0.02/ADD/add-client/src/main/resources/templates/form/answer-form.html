@@ -30,9 +30,12 @@
                     <ul class="list-group" th:each="question : ${questions}">
 
                         <li class="list-group-item d-flex mt-4" ><p class="p-0 m-0 flex-grow-1" th:text="${question.description}">Qual..............?</p>
-                            <a th:href="@{/form/answer-question/{id}   (id=${question.id})}" type="button" class="btn btn-primary" >Responder</a>
+                            <a th:href="@{/form/answer-question/{id}   (id=${question.id})}" type="button" class="btn btn-danger" >Responder</a>
                         </li>
                     </ul>
+                    <div class="d-flex flex-row justify-content-center mt-4">
+                        <a th:href="@{/employee-home}" type="button" class="btn btn-danger" >Finalizar</a>
+                    </div>
 
                 </div>
             </div>

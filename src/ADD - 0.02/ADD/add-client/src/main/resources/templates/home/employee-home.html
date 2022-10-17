@@ -19,7 +19,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Formulários Pendentes</h6>
+                <h6 class="m-0 font-weight-bold text-dark">Formulários Pendentes</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -43,11 +43,7 @@
                             <td th:text="${form.title}">Teste de aptidão</td>
 
                             <td>
-                                <ul class="nav nav-pills ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" th:href="@{/form/answer-form/{id}  (id=${form.id}) }">Responder</a><!--th:href="@{/form/answer-form{id}" id da avaliação que vai ser respondida-->
-                                    </li>
-                                </ul>
+                                <a class="btn btn-danger" th:href="@{/form/answer-form/{id}  (id=${form.id}) }">Responder</a>
                             </td>
                         </tr>
 

@@ -8,27 +8,32 @@
 <body>
 <!--header-->
 <nav class="main-header bg-danger ">
+    <div class="d-flex flex-row">
 
-    <div class="row">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center ml-4" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-light fa-book"></i>
-            </div>
+        <div class="col-md-6">
+
+                <a class="sidebar-brand d-flex align-items-center justify-content-start ml-4" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-light fa-book" style="color:white"></i>
+                    </div>
+                </a>
+
             <div class="sidebar-brand-text mx-3 font-weight-bolder text-light">ADD</div>
-        </a>
 
-        <div class="d-flex justify-content-end">
 
-            <div class="p-2">
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex flex-row-reverse">
 
-                <a class="btn btn-primary" th:href="@{/account/sign-up-organization}">Criar Conta</a>
-            </div>
-            <div class="p-2">
-                <a class="btn btn-primary" th:href="@{/account/sign-in}">Login</a>
+                <div class="p-2">
+
+                    <a class="btn btn-primary" th:href="@{/account/sign-up-organization}">Criar Conta</a>
+                </div>
+                <div class="p-2">
+                    <a class="btn btn-primary" th:href="@{/account/sign-in}">Login</a>
+                </div>
             </div>
         </div>
-
-
     </div>
 </nav>
 <!--Conteudo-->
