@@ -196,19 +196,19 @@ public class FormController {
 
     @GetMapping("/option-test/{id}/{formId}")
     public String getOptionTestPG(@PathVariable("id") final int id,
-                                  @PathVariable("formId") final int formId, final Model model) {
-
+                                  @PathVariable("formId") final int formId, final Model model,HttpSession session) {
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
         Question question = (Question) questionService.findById(id);
         model.addAttribute("question", question);
 
         Form form = (Form) formService.findById(formId);
         model.addAttribute("form", form);
-
+        model.addAttribute("currentUser", collaborator_reviewer);
         return "form/add-option";
     }
 
     @PostMapping("/option-create")
-    public String create(Option option, @RequestParam("formId") final int formId, @RequestParam("questionId") final int questionId) {
+    public String create(Option option, @RequestParam("formId") final int formId, @RequestParam("questionId") final int questionId ) {
 
         Question question = (Question) questionService.findById(questionId);
 

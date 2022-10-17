@@ -70,8 +70,11 @@ public class AccountController {
 
 
     @GetMapping("/register-employee")
-    public String getSignUpEmployeePage(final Model model) {
+    public String getSignUpEmployeePage(final Model model,HttpSession session) {
 
+        Collaborator collaborator_reviewer = (Collaborator) session.getAttribute("currentUser");
+
+        model.addAttribute("currentUser", collaborator_reviewer);
 
         return "account/register-employee";
     }
