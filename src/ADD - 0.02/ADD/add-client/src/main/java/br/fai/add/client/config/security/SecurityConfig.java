@@ -30,8 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/scss/**").permitAll()
                 .antMatchers("/vendor/**").permitAll()
-                .antMatchers("/account/sign-up").permitAll()
-                .antMatchers("/account/sign-up-organization").permitAll()
+                .antMatchers("/account/**").permitAll()
                 .antMatchers("/").permitAll()
                 .anyRequest().authenticated() // só permite que usuário autenticado possa acessar qualquer pagina, tirando as paginas do permitall acima
                 .and()
