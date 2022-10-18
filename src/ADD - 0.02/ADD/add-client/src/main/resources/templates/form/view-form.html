@@ -11,12 +11,12 @@
 <div layout:fragment="body" >
 
     <div class="container-fluid">
+        <!--HEADER DE FORM-->
         <div class="col-sm-12" >
             <!---->
-            <h3 class="mt-4"th:text="${form.title}"></h3>
-            <h6 >
-                Data de criação :
-            </h6><h6 th:text="${form.datetime}"></h6>
+            <div class="d-flex flex-row justify-content-center">
+                <h3 class="mt-4"th:text="${form.title}"></h3>
+            </div>
 
             <h6 >
                 Data limite para resposta:

@@ -12,11 +12,17 @@
 
     <!--falta os th dessa pagina -->
     <div class="container-fluid">
-        <div class="d-flex justify-content-center">
-            <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3> <!-- th:text="${form.title}"-->
+        <div class="col-sm-12" >
+            <!---->
+            <div class="d-flex flex-row justify-content-center">
+                <h3 class="mt-4"th:text="${form.title}"></h3>
+            </div>
+
+            <h6 >
+                Data limite para resposta:
+            </h6><h6 th:text="${form.datelimit}"></h6>
         </div>
-        <h6 class="mt-4" th:text="${form.datetime}">Data de criação: 29/09/2022</h6><!--th:text="$form.datetime"-->
-        <h6 class="mt-4" th:text="${form.datelimit}">Data limite para resposta: 15/12/2022</h6><!--th:text="${form.datelimit}"-->
+        <!--th:text="${form.datelimit}"-->
 
         <div class="row">
             <div class="col-sm-6">
