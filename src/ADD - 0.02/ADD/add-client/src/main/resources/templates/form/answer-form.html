@@ -10,17 +10,18 @@
 
 <div layout:fragment="body" >
     <div class="container-fluid">
-        <div class="col-sm-12 mt-4">
 
-            <h3 class="mt-4" th:text="${form.title}">Formulário Risco e Compliance</h3>
+        <div class="col-sm-12" >
+            <!---->
+            <div class="d-flex flex-row justify-content-center">
+                <h3 class="mt-4"th:text="${form.title}"></h3>
+            </div>
+
             <h6 >
-                Data de criação :
-            </h6><h6 th:text="${form.datetime}">29/09/2022</h6>
-
-            <h6>
                 Data limite para resposta:
-            </h6><h6 th:text="${form.datelimit}">15/12/2022</h6>
+            </h6><h6 th:text="${form.datelimit}"></h6>
         </div>
+
 
         <div class="col-sm-12">
             <div class="card mb-4">
