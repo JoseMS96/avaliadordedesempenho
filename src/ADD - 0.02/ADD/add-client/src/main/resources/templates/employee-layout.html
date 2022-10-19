@@ -25,7 +25,42 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
+    <ul class="navbar-nav bg-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-start ml-4" th:href="@{/employee-home}" >
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-light fa-book" style="color:white"></i>
+            </div>
+            <div class="sidebar-brand-text font-weight-bolder text-light mx-3">ADD</div>
+        </a>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <li class="nav-item active">
+            <a class="nav-link collapse-item" th:href="@{/employee-home}"
+               aria-expanded="true"
+               aria-controls="collapsePages">
+                <i class="fas fa-light fa-book-open"></i>
+                <span>Home</span>
+            </a>
+        </li>
+
+
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -38,12 +73,7 @@
             <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-start ml-4" th:href="@{/employee-home}">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-light fa-book" style="color:white"></i>
-                    </div>
-                    <div class="sidebar-brand-text font-weight-bolder text-light mx-3">ADD</div>
-                </a>
+
 
 
                 <!-- Topbar Navbar -->
@@ -74,6 +104,8 @@
             </nav>
             <!-- End of Topbar -->
 
+
+
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
@@ -86,7 +118,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer class="sticky-footer bg-white " >
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; ADD</span>
