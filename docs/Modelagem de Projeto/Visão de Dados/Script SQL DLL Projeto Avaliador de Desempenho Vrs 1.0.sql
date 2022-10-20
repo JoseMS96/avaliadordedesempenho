@@ -35,7 +35,7 @@ create table avaliacao (
     id serial primary key,
     data_criacao timestamp without time zone not null,
     data_limite date,
-    titulo character varying(100) not null unique,
+    titulo character varying(100) not null,
 	colaborador_id integer not null references colaborador(id) on update cascade
 );
 
