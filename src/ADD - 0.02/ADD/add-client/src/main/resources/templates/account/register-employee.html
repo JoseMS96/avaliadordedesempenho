@@ -20,36 +20,36 @@
 
                         <div class="form-group">
                             <label >Email</label>
-                            <input  class="form-control"  name="email" type="email">
+                            <input  class="form-control"  name="email" type="email" id="emailEmployee_id">
 
                         </div><div class="form-group">
                         <label >Nome de usuário</label>
-                        <input type="text" class="form-control"  name="username">
+                        <input type="text" class="form-control"  name="username" id="usernameEmployee_id">
                     </div>
 
                         <div class="form-group">
                             <label>Senha</label>
-                            <input type="password" class="form-control"  name="password" placeholder="password">
+                            <input type="password" class="form-control"  name="password" placeholder="password" id="passwordEmployee_id">
                         </div>
                         <div class="form-group">
                             <label >Nome</label>
-                            <input type="text" class="form-control"   name="fullName" placeholder="Nome">
+                            <input type="text" class="form-control"   name="fullName" placeholder="Nome" id="nameEmployee_id">
                         </div>
                         <div class="form-group">
                             <label>Cpf</label>
-                            <input type="text" class="form-control"  name="cpf" placeholder="Cpf">
+                            <input type="text" class="form-control"  name="cpf" placeholder="Cpf" id="cpfEmployee_id">
                         </div>
                         <div class="form-group">
                             <label >Cargo</label>
-                            <input type="text" class="form-control"  name="jobTitle"placeholder="Cargo">
+                            <input type="text" class="form-control"  name="jobTitle"placeholder="Cargo" id="jobtitleEmployee_id">
                         </div>
                         <div class="form-group">
                             <label>Sexo</label>
-                            <input type="text" class="form-control"  name="gender" placeholder="Sexo">
+                            <input type="text" class="form-control"  name="gender" placeholder="Sexo" id="sexEmployee_id">
                         </div>
                         <div class="form-group">
                             <label >Telefone</label>
-                            <input type="text" class="form-control"  name="phoneNumber"
+                            <input type="text" class="form-control"  name="phoneNumber" id="telephoneEmployee_id"
                                    placeholder="(xx)-xxxxx-xxxx">
                         </div>
 
@@ -58,9 +58,9 @@
                 </div>
 
                 <div class="card-footer d-flex justify-content-center p-4 bg-light">
-                    <a class="btn btn-danger" th:href="@{/reviewer-home}">Voltar</a>
+                    <a class="btn btn-danger" th:href="@{/reviewer-home}" id="backToHome_id">Voltar</a>
                     <div class="ml-4">
-                        <button type="submit" class="btn btn-danger ">Submit</button>
+                        <button type="submit" class="btn btn-danger " id="submitEmployee_id">Submit</button>
                     </div>
                 </div>
             </form>

@@ -10,7 +10,7 @@
 <body sec:authorize="hasRole('EMPLOYEE')">
 
 <div layout:fragment="body">
-
+<div class="container">
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -43,7 +43,7 @@
                             <td th:text="${form.title}">Teste de aptidão</td>
 
                             <td>
-                                <a class="btn btn-danger" th:href="@{/form/answer-form/{id}  (id=${form.id}) }">Responder</a>
+                                <a id="answer-form" class="btn btn-danger" th:href="@{/form/answer-form/{id}  (id=${form.id}) }">Responder</a>
                             </td>
                         </tr>
 
@@ -55,6 +55,8 @@
     </div>
 
 </div>
+</div>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>

@@ -36,13 +36,13 @@
                         <div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == false }"  >
                             <div class="card-body ">
                                 <div class="d-flex flex-row">
-                                    <p th:text="${answeredQuestion.question.description}" >Descrição da pergunta</p>
+                                    <p th:text="${answeredQuestion.question.description}"  id="answeredQuestionDescription_id">Descrição da pergunta</p>
 
                                 </div>
                                 <div class="border-bottom border-danger"></div>
                                 <div class="d-flex flex-row">
 
-                                    <p th:text="${answeredQuestion.answer.answerText}" >Descrição da resposta</p>
+                                    <p th:text="${answeredQuestion.answer.answerText}" id="answeredQuestion_id">Descrição da resposta</p>
                                 </div>
                             </div>
                         </div>
@@ -52,13 +52,13 @@
                         <div class="card border border-danger" th:if="${answeredQuestion.question.alternativesQuestion == true }">
                             <div class="card-body ">
                                 <div class="d-flex flex-row">
-                                    <p th:text="${answeredQuestion.question.description}" ></p>
+                                    <p th:text="${answeredQuestion.question.description}" id="answeredAlternative_description_id" ></p>
 
                                 </div>
                                 <div class="border-bottom border-danger"></div>
                                 <div class="ml-4 p-2">
                                     <div class="d-flex flex-row">
-                                        <label th:text="${answeredQuestion.answer.option.option_label}"></label><label>-</label><p th:text="${answeredQuestion.answer.answerText}"></p>
+                                        <label th:text="${answeredQuestion.answer.option.option_label}" id="answer_option_id"></label><label>-</label><p th:text="${answeredQuestion.answer.answerText}" id="answertext_id"></p>
 
                                     </div>
                                     <div class="d-flex flex-row-reverse">

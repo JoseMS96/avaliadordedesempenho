@@ -37,12 +37,12 @@
                                 Qual..............?</p>
                                 <!-- dentro do button th:href="@{/question/delete/{id}   (id=${question.id})}"-->
                                 <a th:href="@{/question/delete/{id}  (id=${question.id})}"
-                                   class="btn btn-danger" role="button">DELETE
+                                   class="btn btn-danger" role="button" id="deleteQuestion_id">DELETE
                                 </a>
                         </ul>
                         <br/>
 <!--                        pathvariable?-->
-                        <a th:href="@{/form/add-question-page/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block">Adicionar
+                        <a th:href="@{/form/add-question-page/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block" id="addQuestion_id">Adicionar
                             Perguntas</a>
                     </div>
                 </div>
@@ -56,13 +56,13 @@
                             <li class="list-group-item d-flex" th:each="respondent : ${respondents}" ><p th:text="${respondent.name}"
                                    class="p-0 m-0 flex-grow-1" >Maria Maria</p><!--dentro do paragrafo  th:text="{collaborator.fullName}" -->
                                 <a th:href="@{/respondent/delete/{id}  (id=${respondent.id})}"
-                                        class="btn btn-danger" role="button">DELETE
+                                        class="btn btn-danger" role="button" id="deleteCollaborator_id">DELETE
                                 </a><!--th:href="@{collaborator/delete/{id}  (id=${collaborator.id})}"-->
                             </li>
                         </ul>
                         <br/>
 
-                        <a th:href="@{/form/add-employee-page/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block">Adicionar
+                        <a th:href="@{/form/add-employee-page/{id}  (id=${form.id})}" class="btn btn-primary btn-lg btn-block"id="addCollaborator_id">Adicionar
                             Colaboradoes</a>
                     </div>
                 </div>

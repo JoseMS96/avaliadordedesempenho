@@ -31,19 +31,19 @@
                                             <label>Qual letra:</label><span style="padding-left:25px"></span>
                                             <select
                                                     name="option_label" id="option_label" style="width:100px">
-                                                <option
+                                                <option id="A_id"
                                                         value="A">A
                                                 </option>
-                                                <option
+                                                <option id="B_id"
                                                         value="B">B
                                                 </option>
-                                                <option
+                                                <option id="C_id"
                                                         value="C">C
                                                 </option>
-                                                <option
+                                                <option id="D_id"
                                                         value="D">D
                                                 </option>
-                                                <option
+                                                <option id="E_id"
                                                         value="E">E
                                                 </option>
                                             </select>
@@ -57,7 +57,7 @@
                                     <div class="input-group-text">
                                         <input type="checkbox" name="correctAnswer">
                                     </div>
-                                    <textarea type="text" class="form-control" name="description" rows="3"></textarea>
+                                    <textarea type="text" class="form-control" name="description" rows="3" id="alternativeDescription_id"></textarea>
                                 </div>
 
 
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-danger">Submeter</button>
+                                <button type="submit" class="btn btn-danger" id="addAlternative_id">Submeter</button>
                             </div>
                         </div>
 

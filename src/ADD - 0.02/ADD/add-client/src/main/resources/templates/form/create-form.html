@@ -15,17 +15,17 @@
 			<div class="form-row">
 				<div class="col">
 					<label>Entre com o título:</label>
-					<input type="text" name="title" class="form-control" id="titulo">
+					<input type="text" name="title" class="form-control" id="title_id">
 				</div>
 				<div class="col">
 					<label>Data limite para resposta:</label>
-					<input type="date" name="datelimit" class="form-control" id="date">
+					<input type="date" name="datelimit" class="form-control" id="date_id">
 					<br/>
 				</div>
 
 			</div>
 			<div class="d-flex justify-content-center">
-				<button type="submit" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
+				<button id="formCreate_id" type="submit" class="btn btn-outline-secondary btn-lg btn-block">Submeter</button>
 			</div>
 		</form>
 
@@ -35,8 +35,8 @@
 		<div>
 			<ul class="list-group">
 				<li class="list-group-item d-flex" th:each="form:${forms}">
-					<p class="p-0 m-0 flex-grow-1" th:text="${form.title}"></p>
-					<a class="btn btn-danger" th:href="@{/form/form-details/{id}  (id=${form.id}) }" >
+					<p class="p-0 m-0 flex-grow-1" th:text="${form.title}" id="createdForm_title_id" ></p>
+					<a class="btn btn-danger" th:href="@{/form/form-details/{id}  (id=${form.id}) }" id="detailForm_id" >
 						Detalhes
 					</a>
 				</li>

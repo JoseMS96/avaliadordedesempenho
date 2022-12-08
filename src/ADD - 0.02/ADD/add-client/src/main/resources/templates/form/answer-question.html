@@ -18,14 +18,14 @@
                         <div class="card-body">
                             <span style="padding-left:40px"></span>
                             <input class="form-check-input" type="hidden" name="questionId" th:value="${question.id}">
-                            <p th:text="${question.description}">Descrição da pergunta</p>
+                            <p th:text="${question.description}" id="descriptionQuestion_id">Descrição da pergunta</p>
 
                             <br/>
                             <div class="d-flex justify-content-center">
-                                <textarea name="answerText" placeholder="Insira a resposta aqui" cols="150"
+                                <textarea id="answerTextDescription_id" name="answerText" placeholder="Insira a resposta aqui" cols="150"
                                           rows="4"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-danger btn-lg btn-block mt-4">Salvar Resposta</button>
+                            <button type="submit" class="btn btn-danger btn-lg btn-block mt-4" id="save_asnwer_id">Salvar Resposta</button>
 
                         </div>
                     </div>
@@ -45,19 +45,19 @@
                         <div class="card-body">
                             <input class="form-check-input" type="hidden" name="questionId" th:value="${question.id}">
                             <span style="padding-left:40px"></span>
-                            <p th:text="${question.description}">Descrição da pergunta</p>
+                            <p th:text="${question.description}" id="descriptionAlternativeQuestion_id">Descrição da pergunta </p>
 
                             <br/>
 
                             <div class="form-check" th:each="option : ${options}"><!--th:each="option : ${options}"-->
-                                <input class="form-check-input" type="radio" name="optionId" th:value="${option.id}">
-                                <label class="form-check-label" th:text="${option.description}">
+                                <input class="form-check-input" type="radio" name="optionId" th:value="${option.id}" id="option_checkbox_id" >
+                                <label class="form-check-label" th:text="${option.description}" >
                                     <!--th:text=${option.description}-->
                                     descriçao alternativa
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Salvar Resposta</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block mt-4"id="save_option_id">Salvar Resposta</button>
                             <!--create resposta -->
 
                         </div>
