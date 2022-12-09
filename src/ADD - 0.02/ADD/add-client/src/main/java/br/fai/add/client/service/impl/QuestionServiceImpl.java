@@ -23,6 +23,10 @@ public class QuestionServiceImpl implements QuestionService<Question> {
     @Override
     public int create(Question entity) {
 
+        if (entity.getDescription() == null) {
+            return -1;
+        }
+
         return restService.post("question/create", entity);
     }
 

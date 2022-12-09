@@ -22,6 +22,11 @@ public class FormServiceImpl implements FormService<Form> {
 
     @Override
     public int create(Form entity) {
+
+        if (entity.getTitle() == null || entity.getDatelimit() == null) {
+            return -1;
+        }
+
         return restService.post("form/create", entity);
     }
 
