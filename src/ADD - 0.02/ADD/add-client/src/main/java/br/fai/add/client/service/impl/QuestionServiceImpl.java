@@ -23,7 +23,7 @@ public class QuestionServiceImpl implements QuestionService<Question> {
     @Override
     public int create(Question entity) {
 
-        if (entity.getDescription() == null) {
+        if (entity.getDescription() == "" || entity.getDescription() == null) {
             return -1;
         }
 

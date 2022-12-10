@@ -33,7 +33,7 @@
                         <ul class="list-group" >
 
                             <li class="list-group-item d-flex" th:each="question : ${questions}" ><p th:text="${question.description}"
-                                    class="p-0 m-0 flex-grow-1" >
+                                    class="p-0 m-0 flex-grow-1" id="questionDescription_id" >
                                 Qual..............?</p>
                                 <!-- dentro do button th:href="@{/question/delete/{id}   (id=${question.id})}"-->
                                 <a th:href="@{/question/delete/{id}  (id=${question.id})}"

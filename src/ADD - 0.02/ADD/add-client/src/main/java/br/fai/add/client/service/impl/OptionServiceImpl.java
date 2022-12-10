@@ -23,6 +23,10 @@ public class OptionServiceImpl implements OptionService<Option> {
     @Override
     public int create(Option entity) {
 
+        if (entity.getDescription() == "" || entity.getDescription() == null) {
+            return -1;
+        }
+
         return restService.post("option/create", entity);
     }
 
